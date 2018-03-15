@@ -1,4 +1,4 @@
-## let和const命令
+## let和const命令（3）
 ### let命令
 * 只在代码块内有效
 * 不存在变量提升
@@ -12,10 +12,10 @@
 ### const命令
 * 声明常量，其他规则类似于`let`
 * 用`const`命令声明的对象，不可改变所指地址，对象属性可以改变
-* es6声明变量的六种方法`var``function``let``const``import``class`
+* es6声明变量的六种方法`var` `function` `let` `const` `import` `class`
 
-###环境顶层对象
-* 浏览器`window`
-* node`global`
-* `var``function`声明的对象为全局对象，同时也是顶层对象的属性
-* `let``const``class`声明的对象不挂在顶层对象下面，将全局变量与顶层对象的属性脱钩
+### 环境顶层对象
+* 浏览: `window`
+* node: `global`
+* `var` `function`声明的对象为全局对象，同时也是顶层对象的属性
+* `let` `const` `class`声明的对象不挂在顶层对象下面，将全局变量与顶层对象的属性脱钩
