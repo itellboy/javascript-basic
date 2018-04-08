@@ -1,4 +1,4 @@
-## Symbol
+## Symbol(2)
 * `JavaScript`第七种数据类型，表示独一无二的值
 * `Symbol`值通过`Symbol函数`生成，对象的属性可以是字符串类型，也可以是`Symbol`类型
 * 调用`Symbol函数`不能使用`new`命令，接受一个字符串作为函数的参数，主要是对`Symbol`值的描述，在控制台显示
@@ -38,3 +38,7 @@ Object.defineProperty(a, mySymbol, {value: 'hello'});
 #### `Symbol.for()`,`Symbol.keyFor()`
 * 可以通过`Symbol.for()`方法定义相同的`Symbol`值，以相同`key`生成的`Symbol`值为同一个 `Symbol`值
 * `Symbol.keyFor()`，参数为一个 `Symbol`值，返回一个已经登记`Symbol`值的`key`，简单来说，利用`Symbol()`生成的值，`key`都不会相同
+
+#### 内置的`Symbol`值
+
+*以后再看*
