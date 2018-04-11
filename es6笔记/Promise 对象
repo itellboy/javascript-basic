@@ -23,7 +23,8 @@
 
 ## `Promise.prototype.then()`
 
-第一个参数为 `resolved` 状态的回调函数，第二个参数为 `rejected` 状态的回调函数
+* 第一个参数为 `resolved` 状态的回调函数，第二个参数为 `rejected` 状态的回调函数
+* 返回一个全新的 `Promise` 实例
 
 ## `Promise.prototype.catch()`
 
@@ -46,6 +47,8 @@
 `race` 时比赛的意思，所以这个方法的意思是多个 `Promise` 对象中谁的状态先改变，新的 `Promise` 对象的状态就会跟着改变
 
 ## `Promise.resolve()`
+
+* 将现有的对象转化为 `Promise` 对象，返回一个状态为 `resolved` 状态的 `Promise` 对象
 
 ## `Promise.reject()`
 
