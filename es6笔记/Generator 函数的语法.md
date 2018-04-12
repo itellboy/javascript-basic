@@ -58,3 +58,11 @@ gf.next()
 ## next 方法的参数
 
 * `yield` 表达式本身没有返回值，可以通过 `next()` 方法的参数来指定上一个 `yield` 表达式的返回值，这意味着可以在函数执行的过程中向函数里面注入外部的值，从而调整函数的运行方式
+
+## for...of 循环
+
+* for...of 循环可以直接遍历 `Generator` 函数生成的对象，不需要 `next` 函数
+* 一旦 `next` 方法返回对象的 `done` 属性为 `true` ，终止遍历
+
+## Generator.prototype.throw
+

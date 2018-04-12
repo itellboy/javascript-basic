@@ -50,6 +50,22 @@
 
 * 将现有的对象转化为 `Promise` 对象，返回一个状态为 `resolved` 状态的 `Promise` 对象
 
+```javascript
+//相当于
+new Promise((resolve, reject) => {
+  resolve();
+})
+```
+
 ## `Promise.reject()`
+
+* 将现有的对象转化为 `Promise` 对象，返回一个状态为 `rejected` 状态的 `Promise` 对象
+
+```javascript
+//相当于
+new Promise((resolve, reject) => {
+  reject();
+})
+```
 
 ## `Promise.try()`
