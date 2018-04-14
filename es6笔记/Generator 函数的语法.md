@@ -66,3 +66,36 @@ gf.next()
 
 ## Generator.prototype.throw
 
+* `Generator` 函数执行返回的遍历器对象都有一个 `throw` 方法，可以在函数体外抛出错误，在函数体内部捕获
+
+```javascript
+function* g(){
+  try{
+    yield ;
+  } catch (e){
+    console.log('内部捕获' + e)
+  }
+}
+var i = g();
+g.next();
+g.throw('1');
+// 内部捕获 1 
+```
+
+* 在 `Generator` 函数内部捕获之后，会自动执行一次 `next()` 方法
+
+## Generator.prototype.return
+
+* 直接调用 `Generator` 函数的 `return` 方法可以终止便利该函数，并且可以给定返回值
+* 如果 `Generator` 函数内部有 `try...finally` 块，那么 `return` 会推迟到 `finally` 块执行完之后再执行
+
+## next(), throw(), return() 的共同点
+
+> 理解
+
+三个方法都是恢复 `Generator` 函数的执行，只是把 `yield` 表达式替换成不同的语句
+
+* `next()` 将 `yield` 表达式换成一个值
+* `throw()` 将 `yield` 表达式换成一个  `throw` 语句
+* `return()` 将 `yield` 表达式换成一个 `return` 语句
+
