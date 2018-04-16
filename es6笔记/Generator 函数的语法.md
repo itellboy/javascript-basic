@@ -99,3 +99,6 @@ g.throw('1');
 * `throw()` 将 `yield` 表达式换成一个  `throw` 语句
 * `return()` 将 `yield` 表达式换成一个 `return` 语句
 
+## yield* 表达式
+
+如果要在一个 `Generator` 函数里面执行另外一个 `Generator` 函数，需要在 `Generator` 函数里面用 `yield*` 表达式来定义另外一个 `Generator` 函数
