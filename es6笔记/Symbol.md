@@ -36,7 +36,7 @@ Object.defineProperty(a, mySymbol, {value: 'hello'});
 * 通过 `Object.getOwnPropertySymbols` 和 `Reflect.ownKeys()` 可以获取对象的 `Symbol` 属性
 * 可以利用 `Symbol` 属性的特性可以定义一些非私有，但又只希望用于内部的方法
 
-## Symbol.for(),Symbol.keyFor()
+## Symbol.for(), Symbol.keyFor()
 
 * 可以通过 `Symbol.for()` 方法定义相同的 `Symbol` 值，以相同 `key` 生成的 `Symbol` 值为同一个 `Symbol` 值
 * `Symbol.keyFor()` ，参数为一个 `Symbol` 值，返回一个已经登记 `Symbol` 值的 `key` ，简单来说，利用 `Symbol()` 生成的值，`key` 都不会相同
