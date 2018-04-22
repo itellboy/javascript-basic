@@ -23,3 +23,16 @@ const asyncReadFile = async function(){
 
 ## 基本用法
 
+* async 函数的错误可以在返回的 Promise 对象通过 `catch` 捕捉
+* async 函数内部 `return` 的值，可以在返回的 Promise 对象回调函数里面接收
+* async 函数返回的 Promise 对象，需要等到函数内部所有异步操作完成后，状态才会改变
+
+## await 语句
+
+* 只要有一个 `await` 后面 Promise 对象的状态变为 `rejected` 状态，async 会终止执行，可以在 `await` 后面的Promise 对象直接捕获错误，可以避免终止整个 async 函数的执行
+
+## 使用注意点
+
+1. 建议把 `await` 命令放在 `try...catch` 块中
+2. 多个 `await` 命令后面的异步操作如果没有继发关系，最好让他们同时触发，缩短程序的执行时间，使用 `Promise.all()` 可以实现
+3. `await` 命令只能用在 async 函数里面，用在普通函数会报错
