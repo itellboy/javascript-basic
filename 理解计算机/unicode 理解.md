@@ -35,7 +35,7 @@
 * 空间浪费
 * 不能和 ASCII 码区分开来
 
-### UTF-8, UTF_16
+### UTF-8, UTF-16
 
 为了解决 unidcode 在网络空间传输空间浪费的问题，出现了 UTF(UCS Transfer Fommat) 标准
 
