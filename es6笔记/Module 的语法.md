@@ -4,6 +4,11 @@
 
 为了使 JavaScript 有模块体系，将各个功能拆分成小模块，在用简单的方法拼装起来
 
+## 与 CommonJS 比较
+
+* ES6 模块采用编译时加载， CommonJS 是运行时加载
+* ES6 采用按需加载，只加载需要的属性， CommonJS 将模块作为一个对象全部加载
+
 ## 严格模式
 
 ES6 模块自动采用严格模式，主要有以下限制
@@ -40,7 +45,6 @@ import * as myModule from './myModule.js';
 ## export default 命令
 
 > 为模块指定默认输出
-
 
 * 使用 `export default` 的输出不需要使用 `{}` 引入
 * 不需要知道输出时候的变量名，引入的时候可以随意命令
