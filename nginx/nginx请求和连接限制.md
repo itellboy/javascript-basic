@@ -1,8 +1,8 @@
 # Nginx 请求和连接限制
 
 
-* 连接频率限制 - limit_conn_module
-* 请求频率限制 - limit_req_module
+* 连接频率限制 - limit\_conn\_module
+* 请求频率限制 - limit\_req\_module
 
 http 协议的连接与请求
 
@@ -17,20 +17,20 @@ http 协议的连接与请求
 
 连接限制语法
 
-* Syntax: limit_conn_zone key zone=name:size;
+* Syntax: limit\_conn\_zone key zone=name:size;
 * Default: --
 * Context: http
 
-* Syntax: limit_conn_zone number;
+* Syntax: limit\_conn\_zone number;
 * Default: --
 * Context: http, server, location
 
 请求限制语法
 
-* Syntax: limit_req_zone key zone=name:size rate=rate;
+* Syntax: limit\_req\_zone key zone=name:size rate=rate;
 * Default: --
 * Context: http
 
-* Syntax: limit_req zone=name [burst=number] [nodelay];
+* Syntax: limit\_req zone=name [burst=number] [nodelay];
 * Default: --
 * Context: http, server, location

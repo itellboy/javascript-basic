@@ -3,7 +3,7 @@
 * 基于 IP 的访问控制 - http_access_module
 * 基于用户的信任登录 - http_auth_basic_module
 
-## http_access_module
+## http\_access\_module
 
 * Syntax: allow address | CIDR | unix: | all;
 * Default: --
@@ -15,21 +15,21 @@
 
 http_access_module 局限性
 
-1. 采用别的 http 头信息控制访问，如： http_x_forward_for
+1. 采用别的 http 头信息控制访问，如： http\_x\_forward_for
 2. 结合 geo 模块
 3. 通过 http 自定义变量传递
 
-## http_x_forward_for
+## http\_x\_forward\_for
 
 * http_x_forward_for = Client IP, Proxy(1) IP, Proxy(2) IP, ...
 
-## http_auth_basic_module
+## http\_auth\_basic\_module
 
 * Syntax: auth_basic string | off;
-* Default: auth_basic off;
-* Context: http, server, locaiont, limit_except
+* Default: auth\_basic off;
+* Context: http, server, locaiont, limit\_except
 
-* Syntax: auth_basic_user_file file;
+* Syntax: auth\_basic\_user\_file file;
 * Default: --
 * Context: http, server, location,limit_except
 
