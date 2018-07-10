@@ -67,3 +67,27 @@ http 定义的缓存机制（如：Expires, Cache-Control 等）
 | 校验是否过期 | Expires, Cache-Control(max-age) |
 | 协议中 Etag 头信息校验 | Etag |
 | Last-Modified 头信息校验 | Last-Modified |
+
+### 配置语法 expires
+
+添加 Cache-Controller, Expires 头
+
+* Syntax: expires [modified] time;  expries epoch |max|off;
+* Default expires off;
+* Context: http, server, location, if in location
+
+## 跨站访问支持
+
+* Syntax: add_header name value [always];
+* Default: --;
+* Context: http, server, location, if in location
+
+## 防盗链
+
+> 防止网站资源被盗用
+
+### 基于 http_refer 防盗链配置模块
+
+* Syntax: valid_referers none|blocked|servernames|string...;
+* Default: --
+* Context: server, location
