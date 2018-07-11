@@ -68,7 +68,7 @@ DOM 提供操作接口，用来获取三种关系的节点，子节点包括 `fi
 
 > 返回当前节点本身的文本值，只有 text 和 comment 节点才会有值返回，其他节点该属性返回结果为 `null` ，可读写
 
-```javascirpt
+```javascript
 // <div id="node"> text </div>
 
 docuemnt.getElementById('node').nodeValue // null
