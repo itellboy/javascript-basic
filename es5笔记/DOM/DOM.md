@@ -102,7 +102,7 @@ docuemnt.getElementById('node').firstChild.nodeValue // text
 
 > 同上，返回紧跟当前节点前面的节点
 
-#### Node.prototype.ParentNode
+#### Node.prototype.parentNode
 
 > 返回当前节点的父节点，只可能是 document 节点，element 节点 documentFragment 节点
 
@@ -114,7 +114,7 @@ docuemnt.getElementById('node').firstChild.nodeValue // text
 
 > 返回当前节点的子节点，包括文本节点和注释节点，没有则返回 `null`
 
-#### Node.prototype.ChildNodes
+#### Node.prototype.childNodes
 
 > 返回一个类似数组的对象（ `nodeList` 集合），包括当前节点所有子节点集合，包括注释节点和文本节点
 
@@ -245,28 +245,14 @@ node.ChildNodes && node.ChildNodes.length > 0;
 
 > 如果当前节点是父节点，就会继承 ParentNode 接口
 
-属性
+属性&方法
 
-#### ParentNode.prototype.children
-
-> 返回一个 HTMLCollection 示例，所有子元素节点集合，只读
-
-#### ParentNode.prototype.firstElementChild, ParentNode.prototype.lastElementChild
-
-> 返回当前节点的第一个元素节点和最后一个元素节点，没有则返回 `null`
-
-#### ParentNode.childElementCount
-
-> 返回子元素节点的个数，等同于 `ParentNode.prototype.children.length`
-
-方法
-
-#### ParentNode.prototype.append(), ParentNode.prototype.prepend()
-
-这两个方法没有返回值
-
-* append() 将节点作为最后一个子元素插入父节点
-* prepend() 将节点作为第一个子元素节点插入父节点
+| attribute&method | desc |
+| --- | --- |
+| ParentNode.prototype.children | 返回一个 HTMLCollection 实例，所有子元素节点集合，只读 |
+| ParentNode.prototype.firstElementChild </br> ParentNode.prototype.lastElementChild | 返回当前节点的第一个元素节点 </br> 返回当前节点最后一个元素节点 </br> 没有则返回 `null` |
+| ParentNode.childElementCount | 返回子元素节点的个数 </br> 等同于 ParentNode.prototype.children.length |
+| ParentNode.prototype.append() </br> ParentNode.prototype.prepend() | 将参数节点作为最后一个子元素节点插入 </br> 将参数节点作为第一个元素节点插入 </br> 没有返回值 |
 
 ### ChildNode 接口
 
@@ -274,18 +260,11 @@ node.ChildNodes && node.ChildNodes.length > 0;
 
 方法
 
-#### ChildNode.prototype.remove()
-
-> 从父节点移除该节点
-
-#### ChildNode.prototype.before(), ChildNode.prototype.after()
-
-> 在当前节点的前面或者后面插入内容
-
-#### ChildNode.prototype.replaceWith()
-
-> 替换当前节点
-
+| method | desc |
+| --- | --- |
+| ChildNode.prototype.remove() | 从父节点移除该节点 |
+| ChildNode.prototype.before() </br> ChildNode.prototype.after() | 在当前节点前面插入参数节点 </br> 在当前节点后面插入参数节点 |
+| ChildNode.prototype.replacewith() | 用参数节点替换当前节点 |
 
 ## 参考
 
