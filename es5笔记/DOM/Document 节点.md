@@ -129,5 +129,5 @@
 | document.adoptNode() </br> document.importNode() | - `adoptNode(node)` 将节点从原来的文档中移除，归属当前文档，`parentNode` 属性为 `null` </br> - `importNode(node, flag)` 与 `adoptNode()` 作用一样，`importNode` 是将节点对象拷贝后归属当前文档，flag 布尔值表示是否深拷贝 |
 | document.createNodeIterator() | - 返回一个子节点遍历器，接受两个参数，第一个参数为所遍历的根结点，第二个参数为所要遍历的节点类型 </br> - 遍历的节点类型 有四个选择 </br> - 所有节点: `NodeFilter.SHOW_ALL` </br> - 元素节点: `NodeFilter.SHOW_ELEMENT` </br> - 文本节点: `NodeFilter.SHOW_TEXT` </br> - 评论节点: `NodeFilter.SHOW_COMMENT` </br> - 通过遍历器的 `nextNode()` 和 `previousNode()` 方法可以进行遍历 </br> - 遍历器返回的第一个节点，总是根节点 |
 | document.createTreeWalker() | 返回一个 DOM 的子树遍历器，与 `createNodeIterator()` 类似，只不过返回的是 `TreeWalker` 实例，另外，它的第一个节点不是根节点，用来遍历元素节点 |
-| document.execCommand() </br> document.queryCommandSupport() </br> document.queryCommandEnabled() | |
+| document.execCommand() </br> document.queryCommandSupport() </br> document.queryCommandEnabled() | - `document.designMode` 的值设为 `on`，那么整个文档可编辑 </br> - 元素的 `contenteditable` 属性设为 `on` ，属性可编辑 </br> - 上面两种情况可以使用 `document.execCommand()` |
 | document.getSelection() | 和 `document.getSelection()` 相同 |
