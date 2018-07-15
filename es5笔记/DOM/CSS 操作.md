@@ -78,6 +78,7 @@ CSSStyleDeclaration 接口可以直接读写 css 的样式属性，属性和 css
 * `StyleSheet` 接口表示一张网页的样式表，包括通过 `<link>` 加载的样式表和 `<style>` 内嵌的样式表
 * `document.styleSheets` 属性返回整个页面所有的样式表，返回一个 `array-like-obj`，成员是每一个 `StyleSheets` 实例
 * 如果是 `<style>` 引入的内嵌样式，可以通过元素的 `sheet` 属性来获取 `StyleSheets` 接口
+* CSSStyleSheet 接口继承了 StyleSheet 接口的属性
 
 ### 实例属性
 
@@ -90,8 +91,70 @@ CSSStyleDeclaration 接口可以直接读写 css 的样式属性，属性和 css
 | StyleSheet.parentStyleSheet | CSS 的 `@import` 命令允许在样式表中加载其他样式表，返回包含当前样式表的样式表 |
 | StyleSheet.media | 返回一个类似数组的对象（`MediaList` 实例），成员是表示适用媒介的字符串，只读 </br> - 打印：`print` </br> - 屏幕：`screen` </br> - 手持设备：`handheld` </br> - 所有：`all` </br> `MediaList` 实例的 `appendMedia()` 方法用于增加媒介，`deleteMedia()` 方法用于删除媒介 |
 | StyleSheet.ownerNode | 返回 `StyleSheet` 实例对象所在的 DOM 节点，通常是 `<style>` 或者 `<link>`|
-| StyleSheet.cssRules | 指向一个 `CSSRuleList` 实例，里面的每个成员都是当前的一条 CSS 规则 </br> - 使用该规则的 `cssText` 属性，可以的到当前 CSS 规则对应的字符串表达形式 </br> - 使用改规则的 `style` 属性，指向一个对象，用来读写具体的 CSS 命令 |
-| StyleSheet.ownerRule | 有些样式表是通过 `@import` 引入的，他得 `ownerRule` 属性会返回一个 `CSSRule` 实例，代表那行 `@import` 规则，如果当前样式表不是通过 `@import` 引入的，则返回 `null`
+| CSSStyleSheet.cssRules | 指向一个 `CSSRuleList` 实例，里面的每个成员都是当前的一条 CSS 规则 </br> - 使用该规则的 `cssText` 属性，可以的到当前 CSS 规则对应的字符串表达形式 </br> - 使用改规则的 `style` 属性，指向一个对象，用来读写具体的 CSS 命令 |
+| CSSStyleSheet.ownerRule | 有些样式表是通过 `@import` 引入的，他得 `ownerRule` 属性会返回一个 `CSSRule` 实例，代表那行 `@import` 规则，如果当前样式表不是通过 `@import` 引入的，则返回 `null`
+
+### 实例方法
+
+| method | desc |
+| --- | --- |
+| CSSStyleSheet.insertRule() | 插入一条新的 CSS 规则，接受两个参数 </br> - 第一个参数是表示 CSS 规则的字符串，只能有一条规则，否则报错 </br> - 第二个参数是插入的位置，默认为 0 </br> - 浏览器对于用脚本插入样式规则有许多的限制，最好使用 `try...catch` 块对错误进行捕获 |
+| CSSStyleSheet.deleteRule() | 用来删除一条规则，参数为整数，表示规则在 CSSRules 实例里面的位置 |
+
+## 添加样式表
+
+网页添加样式表有两种方式：
+
+1. 添加一张内置样式表，也就是添加一个 `<style>` 节点
+2. 添加一个 `<link>` 节点，并设置该节点的 `href` 属性
+
+## CSSRuleList 接口
+
+CSSRuleList 接口是一个 `array-like-obj` ，成员是 CSSRule 实实例， 一般通过 `CSSStyleSheet.cssRules` 属性获得
+
+### CSSRule 接口
+
+一条 CSS 规则包括两个部分： CSS 选择器和样式声明，JavaScript 通过 `CSSRule` 接口来读取一条 CSS 规则
+
+### CSSRule 实例属性
+
+| attribute | desc  |
+| --- | --- |
+| CSSRule.cssText | 返回当前规则的文本，如果是 `@import` 加载的样式，则返回 `@import'url'` |
+| CSSRule.parentStyleSheet | 返回当前规则所在的样式表对象 `CSSStyleSheet` 接口实例 |
+| CSSRule.parentRule | 返回包括当前规则的父规则，如果不存在父规则，则返回 `null` |
+| CSSRule.style | 返回规则的类型 </br> - 1 : 普通样式规则 </br> - 3 : @import 规则 </br> - 4 : @media 规则 </br> \- 5 : font-face 规则 |
+
+### CSSStyleRule 接口
+
+如果 CSS 规则是一条普通的 CSS 样式规则（不包含特殊的 CSS 命令），那么除了实现 CSSRule 接口之外，还实现了 CSSStyleRule 接口，接口实例具有下面两个属性
+
+* CSSStyleRule.selectorText 返回当前规则的选择器字符串
+* CSSStyleRule.style 返回一个 CSSStyleDeclaration 实例
+
+### CSSMediaRule 接口
+
+如果 CSS 是 `@media` 代码块，除了实现了 CSSRule 接口，还实现了 CSSMediaRule 接口，有两个属性
+
+* CSSMediaRule.media 返回代表 `@media` 规则的一个对象（ MediaList 实例）
+* CSSMediaRule.conditionText 返回 `@media` 规则的生效条件
+
+## window.matchMedia()
+
+用来将 CSS 的 `MediaQuery` 条件语句，转换成 `MediaQueryList` 实例
+
+### 实例属性
+
+| attribute | desc | 
+| --- | --- |
+| MediaQueryList.media | 返回一个字符串，表示对应的 MediaQuery 条件语句 |
+| MediaQueryList.matches | 返回一个布尔值，表示当前页面是否符合指定的 MediaQuery 条件语句 |
+| MediaQueryList.onchange | 如果 MediaQuery 条件语句的适配环境发生变化，会出发 `change` 事件，MediaQueryList.onchange 用来指定 `change` 事件监听的函数，该函数的参数是 `change` 事件的对象（MediaQueryListEvent 实例），与 MediaQueryList 相似，也有 `media` 和 `matches` 属性 |
+
+### 实例方法
+
+MediaQueryList.addListener() 和 MediaQueryList.removeListener() 用来为 `change` 事件添加或移除监听函数
+
 
 ## 参考
 
