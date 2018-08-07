@@ -27,8 +27,10 @@ yum install -y mongodb-org
 
 **相关目录**
 
+[配置文件参考](https://docs.mongodb.com/manual/reference/configuration-options/)
+
 ```bash
-/etc/mongo.conf # 配置文件
+/etc/mongo.conf # 配置文件 
 /var/log/mongodb/mongod.log # 日志
 /var/lib/mongo # 数据库文件
 ```
