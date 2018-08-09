@@ -55,7 +55,7 @@ db.createCollection('users');
 db.users.drop();
 ```
 
-**集合中文档操作**
+**集合文档操作**
 
 ```bash
 # 文件导入数据
@@ -86,6 +86,8 @@ db.users.update( {id: 1}, {$set: {'info.age': 12}});
 ```
 
 
+**查看当前连接数**
 
-
-
+```javascript
+db.serviceStatus().connections
+```
