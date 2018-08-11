@@ -1,4 +1,4 @@
-# 初探 Babel
+# Babel 初探
 
 [https://segmentfault.com/a/1190000011155061](https://segmentfault.com/a/1190000011155061)
 

@@ -1,4 +1,4 @@
-# 比较常用的插件
+# 比较常用的 npm package
 
 | package | desc | website | 
 | --- | --- | --- |
