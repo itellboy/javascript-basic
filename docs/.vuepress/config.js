@@ -94,6 +94,27 @@ module.exports = {
           '/理解计算机/unicode 理解',
         ]
       }, {
+        title: '操作系统',
+        children: [
+          '/操作系统/Linux/Services',
+          '/操作系统/Linux/Git',
+          '/操作系统/Linux/Redis',
+          '/操作系统/Linux/LAMP 和 LNMP',
+          '/操作系统/Linux/Shell 基础',
+          '/操作系统/Linux/Vim 常用快捷键',
+          '/操作系统/Linux/Vsftpd 使用',
+          '/操作系统/Linux/关机与重启',
+          ['/操作系统/Linux/压缩与解压缩命令', '压缩与解压缩命令'],
+          '/操作系统/Linux/安装与 SSH 登录',
+          '/操作系统/Linux/帮助命令',
+          '/操作系统/Linux/挂载命令',
+          '/操作系统/Linux/文件处理命令',
+          '/操作系统/Linux/文件搜索命令',
+          '/操作系统/Linux/用户和防火墙',
+          '/操作系统/Linux/Linux 目录',
+          '/操作系统/Linux/网络相关',
+        ]
+      }, {
         title: 'other',
         children: [
           '/other/koa2 学习',
