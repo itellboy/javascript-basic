@@ -46,10 +46,10 @@ ssh root@192.168.31.54
 
 ```bash
 host "centos7"
-    HostName 192.168.31.54
-    User root
-    Port 22
-    IdentityFile ./centos7_rsa
+  HostName 192.168.31.54
+  User root
+  Port 22
+  IdentityFile ./centos7_rsa
 ```
 
 ### SSH 安全免密码登陆： ssh key
@@ -58,15 +58,16 @@ host "centos7"
 * 私钥放在 ~/.ssh 目录下面
 * 公钥可以对外开放，放在服务器的 ～/.ssh/authorized_keys
 * 使用 `ssh-add xx_rsa` 将密钥加载到 ssh 服务
+* 非 root 用户添加免密码登录，`.ssh`目录权限须改为`700`，`authorized_keys`文件权限须改成`600`
 
 ### Linux 平台生成 ssh key
 
 * ssh-keygen -t rsa
 * ssh-keygen -t dsa
 
-* 输入公私钥名称，生成两个文件 xx_rsa, xx_rsa.pub
+* 输入公私钥名称，生成两个文件 xx\_rsa, xx_rsa.pub
 
 ### SSH 端口安全
 
-* 修改默认端口号 vim /etc/ssh/sshd_config, 修改 Port 重启 ssh 服务即可
-* service sshd restart 重启 ssh 服务
+* 修改默认端口号`vim /etc/ssh/sshd_config`, 修改 port 重启 SSH 服务即可
+* `service sshd restart`重启 SSH 服务

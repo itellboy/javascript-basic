@@ -1,15 +1,18 @@
 module.exports = {
-  title: 'Notes',
+  title: 'Docs',
+  description: '没想好形容词',
+  head: [
+    ['link', { rel: 'icon', href: '/avatar.jpeg' }]
+  ],
   themeConfig: {
     nav: [
+      { text: 'ES5', link: '/ES5/' },
+      { text: 'ES2015', link: '/ES2015/' },
       { text: 'GitHub', link: 'https://github.com/itellboy/learn-web' },
     ],
     sidebarDepth: 2,
     sidebar: [
       {
-        title: 'README',
-        children: ['/']
-      }, {
         title: 'canvas',
         children: [
           '/canvas/canvas 简介'
@@ -62,8 +65,9 @@ module.exports = {
         children: [
           '/database/mongodb 安装 (Centos 7)',
           '/database/mongodb 角色',
-          '/database/mongoose',
           '/database/mongodb 初探',
+          '/database/mongoose',
+          '/database/mongoose API',
           '/database/mysql 常见问题',
           '/database/mysql sql_mode 配置',
         ]
