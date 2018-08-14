@@ -1,14 +1,21 @@
 module.exports = {
   title: 'Docs',
   description: '没想好形容词',
+  markdown: {
+    lineNumbers: true
+  },
   head: [
     ['link', { rel: 'icon', href: '/avatar.jpeg' }]
   ],
   themeConfig: {
+    repo: 'https://github.com/itellboy/docs',
+    lastUpdated: '上次更新',
+    editLinks: true,
+    editLinkText: '编辑此页',
     nav: [
       { text: 'ES5', link: '/ES5/' },
       { text: 'ES2015', link: '/ES2015/' },
-      { text: 'GitHub', link: 'https://github.com/itellboy/learn-web' },
+      { text: 'GitHub', link: 'https://github.com/itellboy/docs' },
     ],
     sidebarDepth: 2,
     sidebar: [
@@ -82,6 +89,7 @@ module.exports = {
           '/Nginx/Nginx 访问控制',
           '/Nginx/Nginx 请求和连接限制',
           '/Nginx/基本参数的使用',
+          '/Nginx/Nginx HTTPS服务'
         ]
       }, {
         title: 'Node',
