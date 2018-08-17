@@ -73,6 +73,7 @@ module.exports = {
           '/database/mongodb 安装 (Centos 7)',
           '/database/mongodb 角色',
           '/database/mongodb 初探',
+          '/database/mongodb 数据迁移',
           '/database/mongoose',
           '/database/mongoose API',
           '/database/mysql 常见问题',
