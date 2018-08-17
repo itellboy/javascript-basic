@@ -43,6 +43,7 @@ module.exports = {
           '/ES5/事件/事件模型',
           ['/ES5/JavaScript 原型', 'JavaScript 原型'],
           '/ES5/数据类型',
+          '/ES5/Array 对象',
           ['/ES5/正则表达式', '正则表达式'],
         ]
       }, {
