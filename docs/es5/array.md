@@ -179,9 +179,9 @@ arr.filter(function (item) {
 
 接受一个回调函数作为参数，返回布尔值，表示数组是否符合某个条件
 
-`some()` 方法是只要有一个成员符合条件，则返回`true`，否则返回`false`
+`some()`方法是只要有一个成员符合条件，则返回`true`，否则返回`false`
 
-`every()` 方法是所有成员都符合条件，才返回`true`,否则返回`false`
+`every()`方法是所有成员都符合条件，才返回`true`,否则返回`false`
 
 ```javascript
 var arr = [1, 2, 3];

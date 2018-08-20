@@ -33,6 +33,9 @@
 
 ## Memcached 基本操作
 
-* yum install memcached # 安装
-* memcached -d -l -m -p # 启动 -d 后台方式运行 -m 内存分配 -l 监听的 ip ， -p 端口号
-* kill pid # 关闭
+```bash
+yum install memcached # 安装
+memcached -d -l -m -p # 启动 -d 后台方式运行 -m 内存分配 -l 监听的 ip ， -p 端口号
+kill pid # 关闭
+```
+

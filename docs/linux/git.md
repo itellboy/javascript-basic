@@ -2,7 +2,7 @@
 
 ## git 初始化
 
-* yum install git # 安装 git
+* `yum install git` # 安装 git
 * git 命令补全设置
 
 ## Git 常用命令

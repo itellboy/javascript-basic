@@ -43,34 +43,38 @@
 	* 开放 80, 22 端口
 * 关闭防火墙
 
-* yum install firewalld 安装
-* service firewalld start 启动
-* service firewalld status 检查状态
-* service firewalld stop/disable 关闭/禁用防火墙
+```bash
+yum install firewalld # 安装
+service firewalld start # 启动
+service firewalld status # 检查状态
+service firewalld stop/disable # 关闭/禁用防火墙
 
-* firewall-cmd --state 防火墙状态
-* firewall-cmd --get-zones 查看所有的区域
-* firewall-cmd --list-default-zone 查看默认的区域
-* firewall-cmd --list-all-zone 查看所有区域的配置信息
-* firewall-cmd --list-all 查看当前区域配置信息
-* firewall-cmd --list-ports 查看默认区域打开的端口
-* firewall-cmd --list-service 查看当前区域服务
-* firewall-cmd --list-port 查看当前开启的端口
-* firewall-cmd --query-service=ssh 查看是否有 ssh 服务
-* firewall-cmd --remove-service=ssh 删除 ssh 服务
-* firewall-cmd --add-service=ssh 添加 ssh 服务
-* firewall-cmd --add-port=21/tcp --permanent 添加端口/协议,需重启
+firewall-cmd --state # 防火墙状态
+firewall-cmd --get-zones # 查看所有的区域
+firewall-cmd --list-default-zone # 查看默认的区域
+firewall-cmd --list-all-zone # 查看所有区域的配置信息
+firewall-cmd --list-all # 查看当前区域配置信息
+firewall-cmd --list-ports # 查看默认区域打开的端口
+firewall-cmd --list-service # 查看当前区域服务
+firewall-cmd --list-port # 查看当前开启的端口
+firewall-cmd --query-service=ssh # 查看是否有 ssh 服务
+firewall-cmd --remove-service=ssh # 删除 ssh 服务
+firewall-cmd --add-service=ssh  # 添加 ssh 服务
+firewall-cmd --add-port=21/tcp --permanent # 添加端口/协议,需重启
+```
 
 ## 提权
 
-* sudo 提权
-* visudo 修改配置文件
-
 ```bash
+# 提权
+sudo
+su
+
+# 修改配置文件
+visudo
+# 将 test 用户设置为可提权用户
 %test ALL=(ALL)       ALL
 ```
-
-将 test 用户设置为可提权用户
 
 ## 文件上传和下载
 
@@ -78,8 +82,8 @@
 * scp 文件上传
 
 ```bash 
-scp test.txt test@192.168.31.54:/tmp/ // 将 test.txt 文件上传到 /tmp/ 目录下
-scp test@192.168.31.54:/tmp/test.txt ./ // 将远程机器上的 text.txt 文件下载到当前目录
+scp test.txt test@192.168.31.54:/tmp/ # 将 test.txt 文件上传到 /tmp/ 目录下
+scp test@192.168.31.54:/tmp/test.txt ./ # 将远程机器上的 text.txt 文件下载到当前目录
 ```
 
 * sz, rz 命令

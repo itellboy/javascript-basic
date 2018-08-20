@@ -3,8 +3,8 @@
 **启动 mongodb**
 
 ```bash
-mongod -f /usr/local/etc/mongo.con ## 普通方式启动 mongodb
-mongod -f /usr/local/etc/mongo.conf --auth ## 授权方式启动 mongodb
+mongod -f /usr/local/etc/mongo.con # 普通方式启动 mongodb
+mongod -f /usr/local/etc/mongo.conf --auth # 授权方式启动 mongodb
 ```
 
 **创建管理员/用户**

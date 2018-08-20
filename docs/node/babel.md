@@ -24,4 +24,4 @@ require("babel-register");
 require("./index.js");
 ```
 
-可以通过 `node register.js` 代替 `node index.js` 执行
+可以通过`node register.js`代替`node index.js`执行

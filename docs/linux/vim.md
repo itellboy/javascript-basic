@@ -5,14 +5,13 @@
 ## 键位预览图
 ​
 ![http://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch.gif](http://www.runoob.com/wp-content/uploads/2015/10/vi-vim-cheat-sheet-sch.gif)
-​
 
 ## 一般模式下的光标移动、复制粘贴、搜索替换
 
 ### 光标移动
 
 | 键位                   | 功能                   |
-| ---------------------- | ----------------------|
+| ---------------------- | ---------------------- |
 | h,j,k,l                | 上,下,左,右            |
 | [n] + h,j,k,l          | 上,下,左,右 移动 n     |
 | [ctrl] + f, [ctrl] + b | 上下翻页               |

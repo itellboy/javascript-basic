@@ -22,11 +22,11 @@ ES6 模块自动采用严格模式，主要有以下限制
 7. 不能删除变量`delete prop`，会报错，只能删除属性`delete global[prop]`
 8. `eval`不会在外层作用域引入变量
 9. `eval`和`arguments`不能被赋值
-10. `arguments` 不能反映参数的动态变化
+10.`arguments`不能反映参数的动态变化
 11. 不能使用`arguments.callee`
 12. 不能使用`arguments.caller`
 13. 禁止`this` 指向全局对象
-14. 不能使用`fn.caller()`和`fn.arguments` 来获取函数调用的堆栈
+14. 不能使用`fn.caller()`和`fn.arguments`来获取函数调用的堆栈
 15. 增加了保留字，（比如`protected`,`static`,`interface`）
 
 ## export 命令和 import命令
@@ -63,5 +63,5 @@ import * as myModule from './myModule.js';
 
 > 为模块指定默认输出
 
-* 使用 `export default` 的输出不需要使用 `{}` 引入
+* 使用`export default`的输出不需要使用`{}`引入
 * 不需要知道输出时候的变量名，引入的时候可以随意命令

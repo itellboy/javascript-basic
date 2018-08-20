@@ -10,7 +10,7 @@ const baz = {foo}
 const baz = {foo: foo}
 ```
 
-* 如果某个方法的值是一个 `Generator` 函数，前面需要加 `*` 号
+* 如果某个方法的值是一个`Generator`函数，前面需要加`*`号
 
 ```javascript
 const obj = {
@@ -40,7 +40,7 @@ const baz = {
 ## Object.is(a, b)
 比较两个值是否相等
 
-与 `===` 的区别
+与`===`的区别
 
 ```javascript
 +0 === -0 // true
@@ -68,35 +68,35 @@ Object.is(NaN, NaN) // true
 
 ## 属性的可枚举性和遍历
 ### 可枚举性
-对象的每个属性有一个描述对象 `Descriptor` ，来控制属性的行为，可以通过 `Object.getOwnPropertyDescriptor()` 来获取某对象的某属性的描述对象
+对象的每个属性有一个描述对象`Descriptor`，来控制属性的行为，可以通过`Object.getOwnPropertyDescriptor()`来获取某对象的某属性的描述对象
 
 通常有四个值+两个方法
 
 
-* `value`	//值
-* `writable`	//可写
-* `enumerable`	//可枚举
-* `configuragle`	//可配置
-* `getter`	//getter函数
-* `setter`	//setter函数
+* `value`//值
+* `writable`//可写
+* `enumerable`//可枚举
+* `configuragle`//可配置
+* `getter`//getter函数
+* `setter`//setter函数
 
-如果一个属性的 `enumberable` 为 `false` ，那么这个属性是不可枚举的，下面四个方法会忽略
+如果一个属性的`enumberable`为`false`，那么这个属性是不可枚举的，下面四个方法会忽略
 
 * `for...in`
 * `Object.keys()`
 * `JSON.stringify()`
 * `Object.assign()`
 
-`es6` 规定，所有 `Class` 的原型的方法都是不可枚举的
+`es6` 规定，所有`Class`的原型的方法都是不可枚举的
 
 ### 属性的遍历
 `es6`共有5种方法可以遍历对象的属性
 
-* `for...in`	//遍历对象自身的和继承的可枚举属性（不包括 `Symbol属性` ）
-* `Object.keys()`	//返回一个数组，包含对象自身（不含继承）所有可枚举属性（不包含`Symbol`属性）的键名
-* `Objet.getOwnPropertyNames(obj)`	//返回一个数组，包含对象自身的所有属性，（不含`Symbol`属性但是包括不可枚举属性）的键名
-* `Object.getOwnPropertySymbols()`	//返回一个数组，包含对象自身的所有`Symbole`属性的键名
-* `Reflect.ownKeys(obj)`	//返回一个数组，包含对象自身的所有键名，包括 `Symbol` 属性和不可枚举属性
+* `for...in` // 遍历对象自身的和继承的可枚举属性（不包括`Symbol属性`）
+* `Object.keys()` // 返回一个数组，包含对象自身（不含继承）所有可枚举属性（不包含`Symbol`属性）的键名
+* `Objet.getOwnPropertyNames(obj)` // 返回一个数组，包含对象自身的所有属性，（不含`Symbol`属性但是包括不可枚举属性）的键名
+* `Object.getOwnPropertySymbols()` // 返回一个数组，包含对象自身的所有`Symbole`属性的键名
+* `Reflect.ownKeys(obj)` // 返回一个数组，包含对象自身的所有键名，包括`Symbol`属性和不可枚举属性
 
 ### 遍历遵循以下规则
 
@@ -110,11 +110,11 @@ ES2017 引入该方法返回指定对象所有自身属性(非继承)的描述�
 ## ____proto____ 属性,Object.setPrototypeOf(),Object.getPrototypeOf
 
 ### ____proto____ 属性
-指向原型对象的 `prototype` 属性，ES6 建议只在浏览器部署该属性，而且建议不直接使用该属性
+指向原型对象的`prototype`属性，ES6 建议只在浏览器部署该属性，而且建议不直接使用该属性
 
 ### Object.setPrototypeOf()
 
-作用与 `__proto__` 相同，可以用来设置一个对象的原型，为 ES6 推荐设置对象原型的方法
+作用与`__proto__`相同，可以用来设置一个对象的原型，为 ES6 推荐设置对象原型的方法
 
 ### Object.getPrototypeOf()
 读取一个对象的原型对象
@@ -122,8 +122,8 @@ ES2017 引入该方法返回指定对象所有自身属性(非继承)的描述�
 ## super 关键字
 
 
-* ES6 规定 `super` 指向当前对象的原型对象
-* `super` 只能用在对象的方法当中，用在其他地方都会报错，目前只有对象方法的简写方法才能够让 `JavaScript` 引擎确认定义的是对象的方法
-* `super.foo()` 相当于 `Object.getPrototypeOf(this).foo`
+* ES6 规定`super`指向当前对象的原型对象
+* `super`只能用在对象的方法当中，用在其他地方都会报错，目前只有对象方法的简写方法才能够让`JavaScript`引擎确认定义的是对象的方法
+* `super.foo()`相当于 `Object.getPrototypeOf(this).foo`
 
 ## Object.keys(), Object.values(), Object.entries()

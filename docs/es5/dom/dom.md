@@ -9,18 +9,18 @@
 | node | desc |
 | --- | --- |
 | Document | 文档树的顶层节点 |
-| DocumentType | `doctype` 标签，比如 `<!DOCTYPE html>`|
+| DocumentType |`doctype`标签，比如`<!DOCTYPE html>`|
 | Element | 网页的各种 HTML 标签 |
 | Attribute | 标签的属性 |
 | Text | 标签之间或者标签内部的文本 |
 | Comment | 文档的注释 |
 | DocumentFragment | 文档的片段 |
 
-浏览器提供了一个原生的 `Node` 对象，上面的节点都继承了该对象，因此具有一些共同的属性和方法
+浏览器提供了一个原生的`Node`对象，上面的节点都继承了该对象，因此具有一些共同的属性和方法
 
 ## 节点树
 
-* 浏览器原生提供 `document` 对象，代表整个文档，文档的第一层只有一个 `<html>` 标签，作为文档的根结点(root node)，其他的 html 标签都作为它的子节点
+* 浏览器原生提供`document`对象，代表整个文档，文档的第一层只有一个`<html>`标签，作为文档的根结点(root node)，其他的 html 标签都作为它的子节点
 
 出了根节点外，其他节点互相可以形成三种关系
 
@@ -28,7 +28,7 @@
 2. 子节点关系 (ChildNodes): 下一级节点
 3. 同级节点关系 （sibling）: 同级节点
 
-DOM 提供操作接口，用来获取三种关系的节点，子节点包括 `firstChild(第一个字节点)`, `lastChild(最后一个字节点)`, `nextSibling(下一个同级节点)`, `previousSibling(上一个同级节点)`
+DOM 提供操作接口，用来获取三种关系的节点，子节点包括`firstChild(第一个字节点)`,`lastChild(最后一个字节点)`,`nextSibling(下一个同级节点)`,`previousSibling(上一个同级节点)`
 
 ## Node 接口
 
@@ -56,17 +56,17 @@ DOM 提供操作接口，用来获取三种关系的节点，子节点包括 `fi
 
 | nodeType | return |
 | --- | --- |
-| document | `#document` |
+| document |`#document`|
 | element | 大写的标签名 |
 | attribute | 大写的属性名 |
-| text | `#text` |
-| DocumentType | 文档类型，例如 `html` |
+| text |`#text`|
+| DocumentType | 文档类型，例如`html`|
 | Comment | #comemnt |
-| DocuemntFragment | `#document-fragment` |
+| DocuemntFragment |`#document-fragment`|
 
 #### Node.prototype.nodeValue
 
-> 返回当前节点本身的文本值，只有 text 和 comment 节点才会有值返回，其他节点该属性返回结果为 `null` ，可读写
+> 返回当前节点本身的文本值，只有 text 和 comment 节点才会有值返回，其他节点该属性返回结果为`null`，可读写
 
 ```javascript
 // <div id="node"> text </div>
@@ -79,13 +79,13 @@ docuemnt.getElementById('node').firstChild.nodeValue // text
 
 > 返回当前节点和所有子节点的所有文本内容，不包括 comment 节点，可读写
 
-* document 和 documentType 类型的节点的 textContent 值为 `null`，要读取整个文档，使用 `document.documentElement.textContent`
+* document 和 documentType 类型的节点的 textContent 值为`null`，要读取整个文档，使用`document.documentElement.textContent`
 
 #### Node.prototype.baseURI
 
 > 返回一个当前网页绝对路径的 URI，只读
 
-可以通过 `<base>` 标签改变当前网页的 baseURI 属性
+可以通过`<base>`标签改变当前网页的 baseURI 属性
 
 #### Node.prototype.ownerDocument
 
@@ -93,7 +93,7 @@ docuemnt.getElementById('node').firstChild.nodeValue // text
 
 #### Node.prototype.nextSibling
 
-> 返回紧跟在当前节点后面的节点，没有返回 `null`
+> 返回紧跟在当前节点后面的节点，没有返回`null`
 
 * 如果节点后面是一个空格，则返回一个内容为一个空格的文本节点
 * 如果节点后面是注释，则返回注释节点
@@ -108,15 +108,15 @@ docuemnt.getElementById('node').firstChild.nodeValue // text
 
 #### Node.prototype.parentElement
 
-> 返回当前节点的父元素节点，如果当前节点不是节点或者父节点不是元素节点，则返回 `null`
+> 返回当前节点的父元素节点，如果当前节点不是节点或者父节点不是元素节点，则返回`null`
 
 #### Node.prototype.firstChild, Node.prototype.lastChild
 
-> 返回当前节点的子节点，包括文本节点和注释节点，没有则返回 `null`
+> 返回当前节点的子节点，包括文本节点和注释节点，没有则返回`null`
 
 #### Node.prototype.childNodes
 
-> 返回一个类似数组的对象（ `nodeList` 集合），包括当前节点所有子节点集合，包括注释节点和文本节点
+> 返回一个类似数组的对象（`nodeList`集合），包括当前节点所有子节点集合，包括注释节点和文本节点
 
 #### Node.prototype.isConented
 
@@ -142,15 +142,15 @@ node.ChildNodes && node.ChildNodes.length > 0;
 
 > 克隆一个节点，接受一个布尔值作为参数，表示是否克隆其子节点，返回克隆出来的新节点
 
-* 克隆一个节点会拷贝该节点的所有属性，但是会丧失 `addEventListener` 方法和 `on-` 属性，添加在这个节点上的事件回调属性
+* 克隆一个节点会拷贝该节点的所有属性，但是会丧失`addEventListener`方法和`on-`属性，添加在这个节点上的事件回调属性
 * 该方法返回的节点对象不在文档中
-* 须修改返回节点对象的 `id` 属性和 `name` 属性，避免被插入文档之后，文档中出现多个具有相同 `id` 或者 `name` 属性的节点
+* 须修改返回节点对象的`id`属性和`name`属性，避免被插入文档之后，文档中出现多个具有相同`id`或者`name`属性的节点
 
 #### Node.prototype.insertBefore()
 
 > 接受两个参数，第一个为待插入节点，第二个为父节点内部的一个子节点，表示将第一个节点插入第二个参数节点的前面
 
-* 如果第二个参数为 `null` ，则将节点插入节点的最后一个节点
+* 如果第二个参数为`null`，则将节点插入节点的最后一个节点
 
 #### Node.prototype.removeChild()
 
@@ -166,7 +166,7 @@ node.ChildNodes && node.ChildNodes.length > 0;
 
 #### Node.prototype.compareDocumentPosition()
 
-> 用法与 `contains()` 一直，返回一个七个比特为的二进制值，表示参数节点与当前节点的关系
+> 用法与`contains()`一直，返回一个七个比特为的二进制值，表示参数节点与当前节点的关系
 
 | binary | decimal | meaning |
 | --- | --- | --- |
@@ -180,8 +180,8 @@ node.ChildNodes && node.ChildNodes.length > 0;
 
 #### Node.prototype.isEqualNode(), Node.prototype.isSameNode()
 
-* `isEqualNode()` 判断两个节点是否相等，包括类型相等，属性相等，子节点相同
-* `isSameNode()` 判断两个节点是否为同一个节点
+*`isEqualNode()`判断两个节点是否相等，包括类型相等，属性相等，子节点相同
+*`isSameNode()`判断两个节点是否为同一个节点
 
 #### node.prototype.normallize()
 
@@ -216,9 +216,9 @@ node.ChildNodes && node.ChildNodes.length > 0;
 
 ### HTMLCollection 接口
 
-> 元素节点的集合，没有 `forEach()` 方法
+> 元素节点的集合，没有`forEach()`方法
 
-获得途径：`document` 对象上的集合属性
+获得途径：`document`对象上的集合属性
 
 * document.links
 * document.images
@@ -232,7 +232,7 @@ node.ChildNodes && node.ChildNodes.length > 0;
 方法
 
 * item()
-* nameItem() 参数是一个字符串，查找 `id` 或 `name` 属性为参数字符串的元素节点
+* nameItem() 参数是一个字符串，查找`id`或`name`属性为参数字符串的元素节点
 
 ## ParentNode接口，ChildNode接口
 
@@ -250,7 +250,7 @@ node.ChildNodes && node.ChildNodes.length > 0;
 | attribute&method | desc |
 | --- | --- |
 | ParentNode.prototype.children | 返回一个 HTMLCollection 实例，所有子元素节点集合，只读 |
-| ParentNode.prototype.firstElementChild </br> ParentNode.prototype.lastElementChild | 返回当前节点的第一个元素节点 </br> 返回当前节点最后一个元素节点 </br> 没有则返回 `null` |
+| ParentNode.prototype.firstElementChild </br> ParentNode.prototype.lastElementChild | 返回当前节点的第一个元素节点 </br> 返回当前节点最后一个元素节点 </br> 没有则返回`null`|
 | ParentNode.childElementCount | 返回子元素节点的个数 </br> 等同于 ParentNode.prototype.children.length |
 | ParentNode.prototype.append() </br> ParentNode.prototype.prepend() | 将参数节点作为最后一个子元素节点插入 </br> 将参数节点作为第一个元素节点插入 </br> 没有返回值 |
 

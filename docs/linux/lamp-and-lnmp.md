@@ -4,27 +4,44 @@
 
 1：默认版本太低（5.4） 升级php 到5.6
 
+1.1 检查当前安装的PHP包
 
-1.1 检查当前安装的PHP包  
+```bash
 yum list installed | grep php
+```
 
-1.2如果有安装的PHP包，先删除他们  
- 	yum remove php.x86_64 php-cli.x86_64 php-common.x86_64 php-gd.x86_64 php-ldap.x86_64 php-mbstring.x86_64 php-mcrypt.x86_64 php-mysql.x86_64 php-pdo.x86_64
+1.2如果有安装的PHP包，先删除他们
+
+```bash
+yum remove php.x86_64 php-cli.x86_64 php-common.x86_64 php-gd.x86_64 php-ldap.x86_64 php-mbstring.x86_64 php-mcrypt.x86_64 php-mysql.x86_64 php-pdo.x86_64
+```
  	
 2 ： 配置源
+
+```bash
 sudo rpm -Uvh http://mirror.webtatic.com/yum/el7/epel-release.rpm
 sudo rpm -Uvh http://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-如果想删除上面安装的包，重新安装  
-rpm -qa | grep webstatic
-rpm -e  上面搜索到的包即可
 
-3：fpm 安装 和 基本操作  
-	sudo yum install php56w-fpm 
-(也可以php55w-fpm  php70w-fpm)  
-	service php-fpm start/restart/stop
+# 如果想删除上面安装的包，重新安装  
+rpm -qa | grep webstatic
+rpm -e  # 上面搜索到的包即可
+```
+
+3：fpm 安装 和 基本操作
+
+```bash
+# 也可以php55w-fpm  php70w-fpm
+sudo yum install php56w-fpm 
+
+# 启动/重启/停止服务
+service php-fpm start/restart/stop
+```
 	
 4：安装PHP扩展
-	sudo yum install php56w.x86\_64 php56w-cli.x86\_64 php56w-common.x86\_64 php56w-gd.x86\_64 php56w-mbstring.x86\_64 php56w-mcrypt.x86\_64 php56w-mysql.x86\_64 php56w-pdo.x86\_64
+
+```bash
+sudo yum install php56w.x86_64 php56w-cli.x86_64 php56w-common.x86_64 php56w-gd.x86_64 php56w-mbstring.x86_64 php56w-mcrypt.x86_64 php56w-mysql.x86_64 php56w-pdo.x86_64
+```
 
 ## Apache 基本操作
 
@@ -34,10 +51,10 @@ rpm -e  上面搜索到的包即可
 
 ## Apache 虚拟主机和伪静态
 
-* /etc/sysconfig/setlinux 将 `SETLINUX=enforcing` 改为 `SETLINUX=disabled`
+* /etc/sysconfig/setlinux 将`SETLINUX=enforcing`改为`SETLINUX=disabled`
 * 配置 Apache 虚拟主机示例，重启 Apache 服务
 
-```bash
+```
 <VirtualHost *:80>
   ServerName test.com
   DocumentRoot /data/www
@@ -65,7 +82,6 @@ rpm -e  上面搜索到的包即可
 * sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 * sudo yum install nginx
 
-
 ## 伪静态
 
 ```
@@ -73,7 +89,6 @@ location / {
   rewrite ^(.*)\.htm$ /index.html;
 }
 ```
-
 
 ## 日志格式化
 
@@ -83,9 +98,7 @@ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
   '"$http_user_agent" "$http_x_forwarded_for"';
 
 access_log  /var/log/nginx/access.log  main;
-
 ```
-
 
 ## 反向代理和负载均衡
 
@@ -137,7 +150,6 @@ server {
 ```
 add_header Content-Type "text/plain;charset=utf-8";
 return 200 "$http_host"
-
 ```
 
 ## mysql 基本操作
@@ -158,28 +170,48 @@ return 200 "$http_host"
 
 **初次登陆控制台，无论输入什么命令都会提示重置密码**
 
-* mysql> SET PASSWORD = PASSWORD('123456') 设置密码为 123456
-* mysql> set global validate_password_policy=0;
-* mysql> set global validate_password_length=1;
+```sql
+# 设置密码为 123456
+set password = password('123456')
+
+# 设置密码校验规则
+set global validate_password_policy=0;
+set global validate_password_length=1;
+```
+
 
 mysql 8.0.11  初始化密码使用，上面的方式不适用于 8.0.11 版本的 mysql
 
-```
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
 ```
 
 ## general_log 日志开启
 
-* set global general_log_file="/tmp/general.log"; # 设置 general_log 文件存放位置
-* set global general_log=on; # 开启 general_log
-* set global general_log=off; # 关闭 general_log
+```sql
+# 设置 general_log 文件存放位置
+set global general_log_file="/tmp/general.log";
+
+# 开启 general_log
+set global general_log=on;
+
+# 关闭 general_log
+set global general_log=off;
+```
 
 ## 用户操作
 
-* create user 'user'@'%' identified by 'password'; # 创建用户
-* grant all privileges on \*.* to 'user'@'%' identified by 'password' with grant option; # 给 user 用户赋予所有数据库的所有表的增删改查权限
-* revoke all privileges on \*.* from user; # 移除用户 user 的权限
+```sql
+# 创建用户
+create user 'user'@'%' identified by 'password';
+
+# 给 user 用户赋予所有数据库的所有表的增删改查权限
+grant all privileges on *.* to 'user'@'%' identified by 'password' with grant option;
+
+# 移除用户 user 的权限
+revoke all privileges on *.* from user;
+```
 
 ## 免密码登陆
 
-* /etc/my.cnf 加入一行 `skip-grant-tables` ，重启 mysqld 服务
+* /etc/my.cnf 加入一行`skip-grant-tables`，重启 mysqld 服务

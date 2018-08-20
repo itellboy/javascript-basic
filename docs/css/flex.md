@@ -7,14 +7,14 @@
 
 ## 属性
 
-| attribute | desc | options |
-| --- | --- | --- |
-| flex-direction | 主轴的方向 | row(default), row-reverse, column, column-reverse |
-| flex-wrap | 定义如何换行 | nowrap(default), wrap, wrap-reverse |
-| flex-flow | flex-direction 和 flex-flow 的组合 | row nowrap(default) |
-| justify-content | 主轴的对齐方式 | flex-start(default), flex-end, center, space-between, space-around |
-| align-items | 交叉轴的对齐方式 | flex-start, flex-end, center, stretch(default), baseline |
-| align-content | 定义了多根轴线的对齐方式 | flex-start, flex-end, center, stretch(default), space-between, space-around |
+| attribute       | desc                               | options                                                                     |
+| --------------- | ---------------------------------- | --------------------------------------------------------------------------- |
+| flex-direction  | 主轴的方向                         | row(default), row-reverse, column, column-reverse                           |
+| flex-wrap       | 定义如何换行                       | nowrap(default), wrap, wrap-reverse                                         |
+| flex-flow       | flex-direction 和 flex-flow 的组合 | row nowrap(default)                                                         |
+| justify-content | 主轴的对齐方式                     | flex-start(default), flex-end, center, space-between, space-around          |
+| align-items     | 交叉轴的对齐方式                   | flex-start, flex-end, center, stretch(default), baseline                    |
+| align-content   | 定义了多根轴线的对齐方式           | flex-start, flex-end, center, stretch(default), space-between, space-around |
 
 ## flex-direction
 
@@ -60,11 +60,11 @@
 
 ## 项目的属性
 
-| attribute | desc | options |
-| --- | --- | --- |
-| order | 项目的排列顺序 | order: -1 |
-| flex-grow | 项目的放大比例，默认为 0 | flex-grow: 1 |
-| flex-shrink | 项目的缩小比例，默认为 1 | flex-shrink: 2 |
-| flex-basis | 在分配多余空间之前，项目占据主轴空间 | flex-basis: auto |
-| flex | flex-grow flex-shrink flex-basis | flex: 0 1 auto |
-| align-self | 允许单个项目与其他项目不同的对齐方式，可以覆盖 align-items 属性，默认值 auto| align-items: auto |
+| attribute   | desc                                                                         | options           |
+| ----------- | ---------------------------------------------------------------------------- | ----------------- |
+| order       | 项目的排列顺序                                                               | order: -1         |
+| flex-grow   | 项目的放大比例，默认为 0                                                     | flex-grow: 1      |
+| flex-shrink | 项目的缩小比例，默认为 1                                                     | flex-shrink: 2    |
+| flex-basis  | 在分配多余空间之前，项目占据主轴空间                                         | flex-basis: auto  |
+| flex        | flex-grow flex-shrink flex-basis                                             | flex: 0 1 auto    |
+| align-self  | 允许单个项目与其他项目不同的对齐方式，可以覆盖 align-items 属性，默认值 auto | align-items: auto |
