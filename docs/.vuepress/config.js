@@ -1,138 +1,134 @@
 module.exports = {
   title: 'Docs',
-  description: '没想好形容词',
-  markdown: {
-    lineNumbers: true
-  },
+  description: '不知道接下来干嘛?',
   head: [
     ['link', { rel: 'icon', href: '/avatar.jpeg' }]
   ],
+  evergreen: true,
   themeConfig: {
     repo: 'https://github.com/itellboy/docs',
     lastUpdated: '上次更新',
     editLinks: true,
-    editLinkText: '编辑此页',
+    editLinkText: '在 GitHub 上编辑此页',
     nav: [
-      { text: 'ES5', link: '/ES5/' },
-      { text: 'ES2015', link: '/ES2015/' },
-      { text: 'GitHub', link: 'https://github.com/itellboy/docs' },
+      { text: 'ES5', link: '/es5/' },
+      { text: 'ES2015+', link: '/es6/' },
     ],
     sidebarDepth: 2,
     sidebar: [
       {
-        title: 'canvas',
+        title: 'canvas 画布',
         children: [
-          '/canvas/canvas 简介'
+          '/canvas/canvas-guide'
         ]
       }, {
         title: 'CSS',
         children: [
-          '/CSS/CSS3 transform',
-          '/CSS/CSS3 选择器',
-          '/CSS/flex 布局',
+          '/css/css3-transform',
+          '/css/css3-selector',
+          '/css/flex',
         ]
       }, {
         title: 'ES5',
         children: [
-          '/ES5/DOM/CSS 操作',
-          '/ES5/DOM/Document 节点',
-          '/ES5/DOM/DOM',
-          '/ES5/DOM/Element 节点',
-          '/ES5/事件/Event 对象',
-          '/ES5/事件/EventTarget 接口',
-          '/ES5/事件/事件模型',
-          ['/ES5/JavaScript 原型', 'JavaScript 原型'],
-          '/ES5/数据类型',
-          '/ES5/Array 对象',
-          ['/ES5/正则表达式', '正则表达式'],
+          '/es5/dom/css-operator',
+          '/es5/dom/document',
+          '/es5/dom/dom',
+          '/es5/dom/element',
+          '/es5/event/event',
+          '/es5/event/eventtarget',
+          '/es5/event/event-model',
+          '/es5/prototype',
+          '/es5/datatype',
+          '/es5/array',
+          '/es5/regexp',
         ]
       }, {
-        title: 'ES2015',
+        title: 'ES2015+',
         children: [
-          '/ES2015/async 函数',
-          '/ES2015/class 的基本语法',
-          '/ES2015/class 的继承',
-          '/ES2015/Generator 函数的异步应用',
-          '/ES2015/Generator 函数的语法',
-          '/ES2015/Iterator 和 foo...of 循环',
-          '/ES2015/let 和 const 命令',
-          '/ES2015/Module 的语法',
-          '/ES2015/Promise 对象',
-          '/ES2015/Set 和 Map 数据结构',
-          '/ES2015/Symbol',
-          '/ES2015/函数的扩展',
-          '/ES2015/变量的解构赋值',
-          '/ES2015/字符串的扩展',
-          '/ES2015/对象的扩展',
-          '/ES2015/数值的扩展',
-          '/ES2015/数组的扩展',
-          '/ES2015/正则的扩展',
+          '/es6/async',
+          '/es6/class',
+          '/es6/class-inherit',
+          '/es6/generator',
+          '/es6/generator-async',
+          '/es6/iterator',
+          '/es6/let-and-const',
+          '/es6/module',
+          '/es6/promise',
+          '/es6/set-and-map',
+          '/es6/symbol',
+          '/es6/function',
+          '/es6/destructuring',
+          '/es6/string',
+          '/es6/object',
+          '/es6/number',
+          '/es6/array',
+          '/es6/regexp',
         ]
       }, {
         title: 'database',
         children: [
-          '/database/mongodb 安装 (Centos 7)',
-          '/database/mongodb 角色',
-          '/database/mongodb 初探',
-          '/database/mongodb 数据迁移',
-          '/database/mongoose',
-          '/database/mongoose API',
-          '/database/mysql 常见问题',
-          '/database/mysql sql_mode 配置',
+          '/database/mongodb-install',
+          '/database/mongodb-roles',
+          '/database/mongodb',
+          '/database/mongodb-backup',
+          '/database/mysql-problems',
+          '/database/mysql-sql_mode',
         ]
       }, {
         title: 'Nginx',
         children: [
-          '/Nginx/Nginx 作为代理服务器',
-          '/Nginx/Nginx 作为静态资源服务器',
-          '/Nginx/Nginx 作为负载均衡服务器',
-          '/Nginx/Nginx 基本配置',
-          '/Nginx/Nginx 模块配置',
-          '/Nginx/Nginx 访问控制',
-          '/Nginx/Nginx 请求和连接限制',
-          '/Nginx/基本参数的使用',
-          '/Nginx/Nginx HTTPS服务'
+          '/nginx/static-resource',
+          '/nginx/upstream',
+          '/nginx/proxy-server',
+          '/nginx/basic-config',
+          '/nginx/module-config',
+          '/nginx/access-control',
+          '/nginx/req-and-connection-limitation',
+          '/nginx/install-params',
+          '/nginx/https'
         ]
       }, {
         title: 'Node',
         children: [
-          '/Node/CommonJS 规范',
-          '/Node/path 模块',
-          '/Node/puppeteer 的使用',
-          '/Node/Babel 初探',
-          '/Node/比较常用的 npm package',
+          '/node/commonjs',
+          '/node/path',
+          '/node/puppeteer',
+          '/node/babel',
+          '/node/npm-packages',
+          '/node/mongoose',
+          '/node/mongoose-api',
         ]
       }, {
         title: '理解计算机',
         children: [
-          '/理解计算机/unicode 理解',
+          '/computer-basic/unicode',
         ]
       }, {
-        title: 'Linux',
+        title: 'Centos7.X',
         children: [
-          '/Linux/Services',
-          '/Linux/Git',
-          '/Linux/Redis',
-          '/Linux/LAMP 和 LNMP',
-          '/Linux/Shell 基础',
-          '/Linux/Vim 常用快捷键',
-          '/Linux/Vsftpd 使用',
-          '/Linux/关机与重启',
-          ['/Linux/压缩与解压缩命令', '压缩与解压缩命令'],
-          '/Linux/安装与 SSH 登录',
-          '/Linux/帮助命令',
-          '/Linux/挂载命令',
-          '/Linux/文件处理命令',
-          '/Linux/文件搜索命令',
-          '/Linux/用户和防火墙',
-          '/Linux/Linux 目录',
-          '/Linux/网络相关',
+          '/linux/services',
+          '/linux/git',
+          '/linux/redis',
+          '/linux/lamp-and-lnmp',
+          '/linux/shell',
+          '/linux/vim',
+          '/linux/vsftpd',
+          '/linux/shutdown-and-reboot',
+          '/linux/install-and-login',
+          '/linux/help',
+          '/linux/mount',
+          '/linux/file-operator',
+          '/linux/file-search',
+          '/linux/user-and-firewall',
+          '/linux/directory',
+          '/linux/net',
         ]
       }, {
         title: 'other',
         children: [
-          '/other/koa2 学习',
-          '/other/Vuex'
+          '/other/koa2',
+          '/other/vuex'
         ]
       },
     ],

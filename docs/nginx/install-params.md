@@ -1,4 +1,4 @@
-# 基本参数的使用 
+# 安装基本参数 
 
 ## 安装目录
 
@@ -34,17 +34,4 @@ rpm -ql nginx # 查看应用程序的相关目录
  | --user=nginx </br> --group=nginx | 设定 Nginx 进程启动的用户和组用户 |
 | --with-cc-opt=parameters | 设置额外的参数将被添加到 CFLAGS 变量|
 | --with-ld-opt=parametes | 设置附加的参数，链接系统库|
-
-## nginx 默认配置语法
-
-| 配置项 | 作用  | |
-| -- | -- | -- |
-| user | 设置 ngxin 服务的系统使用用户 |
-| worker_processes | 工作进程数 |
-| error_log | nginx 错误日志 |
-| pid | nginx 服务启动的pid |
-
-||||
-|--|--| --|
-| events | worker_connections </br> use | 每个进程允许的最大连接数 </br> 工作进程数 |
 
