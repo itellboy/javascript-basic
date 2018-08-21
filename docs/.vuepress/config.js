@@ -4,7 +4,7 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/avatar.jpeg' }]
   ],
-  evergreen: true,
+  // evergreen: true,
   themeConfig: {
     repo: 'https://github.com/itellboy/docs',
     lastUpdated: '上次更新',
@@ -14,7 +14,7 @@ module.exports = {
       { text: 'ES5', link: '/es5/' },
       { text: 'ES2015+', link: '/es6/' },
     ],
-    sidebarDepth: 2,
+    sidebarDepth: 1,
     sidebar: [
       {
         title: 'canvas 画布',
@@ -93,11 +93,12 @@ module.exports = {
         children: [
           '/node/global',
           '/node/commonjs',
+          '/node/buffer',
           '/node/path',
+          '/node/process',
           '/node/fs',
           '/node/querystring',
           '/node/console',
-          '/node/buffer',
           '/node/puppeteer',
           '/node/babel',
           '/node/npm-packages',

@@ -14,12 +14,6 @@
 
 处理二进制数据
 
-## clearImmediate(immediateObj)
-
-## clearInterval(intervalObj)
-
-## clearTimeout(timeoutObj)
-
 ## console
 
 用于打印`stdin`和`stderr`
@@ -27,6 +21,12 @@
 ## process
 
 进程对象
+
+## clearImmediate(immediateObj)
+
+## clearInterval(intervalObj)
+
+## clearTimeout(timeoutObj)
 
 ## setImmediate(callback[, ...args])
 
