@@ -93,6 +93,7 @@ module.exports = {
         children: [
           '/node/commonjs',
           '/node/path',
+          '/node/querystring',
           '/node/puppeteer',
           '/node/babel',
           '/node/npm-packages',
