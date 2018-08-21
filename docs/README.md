@@ -9,6 +9,8 @@ footer: Copyright © 2018-present Itellboy
 ### 喜欢就尝试一下
 
 ```bash
+# clone repo
+git clone https://github.com/itellboy/docs.git && cd docs
 # install dependences
 npm install
 # run dev

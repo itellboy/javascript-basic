@@ -91,9 +91,13 @@ module.exports = {
       }, {
         title: 'Node',
         children: [
+          '/node/global',
           '/node/commonjs',
           '/node/path',
+          '/node/fs',
           '/node/querystring',
+          '/node/console',
+          '/node/buffer',
           '/node/puppeteer',
           '/node/babel',
           '/node/npm-packages',
