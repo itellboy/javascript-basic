@@ -99,6 +99,7 @@ module.exports = {
           '/node/fs',
           '/node/querystring',
           '/node/console',
+          '/node/events',
           '/node/puppeteer',
           '/node/babel',
           '/node/npm-packages',
