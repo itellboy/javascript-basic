@@ -31,6 +31,14 @@ module.exports = {
       }, {
         title: 'ES5',
         children: [
+          '/es5/datatype',
+          '/es5/array',
+          '/es5/warpper',
+          '/es5/boolean',
+          '/es5/string',
+          '/es5/number',
+          '/es5/regexp',
+          '/es5/prototype',
           '/es5/dom/css-operator',
           '/es5/dom/document',
           '/es5/dom/dom',
@@ -38,10 +46,6 @@ module.exports = {
           '/es5/event/event',
           '/es5/event/eventtarget',
           '/es5/event/event-model',
-          '/es5/prototype',
-          '/es5/datatype',
-          '/es5/array',
-          '/es5/regexp',
         ]
       }, {
         title: 'ES2015+',

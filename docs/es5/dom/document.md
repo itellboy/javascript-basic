@@ -4,9 +4,9 @@
 
 获得途径
 
-*`window.document`或`document`
+* `window.document`或`document`
 * 内部节点的`ownerDocument`或`getRootNode()`
-*`iframe`框架里面的网页，通过`iframe`节点的`contentDocument`属性获取
+* `iframe`框架里面的网页，通过`iframe`节点的`contentDocument`属性获取
 
 继承接口
 

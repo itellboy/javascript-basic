@@ -1,4 +1,4 @@
-# unicode 理解
+# Unicode 理解
 
 > 参考 [链接](https://www.zhihu.com/question/23374078)
 
@@ -23,14 +23,14 @@
 
 上面 GB 相关字符集后来统称为 `DBSC (Double Byte Charecter Set) 双字节字符集`，认为只要有字节值是大于 `127` 字节出现，就代表一个汉字。这套标准的特点是把一个字节长的英文字符和两个字节长的中文字符统一到了一个字符集里面；然后就出现了后来的 `一个汉字占两个字节，一个英文占一个字节` 的必背知识
 
-## 标准化，unicode的出现
+## 标准化，Unicode 的出现
 
-由于各个地区的语言的差异，后来导致了很多字符编码规范，后来一个叫做`ISO`的国际组织决定着手解决这个问题，决定废掉所有的地方编码规范，新建一个叫做`Universal Multiple-Octet Coded Character Set`，简称`USC`，俗称`unicode`
+由于各个地区的语言的差异，后来导致了很多字符编码规范，后来一个叫做`ISO`的国际组织决定着手解决这个问题，决定废掉所有的地方编码规范，新建一个叫做`Universal Multiple-Octet Coded Character Set`，简称`USC`，俗称`Unicode`
 
 * 一个字符统一使用两个字节表示，`ASCII`编码保持不变，只是在高位字节补 8 个 0
 * `字符`是文化相关符号，`字节`是一个 8 位的物理存贮单元
 
-### unicode 的问题
+### Unicode 的问题
 
 * 空间浪费
 * 不能和 ASCII 码区分开来
