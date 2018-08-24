@@ -33,7 +33,7 @@ module.exports = {
         children: [
           '/es5/datatype',
           '/es5/array',
-          '/es5/warpper',
+          '/es5/wrapper',
           '/es5/boolean',
           '/es5/string',
           '/es5/number',
