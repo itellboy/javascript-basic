@@ -1,7 +1,5 @@
 # Unicode 理解
 
-> 参考 [链接](https://www.zhihu.com/question/23374078)
-
 ## 发展历史
 
 ### ASCII 码 [Ascii 码对照表](http://www.asciitable.com)
@@ -41,3 +39,7 @@
 
 * UTF-8 一次使用 8 个位传输数据，使用变长的编码方式，会采用 1-4 个字节来表示一个字符，英文字符采用 1 个字节，中文字符则采用 3 个字节
 * UTF-16 一次使用 16 个位传输数据
+
+## 参考
+
+[参考](https://www.zhihu.com/question/23374078)
