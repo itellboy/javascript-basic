@@ -17,18 +17,6 @@ module.exports = {
     sidebarDepth: 1,
     sidebar: [
       {
-        title: 'canvas 画布',
-        children: [
-          '/canvas/canvas-guide'
-        ]
-      }, {
-        title: 'CSS',
-        children: [
-          '/css/css3-transform',
-          '/css/css3-selector',
-          '/css/flex',
-        ]
-      }, {
         title: 'ES5',
         children: [
           '/es5/datatype',
@@ -49,6 +37,7 @@ module.exports = {
           '/es5/event/event',
           '/es5/event/eventtarget',
           '/es5/event/event-model',
+          '/es5/bom/guide',
         ]
       }, {
         title: 'ES2015+',
@@ -73,7 +62,32 @@ module.exports = {
           '/es6/regexp',
         ]
       }, {
-        title: 'database',
+        title: 'CSS',
+        children: [
+          '/css/css3-transform',
+          '/css/css3-selector',
+          '/css/flex',
+        ]
+      }, {
+        title: 'Node',
+        children: [
+          '/node/global',
+          '/node/commonjs',
+          '/node/buffer',
+          '/node/path',
+          '/node/process',
+          '/node/fs',
+          '/node/querystring',
+          '/node/console',
+          '/node/events',
+          '/node/npm-packages',
+          '/node/babel',
+          '/node/puppeteer',
+          '/node/mongoose',
+          '/node/mongoose-api',
+        ]
+      }, {
+        title: 'Database',
         children: [
           '/database/mongodb-install',
           '/database/mongodb-roles',
@@ -94,24 +108,6 @@ module.exports = {
           '/nginx/req-and-connection-limitation',
           '/nginx/install-params',
           '/nginx/https'
-        ]
-      }, {
-        title: 'Node',
-        children: [
-          '/node/global',
-          '/node/commonjs',
-          '/node/buffer',
-          '/node/path',
-          '/node/process',
-          '/node/fs',
-          '/node/querystring',
-          '/node/console',
-          '/node/events',
-          '/node/npm-packages',
-          '/node/babel',
-          '/node/puppeteer',
-          '/node/mongoose',
-          '/node/mongoose-api',
         ]
       }, {
         title: '理解计算机',
@@ -139,10 +135,16 @@ module.exports = {
           '/linux/net',
         ]
       }, {
-        title: 'other',
+        title: 'Canvas 画布',
+        children: [
+          '/canvas/canvas-guide'
+        ]
+      }, {
+        title: 'Other',
         children: [
           '/other/koa2',
-          '/other/vuex'
+          '/other/vuex',
+          '/other/gitignore'
         ]
       },
     ],
