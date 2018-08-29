@@ -38,6 +38,7 @@ module.exports = {
           '/es5/event/eventtarget',
           '/es5/event/event-model',
           '/es5/bom/guide',
+          '/es5/bom/window',
         ]
       }, {
         title: 'ES2015+',
