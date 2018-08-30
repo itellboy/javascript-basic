@@ -39,6 +39,10 @@ module.exports = {
           '/es5/event/event-model',
           '/es5/bom/guide',
           '/es5/bom/window',
+          '/es5/bom/navigator',
+          '/es5/bom/storage',
+          '/es5/bom/history',
+          '/es5/bom/file',
         ]
       }, {
         title: 'ES2015+',
