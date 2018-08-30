@@ -17,7 +17,7 @@ man
 * 查看和内核相关文件的帮助  
 
 1. 选项帮助`ls --help`
-2. shell帮助`whereis cd`，`help cd`
+2. shell 帮助`whereis cd`，`help cd`
 3. info 命令  
 `-回车：进入子帮助页面（带有*号标记）`  
 `-u 进入上层页面`  

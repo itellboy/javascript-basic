@@ -179,7 +179,6 @@ set global validate_password_policy=0;
 set global validate_password_length=1;
 ```
 
-
 mysql 8.0.11  初始化密码使用，上面的方式不适用于 8.0.11 版本的 mysql
 
 ```sql
