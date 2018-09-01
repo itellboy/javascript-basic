@@ -30,6 +30,8 @@ module.exports = {
           '/es5/json',
           '/es5/regexp',
           '/es5/prototype',
+          '/es5/new',
+          '/es5/this',
           '/es5/dom/css-operator',
           '/es5/dom/document',
           '/es5/dom/dom',
@@ -47,24 +49,24 @@ module.exports = {
       }, {
         title: 'ES2015+',
         children: [
-          '/es6/async',
+          '/es6/let-and-const',
+          '/es6/destructuring',
+          '/es6/string',
+          '/es6/regexp',
+          '/es6/number',
+          '/es6/function',
+          '/es6/array',
+          '/es6/object',
+          '/es6/symbol',
+          '/es6/set-and-map',
+          '/es6/iterator',
+          '/es6/promise',
           '/es6/class',
           '/es6/class-inherit',
           '/es6/generator',
           '/es6/generator-async',
-          '/es6/iterator',
-          '/es6/let-and-const',
+          '/es6/async',
           '/es6/module',
-          '/es6/promise',
-          '/es6/set-and-map',
-          '/es6/symbol',
-          '/es6/function',
-          '/es6/destructuring',
-          '/es6/string',
-          '/es6/object',
-          '/es6/number',
-          '/es6/array',
-          '/es6/regexp',
         ]
       }, {
         title: 'CSS',
@@ -149,7 +151,8 @@ module.exports = {
         children: [
           '/other/koa2',
           '/other/vuex',
-          '/other/gitignore'
+          '/other/gitignore',
+          '/other/interview'
         ]
       },
     ],
