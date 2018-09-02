@@ -42,14 +42,15 @@
 **如何让一个函数对象继承另一个函数对象**
 
 ```javascript
-function Parent () {
-  this.bar = 'foo'
-}
-
-var Child = new 
+var Foo = function () {}
+Foo.prototype = new Arrary()
 ```
 
+`Foo`的实例可以调用`Array`对象上的所有方法
+
 **数组如何去重**
+
+
 
 
 
