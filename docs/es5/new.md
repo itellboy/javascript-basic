@@ -35,3 +35,13 @@ sheep.color // "red"
 ## new.target 命令
 
 在构造函数内部可以使用`new.target`命令，判断当前函数是否通过`new`命令调用，如果`new.target`与当前构造函数比较返回逻辑真，则表示当前函数是通过`new`调用，否则为普通函数调用
+
+```javascript
+var F = function () {
+  if (new.target !== F) {
+    console.log('请使用 new 命令调用')
+  }
+}
+var f = F()
+// "请使用 new 命令调用"
+```
