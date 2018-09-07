@@ -26,6 +26,7 @@ module.exports = {
           '/es5/string',
           '/es5/number',
           '/es5/object',
+          '/es5/object-attribute',
           '/es5/math',
           '/es5/date',
           '/es5/json',

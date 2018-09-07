@@ -32,7 +32,7 @@ function isObject (value) {
 
 ### 对象属性模型相关
 
-* `Object.getOwnPropertyDescriptor(obj, key)`：返回对象属性描述对象
+* `Object.getOwnPropertyDescriptor(obj, key)`：返回对象属性描述对象，不包括继承的属性
 * `Object.defineProperty(Obj, key, options)`：定义定义对象上的属性
 * `Object.defineProperties(obj, props)`：定义对象上的多个属性
 
