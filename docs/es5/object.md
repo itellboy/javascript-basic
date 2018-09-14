@@ -38,11 +38,11 @@ function isObject (value) {
 
 ### 控制对象状态相关
 
-* `Object.preventExtensions()`：禁止对象扩展
+* `Object.preventExtensions()`：禁止对象扩展，调用之后对象不可以增加属性
 * `Object.isExtensiable()`：查询对象是否可扩展
-* `Object.seal()`：禁止对象配置
+* `Object.seal()`：禁止对象配置，调用之后对象既不可以增加属性，也不可以删除属性
 * `Object.isSeal()`：查询对象是否可以配置
-* `Object.freeze()`：冻结对象
+* `Object.freeze()`：冻结对象，调用之后，不可以增加删除属性，也不可以改变属性的值
 * `Object.isFrozen()`：查询对象是否已经冻结
 
 ### 原型链相关

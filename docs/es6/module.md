@@ -34,26 +34,42 @@ ES6 模块自动采用严格模式，主要有以下限制
 * 模块主要由两个命令构成 `export`,`import`。`export`规定模块对外的借口，`import`主要用于输入其他模块的功能
 
 
-**export**
+### export
 
-* 模块内部可以直接通过`export`关键字输出模块内部定义的变量和方法
-* `export`输出的变量名不变，可以通过`as`重命名
+模块内部可以直接通过`export`关键字输出模块内部定义的变量和方法
 
-	```javascript
-	var bar = 1;
-	export {bar as a}
-	```
+```javascript
+var bar = 1;
+var foo = 2;
+export { bar, foo }
+```
 
-* `export`输出的值与 module 内部变量的是关联的，这一点与 CommonJS 完全不同， CommonJS 输出的值是模块内部值的拷贝
+`export`输出的变量名不变，可以通过`as`重命名
+
+```javascript
+var bar = 1;
+export { bar as a }
+```
+
+`export`输出的值与 module 内部变量的是关联的，这一点与 CommonJS 完全不同， CommonJS 输出的值是模块内部值的拷贝
 
 **import**
 
-* `import`命令接受一对大括号，里面接受导入的变量名，必须与导出的变量名相同
-* `import`输入的变量都是只读的，不可改写
-* 如果重复执行多次同一条`import`语句，那么只会执行一次，也就是说，`import`语句是 Singleton 模式
-* `import`命令有提升效果
+`import`命令接受一对大括号，里面接受导入的变量名，必须与导出的变量名相同
 
-## 模块的整体加载
+```javascript
+import { bar, foo } from './config.js'
+```
+
+`import`输入的变量都是只读的，不可改写
+
+如果重复执行多次同一条`import`语句，那么只会执行一次，也就是说，`import`语句是 Singleton 模式
+
+`import`命令有提升效果
+
+**模块的整体加载**
+
+ES6 模块机制可以通过星号`*`实现模块的整体加载
 
 ```javascript
 import * as myModule from './myModule.js';
@@ -61,7 +77,21 @@ import * as myModule from './myModule.js';
 
 ## export default 命令
 
-> 为模块指定默认输出
+为模块指定默认输出
 
-* 使用`export default`的输出不需要使用`{}`引入
-* 不需要知道输出时候的变量名，引入的时候可以随意命令
+使用`export default`的输出不需要使用`{}`引入
+
+因为输出的时候不需要指定名称，引入的时候可以随意命令
+
+```javasript
+// myModule.js
+export default function hello() {
+  console.log('hello world')
+}
+```
+
+```javascript
+import p from './myModule.js'
+p()
+// "hello word"
+```
