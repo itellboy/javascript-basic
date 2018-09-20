@@ -144,9 +144,9 @@ module.exports = {
           '/linux/net',
         ]
       }, {
-        title: 'Canvas 画布',
+        title: 'webapi',
         children: [
-          '/canvas/canvas-guide'
+          '/webapi/canvas'
         ]
       }, {
         title: 'Other',
