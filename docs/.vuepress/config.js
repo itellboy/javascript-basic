@@ -60,6 +60,8 @@ module.exports = {
           '/es6/array',
           '/es6/object',
           '/es6/symbol',
+          '/es6/proxy',
+          '/es6/reflect',
           '/es6/set-and-map',
           '/es6/iterator',
           '/es6/promise',

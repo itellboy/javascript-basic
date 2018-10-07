@@ -41,6 +41,7 @@ s.codePointAt(2) // 97
 替代 ES5 的`charAt()`方法，增加对  32 位的 UTF-16 的字符的识别
 
 ## 判断一个字符串是否包含在另外一个字符串内
+
 * `indexOf`ES5
 * `includes`ES6 返回布尔值
 * `startsWith`ES6 返回布尔值
@@ -51,7 +52,7 @@ s.codePointAt(2) // 97
 返回一个新的字符串，将原字符串重复n次
 
 ```javascript
-'x'.repeat(3);	// 'xxx'
+'x'.repeat(3)  // 'xxx'
 ```
 
 ## padStart(), padEnd()
@@ -59,19 +60,19 @@ s.codePointAt(2) // 97
 字符串补齐
 
 ```javascript
-'c'.padStart(4, 'ab')	// 'abac'
+'c'.padStart(4, 'ab')  // 'abac'
 ```
 
 ## matchAll() 
-> 参见《正则表达式》
+
+参见《正则表达式》
 
 ## 字符串模版
-> 反引号,大括号里面可以写任意表达式
+
+反引号,大括号里面可以写任意表达式
 
 ```javascript
 let name = 'Tom';
 `this is ${name}`;	// 'this is Tom'
 ```
-
-## 剩余内容：模板编译、标签模板、 String.raw() 、模板字符串的限制
 	

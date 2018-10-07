@@ -10,17 +10,17 @@
 Set 具有以下属性
 
 
-* `Set.prototype.constructor`构造函数，默认就是`Set`函数
-* `Set.prototype.size`返回`Set`实例的成员总数
+* `Set.prototype.constructor`：构造函数，默认就是`Set`函数
+* `Set.prototype.size`：返回`Set`实例的成员总数
 
 Set 具有以下四个方法
 
-* `add(value)`添加值，返回`Set`结构本身
-* `delete(value)`删除值，返回布尔值，表示是否删除成功
-* `has(value)`返回布尔值，表示`Set`是否含有该成员
-* `clear()`清除所有成员，没有返回值
+* `add(value)`：添加值，返回`Set`结构本身
+* `delete(value)`：删除值，返回布尔值，表示是否删除成功
+* `has(value)`：返回布尔值，表示`Set`是否含有该成员
+* `clear()`：清除所有成员，没有返回值
 
-`Array.from()` 可以将`Set`结构转化为数组
+`Array.from()`可以将`Set`结构转化为数组
 
 ### 遍历操作
 
@@ -30,6 +30,19 @@ Set 具有以下四个方法
 * `forEach()`
 
 `keys()` 与`values()`两个方法的行为完全一致，因为`Set`结构没有键，只有值
+
+### 利用 Set 是想数组的并集，交集和差集
+
+```javascript
+var a = new Set([1, 2, 3])
+var b = new Set([2, 3, 4])
+// 并集
+new Set([...a, ...b]) // 1, 2, 3, 4
+// 交集
+new Set([...a].filter(i => b.has(i)))
+// 差集
+new Set([...a].filter(i => !b.has(i)))
+```
 
 ## WeakSet
 
@@ -44,12 +57,12 @@ Set 具有以下四个方法
 
 ### 实例的属性和方法
 
-* `size`返回成员的个数
-* `set(key, value)`添加键值对，如果键已经存在，则覆盖
-* `get(key)`获取`key`对应的值，如果不存在则返回 `undefined`
-* `hasKey(key)`返回布尔值，某个键是否在该`Map`结构中
-* `delete(key)`删除一个键，返回 `true`，
-* `clear()`清除所有键值对
+* `size`：返回成员的个数
+* `set(key, value)`：添加键值对，如果键已经存在，则覆盖
+* `get(key)`：获取`key`对应的值，如果不存在则返回 `undefined`
+* `hasKey(key)`：返回布尔值，某个键是否在该`Map`结构中
+* `delete(key)`：删除一个键，返回 `true`
+* `clear()：`清除所有键值对
 
 ## WeakSet
 

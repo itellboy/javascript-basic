@@ -1,23 +1,21 @@
-# Class 的继承 (待补充)
+# Class 的继承
 
-## 简介
+Class 可以通过`extend`关键字实现类的继承
 
-* Class 可以通过`extend`关键字继承，比`ES5`修改原型链继承容易得多
-* 子类必须在`constructor`方法中调用`super()`方法，只有在使用`super`方法后，才能使用`this`关键字，否则会报错
-* 子类实例的构建时对父类实例的加工
-* 父类的静态方法也能被子类继承
-* 可以通过`Object.getPropotypeOf()`来判断一个类是否为另一个类的子类
+```javascript
+class Point {
+  constructor (x, y) {
+    this.x = x
+    this.y = y
+  }
+}
 
-## super 关键字
+class ChildPoint extend Point {
+  constructor (x, y, color) {
+    super(x, y)
+    this.color = color
+  }
+}
+```
 
-*`super`即可作为对象使用也可作为函数使用，作为函数使用时，也可以当作对象使用
-
-
-1. ES6 要求必须在子类的构造函数中调用`super`方法
-2. `super`虽然代表父类的构造函数，但却指向子类的实例
-3. 作为对象时，`super`在普通方法中，相当于 指向父类的`prototype`对象
-4. ES6 规定，子类方法通过`super`调用父类的方法的时候，`this`指向子类的实例
-
-## 类的 prototype 属性和 ____proto____ 属性
-
-
+子类的构造函数必须调用`super()`方法，否则新建实例会报错
