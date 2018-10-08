@@ -1,7 +1,7 @@
 # Event 对象
 
 * 事件发生之后，会产生一个`Event`对象，作为参数传递给监听函数。所有的事件都是这个对象的实例，或者说是继承了`Event.prototype`
-*`Event`对象是一个构造函数，可以通过`new`创建一个事件，接受两个参数，第一个是字符串`type`，表示事件名，第二个是对象，表示事件的配置，该对象有下面两个属性
+* `Event`对象是一个构造函数，可以通过`new`创建一个事件，接受两个参数，第一个是字符串`type`，表示事件名，第二个是对象，表示事件的配置，该对象有下面两个属性
 	1.`bubbles`: 布尔值，默认`false`，表示事件是否冒泡
 	2.`cancelable`: 布尔值，默认`false`，表示事件是否可以被取消，即能否用`Event.preventDefault()`取消这个事件
 
@@ -23,7 +23,3 @@
 | Event.preventDefault()                                         | 取消浏览器对当前事件的默认行为，如果事件的`cancelalbe`为`false`，调用该方法无效，不会阻止事件的传播     |
 | Event.stopPropagation() </br> Event.stopImmediatePropagation() | 阻止事件的继续传播，不影响当前节点的其他监听函数 </br> 阻止事件的传播，当前节点的其他监听函数也不会执行 |
 | Event.composedPath()                                           | 返回一个数组，成员是事件在冒泡过程中一次经过的节点，一直到`Window`                                      |
-
-## 参考
-
-[网道（WangDoc.com）是一个文档网站，提供互联网开发文档](https://wangdoc.com/javascript/events/event.html)

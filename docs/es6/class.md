@@ -78,7 +78,7 @@ Object.keys(Point) // []
 // 构造函数
 var Obj = function () {}
 Obj.prototype.to = function () { console.log('to') }
-Object.keys(Obj) ["to"]
+Object.keys(Obj) // ["to"]
 ```
 
 可以利用`Object.assign()`方法来增加类的实例方法

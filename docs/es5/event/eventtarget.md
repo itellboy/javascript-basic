@@ -42,8 +42,4 @@ element.addEventListener('click', {
 * `dispatchEvent()`方法的参数是一个`Event`实例。
 *  如果`dispatchEvent()`方法的参数为空，或者不是一个有效的事件对象，则报错
 
-## 参考
-
-[网道（WangDoc.com）是一个文档网站，提供互联网开发文档](https://wangdoc.com/javascript/events/eventtarget.html)
-
 

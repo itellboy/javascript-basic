@@ -25,7 +25,3 @@ JavaScript 有三种方式为事件绑定监听函数
 由于事件在传播的过程中会冒泡到父节点，因此可以把子节点的监听函数定义到父节点上面，由父节点统一监听处理多个子元素的事件，这种方式称为事件的代理
 
 可以通过`Event.stopPropagation()`方法阻止事件继续向下传播
-
-## 参考
-
-[网道（WangDoc.com）是一个文档网站，提供互联网开发文档](https://wangdoc.com/javascript/events/model.html)
