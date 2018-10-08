@@ -67,6 +67,7 @@ module.exports = {
           '/es6/promise',
           '/es6/class',
           '/es6/class-inherit',
+          '/es6/decorator',
           '/es6/generator',
           '/es6/generator-async',
           '/es6/async',
