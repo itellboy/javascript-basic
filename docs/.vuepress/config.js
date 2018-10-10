@@ -77,9 +77,12 @@ module.exports = {
         title: 'CSS',
         children: [
           '/css/html',
-          '/css/css-base',
-          '/css/css3-transform',
-          '/css/css3-selector',
+          '/css/base',
+          '/css/layout',
+          '/css/effect',
+          '/css/animate',
+          '/css/transform',
+          '/css/selector',
           '/css/flex',
         ]
       }, {

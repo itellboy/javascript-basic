@@ -16,7 +16,7 @@
 <!-- width=device-width 视口宽度等于屏幕宽度 -->
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-<base href="/>
+<base href="/">
 ```
 
 ### body 元素

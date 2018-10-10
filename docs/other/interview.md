@@ -74,11 +74,12 @@
 
 #sidebar {
   width: 240px;
+  flex: none;
   background: green;
 }
 
 #content {
-  flex: 1 0 auto;
+  flex: 1;
   background: fuchsia;
 }
 ```

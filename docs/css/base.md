@@ -86,3 +86,91 @@ body div .name {
 * 背景图片和属性（雪碧图）：通过设置`background-position`属性来调整背景图的位置，通过`background-size`调整背景图的大小
 * base64 和性能优化
 * 多分辨率适配
+
+### 边框
+
+**边框的属性**
+
+大小、线形、颜色
+
+```css
+.c {
+  border: 1px solid red;
+}
+```
+
+**边框背景图**
+
+应用：九宫格
+
+```css
+.nine {
+  border: 30px solid transparent;
+  border-image: url('xx.png') 30 round;
+}
+```
+
+**边框衔接**
+
+应用：三角形
+
+```css
+.triangle {
+  width: 0px;
+  height: 30px;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 30px solid red;
+}
+```
+
+上例是一个底部的等边三角形，加上`border-radius: 30px;`会变成一个扇形
+
+### 滚动
+
+ **滚动行为和滚动条**
+
+* `visiable`：滚动条隐藏
+* `hidden`：滚动条隐藏
+* `scroll`：滚动条显示
+* `auto`：滚动条自动显示
+
+### 文字折行
+
+**通用换行控制 overflow-wrap**
+
+* `break-word`：打断比较长显示不了的单词，比较短的单词还是按照空格换行
+
+**单词换行 word-break**
+
+* `break-word`：打断比较长显示不了的单词，比较短的单词还是按照空格换行
+* `break-all`：打断所有的单词，不按照空格换行
+* `keep-all`：保留所有的长句子和单词
+
+**是否换行 white-spacing**
+
+* `nowrap`：整段不换行
+
+### 装饰性的属性
+
+* `font-weight`：字重，默认`400`
+* `font-style:itatic`：斜体
+* `text-decoration`：下弧线
+* `cursor`：指针
+
+## css hack
+
+* hack 即不合法但生效的写法
+* 主要用于区分不同浏览器
+* 缺点：难理解、难维护、易失效
+* 替代方案：特性检测
+* 替代方案：针对性加 class
+
+## 面试题
+
+* css 样式优先级
+* 雪碧图的作用
+* 自定义字体的使用场景
+* base64 使用
+* 伪元素和伪类的区别（伪类表状态，伪元素表真实元素，前者单冒号，后者双冒号）
+* 如何美化 checkbox （label、for、checked 状态）
