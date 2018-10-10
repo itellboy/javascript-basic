@@ -81,6 +81,7 @@ module.exports = {
           '/css/layout',
           '/css/effect',
           '/css/animate',
+          '/css/bootstrap',
           '/css/transform',
           '/css/selector',
           '/css/flex',
