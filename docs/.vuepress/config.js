@@ -163,7 +163,8 @@ module.exports = {
           '/other/koa2',
           '/other/vuex',
           '/other/gitignore',
-          '/other/interview'
+          '/other/interview',
+          '/other/react-start'
         ]
       },
     ],
