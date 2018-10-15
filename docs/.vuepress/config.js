@@ -164,7 +164,8 @@ module.exports = {
           '/other/vuex',
           '/other/gitignore',
           '/other/interview',
-          '/other/react-start'
+          '/other/react-start',
+          '/other/react-learning-docs',
         ]
       },
     ],
