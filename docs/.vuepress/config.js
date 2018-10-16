@@ -74,6 +74,12 @@ module.exports = {
           '/es6/module',
         ]
       }, {
+        title: 'React',
+        children: [
+          '/react/start',
+          '/react/learning-docs',
+        ]
+      }, {
         title: 'CSS',
         children: [
           '/css/html',
@@ -164,8 +170,6 @@ module.exports = {
           '/other/vuex',
           '/other/gitignore',
           '/other/interview',
-          '/other/react-start',
-          '/other/react-learning-docs',
         ]
       },
     ],

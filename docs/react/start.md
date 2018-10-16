@@ -4,7 +4,7 @@
 
 为了增强代码的可读性和可维护性，在书写 JSX 的时候带上换行和缩进。并且在 JSX 外面加上一对小括号，防止分号自动插入
 
-React Dom 使用小驼峰定义属性的名称，而不是 HTML 的属性，例如：`onclick`变成了`onClick`、`class`变成了`className`、`tabindex`变成了`tabIndex`
+React Dom 使用小驼峰定义属性的名称，而不是 HTML 的属性，例如：`onclick`变成了`onClick`、`class`变成了`className`、`tabindex`变成了`tabIndex`、`for`变成了`htmlFor`
 
 ```javascript
 const name = "jack"
@@ -15,9 +15,13 @@ const Element = (
 )
 ```
 
+在 JSX 中使用`{/* */}`写注释
+
 ## 组件 & props
 
 组件名称必须以大写字母开头，每个组件的返回值只能包含一个根元素，所以我们可以在组件最外层包裹一层`<div></div>`
+
+在 React16 中引入了`Fragment`组件，可以使用`Fragment`组件代替`div`进行包裹，减少页面元素的渲染
 
 组件的 props 是单向数据流，不能擅自在组件内部修改传入的 props
 

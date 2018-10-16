@@ -70,4 +70,4 @@
 
 文档
 
-* [React Router 中文文档](https://react-guide.github.io/react-router-cn/)
+* [React Router v4 入坑指南](https://www.jianshu.com/p/6a45e2dfc9d9)
