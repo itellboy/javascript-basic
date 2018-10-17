@@ -114,3 +114,67 @@ render () {
   )
 }
 ```
+
+## PropTypes 属性检查
+
+React 组件可以通过引入`prop-types`库来进行组件属性类型的检查
+
+```javascript
+import PropTypes from 'prop-types'
+
+class MyComponent extends React.Component {}
+
+MyComponent.proptypes = {
+  name: PropTypes.string  // 限制 name 属性为字符串类型
+}
+```
+
+常见的检查包括
+
+```javascript
+PropTypes.array  // 数组
+PropTypes.bool  // 布尔值
+PropTypes.func  // 函数
+PropTypes.number  // 数值
+PropTypes.object  // 对象
+PropTypes.string  // 字符串
+PropTypes.symbol  // Symbol 值
+
+PropTypes.element  // 一个 React 组件
+```
+
+可以通过设置组件的`defaultProps`属性来为属性设置默认值
+
+```javascript
+MyComponent.defaultProps = {
+  name: 'tom'
+}
+```
+
+类型检查发生在`defaultProps`属性操作之后，所以默认值也会被检查
+
+## 生命周期函数
+
+### 页面挂载（mounting）
+
+* `componentWillMount`：组件被挂载到页面之前执行，`render`之前
+* `componentDidMount`：组件被挂载到页面之后执行，`render`之后
+
+### 页面更新（updation）
+
+* `componentWillReceiveProps`：已经被挂载的组件的接受新的`props`时候执行
+* `shouldComponentUpdate`：组件被更新之前执行，返回一个布尔值，表示页面是否重新渲染，接受两个参数表示下一个`props`和下一个`state`，性能优化点
+* `componentWillUpdate`：组件被更新之前执行
+* `componentDidUpdate`：组件被更新之后执行
+
+### 页面卸载（unmounting）
+
+* `componentWillUnmount`：组件被卸载的时候执行
+
+## diff 算法
+
+React 虚拟 DOM 比对采用同级比对，上层比对有差异，下层重新渲染
+
+## 文档
+
+[https://react.docschina.org/docs/hello-world.html](https://react.docschina.org/docs/hello-world.html)

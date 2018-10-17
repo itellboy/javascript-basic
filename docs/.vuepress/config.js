@@ -74,12 +74,6 @@ module.exports = {
           '/es6/module',
         ]
       }, {
-        title: 'React',
-        children: [
-          '/react/start',
-          '/react/learning-docs',
-        ]
-      }, {
         title: 'CSS',
         children: [
           '/css/html',
@@ -91,6 +85,13 @@ module.exports = {
           '/css/transform',
           '/css/selector',
           '/css/flex',
+        ]
+      }, {
+        title: 'React',
+        children: [
+          '/react/start',
+          '/react/learning-docs',
+          '/react/redux-start',
         ]
       }, {
         title: 'Node',
