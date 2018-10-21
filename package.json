@@ -1,5 +1,5 @@
 {
-  "name": "learn-web",
+  "name": "docs",
   "version": "1.0.0",
   "description": "",
   "directories": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itellboy/learn-web.git"
+    "url": "git+https://github.com/itellboy/docs.git"
   },
   "author": "itellboy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/itellboy/learn-web/issues"
+    "url": "https://github.com/itellboy/docs/issues"
   },
-  "homepage": "https://github.com/itellboy/learn-web#readme",
+  "homepage": "https://github.com/itellboy/docs#readme",
   "dependencies": {
     "koa": "^2.5.2",
     "vuepress": "^0.14.1"
