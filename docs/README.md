@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /avatar.jpeg
-actionText: 那就开始吧 →
+actionText: Get Start →
 actionLink: /es5/
 features:
 - title: Jeff Atwood
@@ -10,10 +10,10 @@ features:
   details: I would trade all of my technology for an afternoon with Socrates.
 - title: Murphy's Law
   details: Anything that can go wrong will go wrong.
-footer: Copyright © 2018-present Itellboy
+footer: Copyright © 2018-present Itellboy - 湘 ICP 备 18020225 号
 ---
 
-### 喜欢就尝试一下
+### Just do it
 
 ```bash
 # clone repo

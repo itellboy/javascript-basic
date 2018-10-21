@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Docs',
-  description: '不知道接下来干嘛?',
+  description: 'Rome wasn’t built in one day',
   head: [
     ['link', { rel: 'icon', href: '/avatar.jpeg' }]
   ],
@@ -92,6 +92,7 @@ module.exports = {
           '/react/start',
           '/react/learning-docs',
           '/react/redux-start',
+          '/react/react-router',
         ]
       }, {
         title: 'Node',
@@ -132,7 +133,8 @@ module.exports = {
           '/nginx/access-control',
           '/nginx/req-and-connection-limitation',
           '/nginx/install-params',
-          '/nginx/https'
+          '/nginx/https',
+          '/nginx/problem',
         ]
       }, {
         title: '理解计算机',

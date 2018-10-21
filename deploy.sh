@@ -1,5 +1,5 @@
 #!/bin/bash
 
 git pull
-npm install
-npm run docs:build
+yarn install
+yarn docs:build

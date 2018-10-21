@@ -16,7 +16,7 @@ app.use(async ctx => {
   ls.on('close', (code) => {
     console.log(`子进程退出码：${code} at ${new Date()}`);
   });
-  ctx.body = 'it is perfect';
+  ctx.body = 'deploy finish';
 });
 
 app.listen(3000)

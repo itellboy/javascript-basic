@@ -10,6 +10,7 @@ Redux 数据流
 * `store.getState()`：获得存储在 store 里面的 state
 * `store.subscribe()`：订阅 store 的改变
 * `store.dispatch()`：向 store 派发一个 action
+* `store.combineReducers()`：将多个 reducer 合并成一个 reducer，对数据进行拆分管理
 
 ## Redux 中间件
 
@@ -26,3 +27,7 @@ Redux 数据流
 **通过 props 将 React 组件拆分成容器组件和 UI 组件**
 
 **利用构造函数的方式编写无状态组件（UI 组件）**
+
+**使用 immutable.js 管理 state 的数据**
+
+**使用 redux-immutable 统一数据格式**
