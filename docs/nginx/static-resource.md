@@ -44,6 +44,14 @@
 
 作用：压缩比
 
+### gzip\_types
+
+* Syntax: gzip\_types text/html application/javascript  application/x-javascript text/css application/xml;
+* Default: gzip\_types text/html;
+* Context: http, server, location
+
+匹配 MIME 类型进行压缩,默认对 text/html 生效
+
 ### gzip\_http\_version
 
 * Syntax: gzip\_http\_version 1.0 1.1;

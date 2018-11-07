@@ -93,6 +93,7 @@ module.exports = {
           '/react/learning-docs',
           '/react/redux-start',
           '/react/react-router',
+          '/react/react-problem',
         ]
       }, {
         title: 'Node',
