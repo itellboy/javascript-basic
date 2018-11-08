@@ -136,6 +136,7 @@ module.exports = {
           '/nginx/install-params',
           '/nginx/https',
           '/nginx/problem',
+          '/nginx/virtual-host.md',
         ]
       }, {
         title: '理解计算机',

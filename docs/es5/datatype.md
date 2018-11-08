@@ -16,7 +16,6 @@
 
 下列运算符会返回布尔值
 
-* 两元逻辑运算符`&&`,`||`
 * 前置逻辑运算符`!`
 * 相等运算符`==`,`!=`,`===`,`!===`
 * 比较运算符`>`,`<`,`>=`,`<=`
@@ -32,7 +31,7 @@
 
 ## String
 
-* 可以使用单引号`''`或者双引号`""`表示一个字符串，但是建议使用单引号
+* 可以使用单引号`''`或者双引号`""`表示一个字符串，建议使用单引号
 * 字符串本身是一个字符数组，可以通过下标访问字符串的里的每一个字符
 * 有一个`length`属性表示字符串的长度
 * `btoa()`任意值转为 Base64 编码
@@ -41,6 +40,11 @@
 ## Number
 
 * JavaScript 所有数值都是利用 64 位浮点数形式存储，第 0 位为符号位，第 1 位到第 11 位为指数位，第 12 位到第 63 位为小数部分，`(2^-1023 ~ 2^1024)`
+
+```
+// 可以用下面方式表示 JavaScript 的数值
+(-1)^符号位 * 1.xx...xx * 2^指数部分
+```
 
 **特殊数值**
 
@@ -54,9 +58,16 @@
 * `parseFloat()`将字符串转化为浮点类型
 * `isFinite()`判断便是是否为正常的数值
 
-## null,undefined
+## null, undefined
 
-没什么特别大的区别，在实际开发过程中当作空值处理
+`null`表示一个空对象，转化为数值的时候为 0；`undefined`表示未定义，转化为数值的时候为`NaN`；两者转化为布尔值的时候都是`false`
+
+因为 C 语言的`null`可以自动转化为 0，所以在设计 JavaScript，可以`null`也可以转化为 0
+
+```javascript
+Number(null) // 0
+Number(undefined) // NaN
+```
 
 ## Object
 
@@ -89,3 +100,32 @@ function isEmptyObject (obj) {
 
 * 特殊类型的对象
 * 是一个可以执行的方法，同时可以是一个数据类型
+
+## typeof 运算符
+
+在 JavaScript 中，可以使用`typeof`运算符输出变量的数据类型
+
+```javascript
+typeof 123 // "number"
+typeof '123' // "string"
+typeof true // "boolean"
+typeof [] // "object"
+typeof {} // "object"
+typeof function () {} // "function"
+typeof undefined // "undefined"
+```
+
+**最佳实践**
+
+判断语句
+
+```javascript
+// bad
+if (a) {
+  // do something
+}
+// good
+if (typeof a === 'undefined') {
+  // do something
+}
+```
