@@ -44,9 +44,11 @@ module.exports = {
           '/es5/bom/guide',
           '/es5/bom/window',
           '/es5/bom/navigator',
+          '/es5/bom/cookie',
           '/es5/bom/storage',
           '/es5/bom/history',
           '/es5/bom/file',
+          '/es5/style',
         ]
       }, {
         title: 'ES2015+',
@@ -136,7 +138,7 @@ module.exports = {
           '/nginx/install-params',
           '/nginx/https',
           '/nginx/problem',
-          '/nginx/virtual-host.md',
+          '/nginx/virtual-host',
         ]
       }, {
         title: '理解计算机',
