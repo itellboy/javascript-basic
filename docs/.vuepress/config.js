@@ -46,6 +46,7 @@ module.exports = {
           '/es5/bom/navigator',
           '/es5/bom/cookie',
           '/es5/bom/xmlhttprequest',
+          '/es5/bom/cors',
           '/es5/bom/storage',
           '/es5/bom/history',
           '/es5/bom/file',
