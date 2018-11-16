@@ -175,6 +175,40 @@ MyComponent.defaultProps = {
 
 React 虚拟 DOM 比对采用同级比对，上层比对有差异，下层重新渲染
 
-## 文档
+## Refs & DOM
 
-[https://react.docschina.org/docs/hello-world.html](https://react.docschina.org/docs/hello-world.html)
+React 提供了在数据流外修改 React 组件实例和 DOM 的方法，就是 Refs
+
+使用场景：
+
+* 处理焦点、文本和媒体流
+* 强制触发动画
+* 继承第三方 DOM 库
+
+### 创建 Refs
+
+通过`React.createRefs()`创建一个`refNode`，可以在任意组件使用`ref={this.refNode}`进行绑定，这样就可以在组件实例任意地方都能通过`this.refNode`获取已经绑定的组件
+
+```javascript
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.refNode = React.createRef()
+  }
+  render() {
+    return (
+      <div ref={this.refNode}></div>
+    )
+  }
+}
+```
+
+### 访问 Refs
+
+```javascript
+const node = this.refNode.current
+```
+
+通过创建的`this.refNode.current`方法绑定的 React 组件或者 DOM 元素
+
+**不能在函数式组件上面使用**
