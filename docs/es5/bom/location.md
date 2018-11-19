@@ -147,5 +147,37 @@ function fileChange(files) {
 
 一旦图片加载完成之后，为本地生成的 URL 字符串就没用了，可以在`img.onload`回调里面释放内存
 
-## URL.SearchParams 对象
+## URLSearchParams 对象
 
+URLSearchParams 是浏览器的原生对象，用来解析，构造和处理 URL 查询字符串
+
+### 构造函数
+
+字符串、对象、数组都可以作为 URLSearchParams 构造函数的参数，生成一个 URLSearchParmas 实例
+
+```javascript
+// 字符串
+var searchParams = new URLSearchParams('?foo=1&bar=2')
+// 对象
+var searchParams = new URLSearchParams({foo: 1, bar: 2})
+// 数组
+var searchParams = new URLSearchParams([['foo', '1'], ['bar', 2]])
+
+searchParams.toString() // "foo=1&bar=2"
+```
+
+可以将 URLSearchParams 实例作为 AJAX 的表单数据
+
+### 实例方法
+
+* `toString()`：返回实例的字符串形式
+* `append()`：追加一对参数，不会覆盖
+* `delete()`：删除一对参数
+* `has()`：判断实例是否含有某个键名的参数
+* `set()`：设置一对参数，会替换已存在键名
+* `get()`：查询键名对应的键值
+* `getAll()`：获取键名对应的所有键值数组
+* `sort()`：对所有键名进行 Unicode 码点进行排序
+* `keys()`：返回所有键名组成的遍历器
+* `values()`：返回所有键值的遍历器
+* `entries()`：返回键值对的遍历器
