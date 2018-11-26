@@ -42,42 +42,54 @@ Point.name // "Point"
 
 类和模块内部，默认使用严格模式
 
-## 构造函数定义
+## 构造函数
 
-JavaScript 类中默认会有一个空的`constructor`方法，用来实例化对象调用，可以在`constructor`方法中做一些初始化的操作
+Class 中默认会有一个空的`constructor`方法，用来实例化对象调用，可以在`constructor`方法中做一些初始化的操作
 
-JavaScript 的类必须使用`new`关键字实例化，不能当做普通函数调用，这一点和构造函数是有区别的
+Class 必须使用`new`关键字实例化，不能当做普通函数调用，这一点和构造函数是有区别的
 
 ```javascript
 class Point {}
 // 等同于
 class Point {
-  constructor () {}
+  constructor() {}
 }
 
 Point() // 报错
 ```
 
-## 实例方法定义
+## 实例属性
 
-类里面所有的方法都会定义在类的`prototype`对象上面，方法与方法之后不能用逗号隔开，所有实例对象可以使用
-
-类里面定义的方法都是不可枚举的，直接在构造函数的`prototype`属性上面定义方法是可枚举的
+可以在 Class 内部的 constructor 方法里面定义实例属性
 
 ```javascript
 class Point {
-  constructor () {}
-  print () {
+  constructor(x) {
+    this.x = x
+  }
+}
+```
+
+## 实例方法
+
+Class 所有的方法都会定义在类的`prototype`对象上面，方法与方法之后不能用逗号隔开，所有实例对象可以使用
+
+Class 定义的方法都是不可枚举的，ES5 构造函数的`prototype`属性上面定义方法是可枚举的
+
+```javascript
+class Point {
+  constructor() {}
+  print() {
     console.log('print')
   }
-  to () {
+  to() {
     console.log('to')
   }
 }
 Object.keys(Point) // []
 // 构造函数
-var Obj = function () {}
-Obj.prototype.to = function () { console.log('to') }
+var Obj = function() {}
+Obj.prototype.to = function() { console.log('to') }
 Object.keys(Obj) // ["to"]
 ```
 
@@ -85,12 +97,12 @@ Object.keys(Obj) // ["to"]
 
 ```javascript
 Object.assign(Point.prototype, {
-  a () {},
-  b () {},
+  a() {},
+  b() {},
 })
 ```
 
-## 静态方法定义
+## 静态方法
 
 可以通过在定义方法的时候在方法名前面加上`static`关键字，来定义类的静态方法，可以通过`className.staticFun()`的形式调用
 
@@ -98,7 +110,7 @@ ES6 规定类的内部只有静态方法，没有静态属性
 
 ```javascript
 class Point {
-  static to () {
+  static to() {
     console.log('hello world')
   }
 }
@@ -138,7 +150,7 @@ inst.prop
 
 ```javascript
 class Point {
-  constructor () {
+  constructor() {
     if (new.target === undefined){
       throw new Error ("必须使用 new 命令实例化")
     }

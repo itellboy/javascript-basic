@@ -50,6 +50,7 @@ module.exports = {
           '/es5/bom/location',
           '/es5/bom/storage',
           '/es5/bom/history',
+          '/es5/bom/arraybuffer-blob',
           '/es5/bom/file',
           '/es5/bom/form',
           '/es5/style',
