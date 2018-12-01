@@ -159,6 +159,12 @@ arr.map(function (item) {
 }); // [2, 3, 4]
 ```
 
+```javascript
+var arr = ['1', '2', '3'];
+//字符串转数字
+arr.map(Number); // [2, 3, 4]
+```
+
 **forEach()**
 
 常用的数组遍历方法，不可终止循环，需终止循环，改用`for`循环
