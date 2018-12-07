@@ -32,13 +32,13 @@ var canvas = document.getElementById('canvas')
 canvas.getContext('2d')
 ```
 
-下面主要是 2D 平面图像的 api
+下面绘制图形和图像处理的 API 定义在 CanvasRenderingContext2D 对象上面
 
 ## 4 绘制图形
 
 Canvas 绘制空间坐标：左上角为坐标原点，向左为 x 轴，向下为 y 轴
 
-![画布](https://mdn.mozillademos.org/files/224/Canvas_default_grid.png)
+![画布](http://static.itellboy.wang/docs/Canvas_default_grid.png)
 
 ### 4.1 绘制矩形
 
@@ -54,7 +54,7 @@ ctx.strokeRect(50, 50, 50, 50)
 
 绘制结果为：
 
-![](https://mdn.mozillademos.org/files/245/Canvas_rect.png)
+![](http://static.itellboy.wang/docs/Canvas_rect.png)
 
 ### 4.2 绘制路径
 
@@ -133,6 +133,76 @@ var p = new Path2D("M10 10 h 80 v 80 h -80 Z")
 * `setLineDash()`：设置线条虚线样式
 * `lineDashOffset`：线条虚线样式起始偏移量
 
+### 4.5 渐变和图像填充
+
+* `createLinearGradient(x1, y1, x2, y2)`：线性渐变
+* `createRadialGradient(x1, y1, r1, x2, y2, r2)`：径向渐变
+
+* `createPattern(image, type)`：图像填充，`type`取值范围`repeat`、`repeat-x`、`repeat-y`、`no-repeat`
+
+### 4.6 阴影 Shadow
+
+* `shadowOffsetX`：阴影在 X 轴的延伸距离
+* `shadowOffsetY`：阴影在 Y 轴的延伸距离
+* `shadowBlur`：阴影的模糊距离
+* `shadowColor`：阴影颜色值
 
 
 ## 5 图像处理
+
+Canvas 提供了丰富的 API 来处理图像
+
+### 5.1 图像源
+
+Canvas 可以利用以下几种资源作为图像源
+
+* `HTMLImageElement`：HTML 图片元素，可以是通过`new Image()`生成的实例或者`<img />`节点对象
+* `HTMLVideoElement`：HTML `<video />` 节点元素，Canvas 从视频源中抓取一帧作为图像源
+* `HTMLCanvasElement`：HTML 另一个`<canvas />`元素
+* `ImageBitmap`：高性能的位图
+
+这些图像源可以统一使用 CanvasImageSource 对象引用
+
+### 5.2 绘制图像
+
+* `drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)`：绘制图像，参数意思如下图，除开`image`源，前四个参数定义了图像源切片的位置和大小，后四个参数定义了切片在画布中显示的位置和大小
+
+![](http://static.itellboy.wang/docs/=Canvas_drawimage.jpg)
+
+## 6 Canvas 节点元素接口
+
+### 6.1 属性
+
+* `height`：元素高度
+* `width`：元素宽度
+
+### 6.2 方法
+
+* `getContext()`：获取 Canvas 元素处理的上下文
+* `toDataURL()`：返回`data:`类型的 URL，表示图像内容的字符串编码
+* `toBlob()`：返回一个 Blob 对象，表示 Canvas 中的图像内容
+
+```javascript
+// 返回 DataURL 示例
+function test() {
+ var canvas = document.getElementById('canvas')
+ var url = canvas.toDataURL()
+ 
+ var newImg = document.createElement('img')
+ newImg.src = url
+ document.body.appendChild(newImg)
+}
+// 返回 Blob 对象示例
+function test() {
+  var canvas = document.getElementById('canvas')
+  canvas.toBlob(function(blob) {
+    var newImg = document.createElement('img')
+    url = URL.createObjectURL(blob)
+    newImg.onload = function() {
+      URL.revokeObjectURL(url)
+    }
+    newImg.src = url
+    document.body.appendChild(newImg)
+ })
+}
+```
