@@ -11,12 +11,12 @@ var obj = {
 }
 obj.getName() // "jack"
 
-var f = obj.getName()
+var f = obj.getName
 var name = 'rose'
 f() // "rose"
 ```
 
-`obj.getName()`运行环境在`obj`对象里面，`f()`的运行环境在全局对象里面，所以返回不同的结果
+`obj.getName()`方法运行环境在`obj`对象里面，`f()`方法的运行环境在全局对象里面，所以返回不同的结果
 
 ## 使用场合
 

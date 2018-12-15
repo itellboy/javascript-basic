@@ -173,7 +173,8 @@ module.exports = {
       }, {
         title: 'webapi',
         children: [
-          '/webapi/canvas'
+          '/webapi/canvas',
+          '/webapi/svg'
         ]
       }, {
         title: 'Other',
