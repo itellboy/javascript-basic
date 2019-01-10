@@ -102,6 +102,7 @@ module.exports = {
           '/react/react-router',
           '/react/react-problem',
           '/react/code-splitting-problem',
+          '/react/redux-source-code',
         ]
       }, {
         title: 'Node',

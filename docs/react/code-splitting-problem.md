@@ -6,7 +6,7 @@
 
 ## react-loadable
 
-刚开始想到使用 react-loadable 这个插件进行拆分，在每个路由对应的页面下面加上了一个 loadable.js 的问题
+刚开始想到使用 react-loadable 这个插件进行拆分，在每个路由对应的页面下面加上一个 loadable.js 文件
 
 ```javascript
 import React from 'react'
@@ -41,7 +41,7 @@ import React, { Component, lazy, Suspense } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './Home'
 
-const Login = lazy(() => import('./Login'))
+const Login = lazy(() => import(/* webpackChunkName: ‘Login’*/ './Login'))
 class App extends Component {
   render() {
     return (
@@ -56,9 +56,10 @@ class App extends Component {
   }
 }
 
-export default App;
-
+export default App
 ```
+
+*PS:`/* webpackChunkName: ‘COMPONENT_NAME’*/ `允许我们在应用部署阶段设置 bundle(包) 名称，而不是常规编号*
 
 没有让我失望，控制台报出了如下两个⚠️
 
