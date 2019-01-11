@@ -41,7 +41,7 @@ import React, { Component, lazy, Suspense } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './Home'
 
-const Login = lazy(() => import(/* webpackChunkName: ‘Login’*/ './Login'))
+const Login = lazy(() => import(/* webpackChunkName: "Login" */ './Login'))
 class App extends Component {
   render() {
     return (
@@ -59,7 +59,7 @@ class App extends Component {
 export default App
 ```
 
-*PS:`/* webpackChunkName: ‘COMPONENT_NAME’*/ `允许我们在应用部署阶段设置 bundle(包) 名称，而不是常规编号*
+*PS:`/* webpackChunkName: "ComponentName" */ `允许我们在应用部署阶段设置 bundle(包) 名称，而不是常规编号*
 
 没有让我失望，控制台报出了如下两个⚠️
 
@@ -74,3 +74,54 @@ export default App
 > Fixed <Route component> prop-type warning when using forwardRef (see #6417, thanks @frehner and @eXon)
 
 因为 4.4.0 版本还没有 release，所以只能暂时只能使用 beta.6，安装之后，排除了⚠️，希望官方能早日 release🥳
+
+## 动态加载 reducer
+
+利用`store`对象的`replaceReducer()`方法可以实现 reducer 的动态加载
+
+(1) 在`store`对象上面部署一个`asyncRecucers`的属性，用来存储动态加载的 reducer
+
+```javascript
+const initStore = () => {
+  const store = createStore(
+    createRootReducer(),
+    initialState,
+    compose(
+      applyMiddleware(
+        thunk,
+      ),
+      ...enhancers,
+    )
+  )
+  store.asyncReducers = {}
+  return store
+}
+export default initStore()
+```
+
+(2) 创建`injectReducer()`方法，用于注入动态加载的 reducer
+
+```javascript
+import createReducer from './createReducer'
+
+const injectReducer = (store, { key, reducer }) => {
+  if (Object.hasOwnProperty.call(store.asyncReducers, key)) return
+  store.asyncReducers[key] = reducer
+  store.replaceReducer(createReducer(store.asyncReducers))
+}
+
+export default injectReducer
+```
+
+(3) 在加载页面的同时加载该页面使用的 reducer
+
+```javascript
+const AsyncComponent = props => {
+  const componentName = props.componentName
+  import(`./${componentName}/store`).then(({ reducer }) => {
+    injectReducer(store, { key: componentName, reducer })
+  }).catch(err => { console.log(err) })
+  const Component = AsyncComponents[componentName]
+  return <Component {...props} />
+}
+```
