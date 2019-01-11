@@ -172,7 +172,7 @@ if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
   enhancer = preloadedState
   preloadedState = undefined
 }
-
+// 利用增强器，也就是中间件重新包装 createStore 函数，提供更多 dispatch 的功能
 if (typeof enhancer !== 'undefined') {
   if (typeof enhancer !== 'function') {
     throw new Error('Expected the enhancer to be a function.')
@@ -335,8 +335,112 @@ function replaceReducer(nextReducer) {
 
 ## combineReducers.js
 
+默认暴露出一个`combineReducers()`的方法，用于将多个`reducer`合并成一个`reduer`提供给`createStore()`使用
 
+```javascript
+export default function combineReducers(reducers) {
+  const reducerKeys = Object.keys(reducers)
+  const finalReducers = {}
+  for (let i = 0; i < reducerKeys.length; i++) {
+    const key = reducerKeys[i]
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (typeof reducers[key] === 'undefined') {
+        warning(`No reducer provided for key "${key}"`)
+      }
+    }
+
+    if (typeof reducers[key] === 'function') {
+      finalReducers[key] = reducers[key]
+    }
+  }
+  const finalReducerKeys = Object.keys(finalReducers)
+
+  let unexpectedKeyCache
+  if (process.env.NODE_ENV !== 'production') {
+    unexpectedKeyCache = {}
+  }
+
+  let shapeAssertionError
+  try {
+    assertReducerShape(finalReducers)
+  } catch (e) {
+    shapeAssertionError = e
+  }
+
+  return function combination(state = {}, action) {
+    if (shapeAssertionError) {
+      throw shapeAssertionError
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      const warningMessage = getUnexpectedStateShapeWarningMessage(
+        state,
+        finalReducers,
+        action,
+        unexpectedKeyCache
+      )
+      if (warningMessage) {
+        warning(warningMessage)
+      }
+    }
+
+    let hasChanged = false
+    const nextState = {}
+    for (let i = 0; i < finalReducerKeys.length; i++) {
+      const key = finalReducerKeys[i]
+      const reducer = finalReducers[key]
+      const previousStateForKey = state[key]
+      const nextStateForKey = reducer(previousStateForKey, action)
+      if (typeof nextStateForKey === 'undefined') {
+        const errorMessage = getUndefinedStateErrorMessage(key, action)
+        throw new Error(errorMessage)
+      }
+      nextState[key] = nextStateForKey
+      hasChanged = hasChanged || nextStateForKey !== previousStateForKey
+    }
+    return hasChanged ? nextState : state
+  }
+}
+```
+
+* 先使用`assertReducerShape()`方法校验传入的 reducers 是否合法
+* 函数执行返回一个`combination()`方法，该方法为提供给 store 使用的 reducer
+* `combination()`方法里面过程，遍历校验过后的 reducers，将当前 reducer 对应的状态`previousStateForKey`和`action`传入每个 reducer，判断`previousStateForKey`和`nextStateForKey`是否相等，如果相等，返回`nextState`，否则返回`state`
+
+## applyMiddleware.js
+
+组合多个中间件，返回一个 enhancer 函数，提供给 createStore 使用
+
+```javascript
+export default function applyMiddleware(...middlewares) {
+  return createStore => (...args) => {
+    const store = createStore(...args)
+    let dispatch = () => {
+      throw new Error(
+        `Dispatching while constructing your middleware is not allowed. ` +
+          `Other middleware would not be applied to this dispatch.`
+      )
+    }
+
+    const middlewareAPI = {
+      getState: store.getState,
+      dispatch: (...args) => dispatch(...args)
+    }
+    // 生成中间件链
+    const chain = middlewares.map(middleware => middleware(middlewareAPI))
+    // 将 store.dispatch传入中间件链，依次处理，增强 dispatch 功能
+    dispatch = compose(...chain)(store.dispatch)
+    // 返回创建好的 store 和经过中间件加工后的 dispatch
+    return {
+      ...store,
+      dispatch
+    }
+  }
+}
+```
+
+总结：按照原有的参数生成一个 store，将 store 的 dispatch 利用中间件链加工，返回一个带有增强功能 dispatch 的 store
 
 ## bindActionCreators.js
 
-## applyMiddleware.js
