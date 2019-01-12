@@ -1,4 +1,4 @@
-# React Learning Docs
+# Learning Docs
 
 ## 前置知识
 

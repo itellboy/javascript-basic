@@ -1,4 +1,4 @@
-# man 
+# man 帮助文档
 
 ```bash
 man

@@ -1,4 +1,4 @@
-# linux 挂载
+# 挂载
 
 ## mount
 

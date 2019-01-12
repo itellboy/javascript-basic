@@ -16,6 +16,7 @@ module.exports = {
     ],
     sidebarDepth: 1,
     sidebar: [
+      ['/welcome', 'Welcome'],
       {
         title: 'ES5',
         children: [
@@ -125,9 +126,9 @@ module.exports = {
       }, {
         title: 'Database',
         children: [
+          '/database/mongodb',
           '/database/mongodb-install',
           '/database/mongodb-roles',
-          '/database/mongodb',
           '/database/mongodb-backup',
           '/database/mysql-problems',
           '/database/mysql-sql_mode',
@@ -153,7 +154,7 @@ module.exports = {
           '/computer-basic/unicode',
         ]
       }, {
-        title: 'Centos7.X',
+        title: 'Linux',
         children: [
           '/linux/service',
           '/linux/git',

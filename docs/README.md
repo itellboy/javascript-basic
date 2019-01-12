@@ -2,7 +2,7 @@
 home: true
 heroImage: /avatar.jpeg
 actionText: Get Start →
-actionLink: /es5/
+actionLink: /welcome
 features:
 - title: Jeff Atwood
   details: Any application that can be written in JavaScript, will eventually be written in JavaScript.
