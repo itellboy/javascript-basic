@@ -103,6 +103,7 @@ module.exports = {
           '/react/code-splitting-problem',
           '/react/redux-source-code',
           '/react/react-source-code-directory',
+          '/react/react-source-code-react-create-element',
         ]
       }, {
         title: 'Node',
