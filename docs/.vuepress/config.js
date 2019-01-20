@@ -99,11 +99,10 @@ module.exports = {
         children: [
           '/react/start',
           '/react/learning-docs',
-          '/react/redux-start',
-          '/react/react-router',
           '/react/react-problem',
           '/react/code-splitting-problem',
           '/react/redux-source-code',
+          '/react/react-source-code-directory',
         ]
       }, {
         title: 'Node',
