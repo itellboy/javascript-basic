@@ -85,6 +85,27 @@ if (config != null) {
 
 将属性提取出来保存到组件的`props`变量
 
+***
+
+***Attention***
+
+问题：为什么有的地方使用`Object.prototype.hasOwnProperty.call(obj, key)`，有的地方直接使用`obj.hasOwnProperty(key)`？
+
+解答：
+
+* 节省原型链回溯时间：`hasOwnProperty()`方法是定义在`Object.prototype`对象上面，如果直接使用`obj.hasOwnProperty(key)`会向上查找原型链去寻找`hasOwnPerperty()`方法，直接使用`Object.prototype.hasProperty.call(obj, key)`能节省查找原型链的时间
+* 避免`TypeError`错误，由`Object.create(null)`创建的对象没有`hasOwnProperty`方法
+
+参考链接：
+
+[https://github.com/eslint/eslint/issues/7071](https://github.com/eslint/eslint/issues/7071)
+
+[https://eslint.org/docs/rules/guard-for-in](https://eslint.org/docs/rules/guard-for-in)
+
+[https://github.com/eslint/eslint/commit/551335eedf62261299af7aafdfc896b3aef8de67](https://github.com/eslint/eslint/commit/551335eedf62261299af7aafdfc896b3aef8de67)
+
+***
+
 ## 3. 子节点处理
 
 ```javascript

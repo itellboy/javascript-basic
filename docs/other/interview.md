@@ -1,98 +1,26 @@
 # 面试常见问题
 
-## CSS
+## 1. CSS
 
-### 如何实现左边固定宽度，右边自适应的布局
-
-```html
-<div id="wrap">
-  <div id="sidebar"></div>
-  <div id="content"></div>
-</div>
-```
+### 1.1 如何实现左边固定宽度，右边自适应的布局
 
 **方法1：使用 table 布局**
-
-```css
-#wrap {
-  display: table;
-  width: 800px;
-  margin: 0 auto;
-}
-
-#sidebar, #content {
-  height: 300px;
-  display: table-cell;
-  background: green;
-  
-}
-
-#sidebar {
-  width: 240px;
-  background: fuchsia;
-}
-```
 
 把`wrap`容器的`display`属性设置为`table`，然后把子节点的`display`设置为`table-cell`，子节点就会自适应宽度，把要固定宽度节点的宽度设置固定，不支持 IE7
 
 **方法2：使用 float + 外边距**
 
-```css
-#wrap {
-  margin: 0 auto;
-  width: 800px;
-}
-
-#sidebar, #content {
-  height: 300px;
-}
-
-#sidebar {
-  width: 240px;
-  float: left;
-  background: green;
-}
-
-#content {
-  margin-left: 240px;
-  background: fuchsia;
-}
-```
-
 **方法3：使用 flex 布局**
 
-```css
-#wrap {
-  margin: 0 auto;
-  width: 800px;
-  display: flex;
-}
-
-#sidebar, #content {
-  height: 300px;
-}
-
-#sidebar {
-  width: 240px;
-  flex: none;
-  background: green;
-}
-
-#content {
-  flex: 1;
-  background: fuchsia;
-}
-```
-
-### 如何实现垂直居中
+### 1.2 如何实现垂直居中
 
 **方法1（使用 flex 布局）：**
 
 父容器的`display`属性设置为`flex`，`align-item`属性设置为`center`
 
-## JavaScript
+## 2. JavaScript
 
-### 如何让一个构造函数继承另一个构造函数
+### 2.1 如何让一个构造函数继承另一个构造函数
 
 ```javascript
 var Parent = function (name) {
@@ -114,14 +42,34 @@ var child = new Child('hello')
 child.getName() // "hello"
 ```
 
-### 数组如何去重
+### 2.2 为什么要使用`Object.prototype.hasOwnProperty.call(obj, key)`替代`obj.hasOwnProperty(key)`
+
+* 节省原型链回溯时间：`hasOwnProperty()`方法是定义在`Object.prototype`对象上面，如果直接使用`obj.hasOwnProperty(key)`会向上查找原型链去寻找`hasOwnPerperty()`方法，直接使用`Object.prototype.hasProperty.call(obj, key)`能节省查找原型链的时间
+* 避免`TypeError`错误，由`Object.create(null)`创建的对象没有`hasOwnProperty`方法
+
+参考链接：
+
+[https://github.com/eslint/eslint/issues/7071](https://github.com/eslint/eslint/issues/7071)
+
+[https://eslint.org/docs/rules/guard-for-in](https://eslint.org/docs/rules/guard-for-in)
+
+[https://github.com/eslint/eslint/commit/551335eedf62261299af7aafdfc896b3aef8de67](https://github.com/eslint/eslint/commit/551335eedf62261299af7aafdfc896b3aef8de67)
+### 2.3 数组如何去重
 
 * 使用 ES6 的`Set`数据结构
 * 新建一个数组，将原数组的成员`push`进入新数组之前用`indexOf()`或者 ES6 的`includes()`检查
 
-## 网络
+### 2.4 数组的指定位置插入成员
 
-### get 请求和 post 请求的区别
+```javascript
+// 在下标为 1 的位置插入 3
+[1, 2, 3, 4].splice(1, 0, 3)
+// [1, 3, 2, 3, 4]
+```
+
+## 3. 网络
+
+### 3.1 get 请求和 post 请求的区别
 
 **从 restful 规范角度回答**
 
@@ -142,7 +90,7 @@ child.getName() // "hello"
 
 [很有意思的解释](https://www.cnblogs.com/logsharing/p/8448446.html)
 
-### http 和 https 的区别
+### 3.2 http 和 https 的区别
 
 **HTTP 三次握手**
 
@@ -165,7 +113,7 @@ child.getName() // "hello"
 * 服务器端利用私钥解密出对称加密的密钥，对数据进行加密，发送给客户端
 * 客户端解密数据，连接简历
 
-### 常见的响应状态码
+### 3.3 常见的响应状态码
 
 * 100：继续请求
 * 200：请求成功
@@ -178,9 +126,9 @@ child.getName() // "hello"
 * 500：服务器内部错误
 * 502：充当网关或代理的服务器，接受到了一个无效的请求
 
-## 加密
+## 4. 加密
 
-### 非对称加密
+### 4.1 非对称加密
 
 数据的加密传输：公钥加密，私钥解密，
 
