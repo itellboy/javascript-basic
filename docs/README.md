@@ -10,7 +10,7 @@ features:
   details: I would trade all of my technology for an afternoon with Socrates.
 - title: Murphy's Law
   details: Anything that can go wrong will go wrong.
-footer: Copyright © 2018-present Itellboy - 湘 ICP 备 18020225 号
+footer: Copyright © 2019-present Itellboy - 湘 ICP 备 18020225 号
 ---
 
 ### Just do it

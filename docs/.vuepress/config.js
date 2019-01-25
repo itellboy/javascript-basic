@@ -104,6 +104,7 @@ module.exports = {
           '/react/redux-source-code',
           '/react/react-source-code-directory',
           '/react/react-source-code-react-create-element',
+          '/react/react-source-code-component',
         ]
       }, {
         title: 'Node',
