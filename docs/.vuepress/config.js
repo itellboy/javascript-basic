@@ -105,6 +105,7 @@ module.exports = {
           '/react/react-source-code-directory',
           '/react/react-source-code-react-create-element',
           '/react/react-source-code-component',
+          '/react/react-source-code-ref'
         ]
       }, {
         title: 'Node',
