@@ -105,7 +105,11 @@ module.exports = {
           '/react/react-source-code-directory',
           '/react/react-source-code-react-create-element',
           '/react/react-source-code-component',
-          '/react/react-source-code-ref'
+          '/react/react-source-code-ref',
+          '/react/react-source-code-context',
+          '/react/react-source-code-suspense-lazy',
+          '/react/react-source-code-hooks',
+          '/react/react-source-code-memo-fragment-strictmode-cloneElement-create-factory',
         ]
       }, {
         title: 'Node',
