@@ -101,6 +101,7 @@ module.exports = {
           '/react/learning-docs',
           '/react/react-problem',
           '/react/code-splitting-problem',
+          '/react/react-conf-2018-recap',
           '/react/redux-source-code',
           '/react/react-source-code-directory',
           '/react/react-source-code-react-create-element',
