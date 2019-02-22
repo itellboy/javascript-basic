@@ -18,19 +18,19 @@
 
 antd 的 css 样式使用 less 开发，可以使用 less 提供的`modifyVars`的方式修改 less 文件中定义的变量
 
-将使用 create-react-app 创建的项目 eject
+**将使用 create-react-app 创建的项目 eject**
 
 ```bash
 yarn eject
 ```
 
-安装 less，less-loader，babel-plugin-import 插件
+**安装 less，less-loader，babel-plugin-import 插件**
 
 ```bash
 yarn add less less-loader babel-plugin-import --dev
 ```
 
-修改 package.json 文件中 babel 的配置
+**修改 package.json 文件中 babel 的配置**
 
 ```
 "babel": {
@@ -50,7 +50,7 @@ yarn add less less-loader babel-plugin-import --dev
 },
 ```
 
-修改 config 目录下面的 webpack.config.js 文件，增加对 less 文件的解析
+**修改 config 目录下面的 webpack.config.js 文件，增加对 less 文件的解析**
 
 一、 定义 less 文件匹配的全局变量
 
