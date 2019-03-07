@@ -188,6 +188,11 @@ module.exports = {
           '/webapi/svg'
         ]
       }, {
+        title: 'english',
+        children: [
+          '/english/steve-jobs-stanford-commencement',
+        ]
+      }, {
         title: 'Other',
         children: [
           '/other/koa2',
