@@ -16,4 +16,5 @@ My name is **Guojun Wang（王国军）**, you can call me Guojun. I was born in
 * [Computer](/computer-basic/)
 * [Linux](/linux/)
 * [Webapi](/webapi/)
+* [English](/english/)
 * [Other](/other/)
