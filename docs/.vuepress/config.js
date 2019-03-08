@@ -195,8 +195,6 @@ module.exports = {
       }, {
         title: 'Other',
         children: [
-          '/other/koa2',
-          '/other/vuex',
           '/other/gitignore',
           '/other/interview',
         ]
