@@ -191,12 +191,14 @@ module.exports = {
         title: 'english',
         children: [
           '/english/steve-jobs-stanford-commencement',
+          '/english/basic-grammar',
         ]
       }, {
         title: 'Other',
         children: [
           '/other/gitignore',
           '/other/interview',
+          '/other/debounce-and-throttle',
         ]
       },
     ],
