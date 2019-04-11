@@ -94,6 +94,7 @@ module.exports = {
           '/css/transform',
           '/css/selector',
           '/css/flex',
+          '/css/layout-grid',
         ]
       }, {
         title: 'React',
