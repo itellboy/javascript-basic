@@ -32,7 +32,7 @@ Grid 是一个二维布局，根据设计需求可以将内容区块放置到任
 
 ```
 
-## 4. CSS 属性
+## 4. 网格 CSS 属性
 
 ### 4.1 display
 
@@ -126,5 +126,80 @@ gap: <grid-row-gap> <grid-column-gap>;
 * `space-between`：grid-iten 之间均等间隙，外边缘无间隙
 * `space-evenly`：grid-item 之间和外边缘的间隙都相等
 
-### 4.7 grid-auto
+### 4.7 grid-auto-columns、grid-auto-rows
 
+指定自动生成网格轨道的大小
+
+### 4.8 grid-auto-flow
+
+控制超出网格的布局方式
+
+* `row`：依次添加每行，有需要添加新列
+* `column`：依次填充每列，有需要添加新行
+
+## 5. CSS 函数
+
+### 5.1 repeat()
+
+跟踪列表的重复片段，允许大量重复模式的列和行以更紧凑的形式编写
+
+可用范围：`grid-template-columns`、`grid-template-rows`
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+```
+
+### 5.2 fit-content()
+
+可用范围：`grid-template-columns`、`grid-template-rows`
+
+### 5.3 minmax()
+
+定义一个范围
+
+## 6. 网格项 CSS 属性
+
+### 6.1 start、end
+
+使用特定的网格线确定 grid item 在网格内的位置
+
+属性值
+
+* `grid-column-start`：起始列网格线
+* `grid-column-end`：终止列网格线
+* `grid-row-start`：起始行网格线
+* `grid-row -end`：终止列网格线
+
+```css
+.grid-item {
+  grid-column-start: 2;
+  grid-column-end: span 2;
+  
+  grid-column: 2 / span 2;
+}
+```
+
+网格项可以相互重叠，可以使用`z-index`控制重叠顺序
+
+### 6.2 grid-area
+
+网格项所在的网格区域
+
+属性值
+
+* `<name>`：在`grid-template-areas`中定义的值
+* 网格线的命名
+
+### 6.3 self
+
+网格项内容的对齐方式
+
+```css
+.grid-item {
+  justify-self: <start> | <end> | <center> | <stretch>;
+  align-self: <start> | <end> | <center> | <stretch>;
+}
+```
