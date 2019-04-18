@@ -1,90 +1,158 @@
-# 正则表达式 (3)
+# 正则表达式
 
-> 正则表达式一种文本匹配的模式。[参考](http://javascript.ruanyifeng.com/stdlib/regexp.html#toc5)
-
-## 新建正则表达式
+正则表达式是一种文本匹配的模式
 
 ```javascript
+// 两种创建正则表达式的方式
 var regexp = new RegExp('xyz');
-
 var regexp = /xyz/;
 ```
 
-## 实例属性
-* 只读属性，修饰符
+## 1. 实例属性
+
+* `RegExp.prototype.ignoreCase`：只读，返回布尔值，表示是否忽略大小写
+* `RegExp.prototype.global`：只读，返回布尔值，表示是否全局匹配
+* `RegExp.prototype.multiline`：只读，返回布尔值，表示是否多行匹配
+* `RegExp.prototype.source`：只读，返回正则表达式的字符串形式，不包括匹配模式
+* `RegExp.prototype.flags`：只读，返回字符串，表示正则表达式的匹配模式，按照字母顺序排序，可能的值：`gimsuy`
+
+* `RegExp.prototype.lastIndex`：可读写，表示下一次匹配开始的位置，可以通过手动设置属性来设置匹配的起始位置，只对同一个正则表达式生效
+
+## 2. 实例方法
+
+### 2.1 RegExp.prototype.test()
+
+从正则表达式的`lastIndex`属性位置开始搜索字符串，如果找到匹配的值，返回`true`，否则返回`false`
+
+如果正则表达式含有`g`修饰符，并且匹配成功，正则表达式的`lastIndex`属性会随之改变为下一次开始匹配的位置
 
 ```javascript
-RegExp.prototype.ignoreCase  // 忽略大小写
-RegExp.prototype.global  // 全局匹配
-RegExp.prototype.multiline  // 多行模式匹配
+var reg = /xyz/g;
+var str = 'abcdxyzfgxyz';
+while(reg.test(str)) {
+  console.log(reg.lastIndex)
+}
+// 7
+// 12
 ```
 
-* 其他属性
+### 2.2 RegExp.prototype.exec()
+
+用正则表达式去匹配字符串，如果匹配成功，则返回一个数组，否则返回`null`
+
+如果正则表达式含有`()`，表示组匹配，数组成员为匹配成功的子字符串，第一个成员为匹配整个正则表达式的字符串，第二个位匹配第一对`()`规则的字符串，以此类推。
+
+返回的数组还包含以下两个属性：
+
+* `index`：整个正则表达式匹配字符串的起始位置
+* `input`：原始字符串
 
 ```javascript
-RegExp.prototype.lastIndex  // 返回一个数值，表示下一次搜索开始的位置，可写，当使用 g 修饰符的时候，该属性才发挥作用
-RegExp.prototype.source  // 返回正则表达式的字符串形式，不包括反斜杠，只读
+var reg = /xy(z)/g;
+var str = 'abcxyzfdgxyz';
+
+while(true) {
+  const match = reg.exec(str);
+  console.log(match);
+  if(!match) break;
+}
+// (2) ["xyz", "z", index: 4, input: "abcdxyzfgxyz", groups: undefined]
+// (2) ["xyz", "z", index: 9, input: "abcdxyzfgxyz", groups: undefined]
+// null
 ```
 
-可以通过手动指定`lastIndex`属性来设置匹配的起始位置
+## 3. 字符串中使用正则表达式的实例方法
 
-## 实例方法
+* `String.prototype.match()`：匹配字符串
+* `String.prototype.search()`：搜索字符串
+* `String.prototype.replace()`：替换字符串
+* `String.prototype.split()`：分割字符串
 
-### RegExp.prototype.test
+上面几个方法都可以接受正则表达式作为参数字符串，每次匹配都是从`0`开始，手动设置正则表达式的`lastIndex`属性无效
 
-返回布尔值，当前模式是否匹配参数字符串
+### 3.1 String.prototype.match()
 
-### RegExp.prototype.exec
+接受一个正则表达式作为参数，返回一个数组，成员时匹配成功的子字符串，如果没有匹配成功`null`
 
-* 正则匹配字符串，如果匹配上，返回包含结果的类数组的对象；如果没有结果，返回`null`
-* 返回类数组对象第一个成员为匹配成功的子串，第二个成员是圆括号匹配的结果
-* 返回的类数组对象包含`input`和`index`两个属性，分别表示原字符串和匹配成功子串在原字符串的起始位置
-
-## 字符串的实例方法
+* 当正则表达式没有带有`g`修饰符的时候，执行的结果和`RegExp.prototype.exec()`结果一致
+* 当正则表达式带有`g`修饰符的时候，返回所有匹配成功的子字符串
 
 ```javascript
-String.prototype.match()  // 返回一个数组，包含所有匹配到的子串，没有返回 null
-String.prototype.search()  // 返回一个整数，表示匹配成功开始的位置，没有返回 -1
-String.prototype.replace()  // 按照给定的正则表达式替换字符串，返回替换后的字符串
-String.prototype.split()  // 按照给定的正则表达式对字符串进行分割，返回一个包含分割后子串的数组
+var reg = /xyz/;
+var reg2 = /xyz/g;
+var str = 'abcxyzabcxyz';
+
+str.match(reg);
+// ["xyz", index: 3, input: "abcxyzabcxyz", groups: undefined]
+str.match(reg2);
+// ["xyz", "xyz"]
 ```
 
-* 设置正则表达式的`lastIndex`属性，对`match()`方法无效，每次匹配都是从第 0 个位置开始的
-* `replace()`方法第二个参数可以是替换后的字符串，也可以是正则表达是的分组表达式`$(1)`，也可以是一个函数，替换每一个匹配的返回值
-* `split()`方法的第二个参数可以是一个数值，表示返回数组的最大成员数
+### 3.2 String.prototype.search()
 
-## 匹配规则
+接受一个正则表达式作为参数，返回第一个匹配字符串在原字符串中的位置，如果没有匹配成功，返回`-1`
 
-### 字面量字符
+```javascript
+var reg = /x/;
+var str = 'abxcxd';
+str.search(reg);
+// 2
+```
 
-> 在正则表达式中，某个字符只表示它字面的含义，比如`/z/`,`/a/`分别匹配 a 和 b，就叫他字面量字符
+### 3.3 String.prototype.replace()
 
-### 元字符
+接受两个参数，第一个为正则表达式，第二个位替换的字符串，如果正则表达式带有`g`修饰符，则替换所有满足条件的子字符串，如果没有，则替换第一个满足条件的子字符串
 
-> 具有特殊含义的字符
+```javascript
+var reg = /x/g;
+var str = 'abxcxd';
+str.replace(reg, '0');
+// "ab0c0d"
+```
 
-#### 点字符 (.)
+### 3.4 String.prototype.split()
 
-匹配除开回车 (`\r`)、换行 (`\n`)、行分割符 (`\u2028`) 和段分割符 (`\u2029`) 之外任意一个字符
+按照正则规则将原字符串分割成数组
 
-#### 位置字符
+接受两个参数，第一个位正则表达式，第二个位返回数组的最大长度，可以省略，返回一个数组。
 
-* `^`表示字符串的开始位置
-* `$`表示字符串的结束位置
+```javascript
+var reg = /x/;
+var str = 'abxcxd';
+str.split(reg);
+// (3) ["ab", "c", "d"]
+```
 
-#### 选择符 (|)
+## 4.正则表达式规则
 
-竖线符号`|`在正则表达式中，表示或 (`OR`) 的关系，可以联合使用
+### 4.1 字面量字符
 
-### 转义符 (\)
+在正则表达式中，某个字符只表示它字面的含义，比如`/z/`,`/a/`分别匹配 a 和 b，就叫他字面量字符
+
+### 4.2 元字符
+
+具有特殊含义的字符，主要有
+
+* `.`：点字符，匹配除开回车 (`\r`)、换行 (`\n`)、行分割符 (`\u2028`) 和段分割符 (`\u2029`) 之外任意一个字符
+* `^`：开始位置字符，表示匹配字符串开始
+* `$`：结束为止字符，表示匹配字符串结束
+* `|`：选择字符，表示或的关系
+
+```javascript
+/^a.(b|c)d$/.test('abd'); // false
+/^a.(b|c)d$/.test('accd'); // true
+/^a.(b|c)d$/.test('accdb'); // false
+```
+
+### 4.3 转义符`\`
 
 正则表达式中有一些特殊含义的元字符，如果要表达他们本身，则需要在字符前加上`\`进行转义
 
 ```javascript
-/\+/.test('a+b');  // true
+/\+/.test('a+b'); // true
 ```
 
-### 特殊字符
+### 4.4 特殊字符
 
 正则表达式为一些不能打印的字符，提供了一些表达方法
 
@@ -98,27 +166,27 @@ String.prototype.split()  // 按照给定的正则表达式对字符串进行分
 * `\xhh`匹配`\u00`和`\uFF`
 * `\uhhhh`匹配`\u0000`和`\uFFFF`
 
-### 字符类
+### 4.5 字符类`[]`
 
-字符类 class 表示一些可供选择的字符，只要匹配一个就可以，把所有待匹配的字符放入方括号类，组成一个字符类，`/[abc]/`可以匹配带有 a, b, c 字符的字符串
+字符类表示一些可供选择的字符，只要匹配一个就可以，把所有待匹配的字符放入方括号类，组成一个字符类，`/[abc]/`可以匹配带有 a, b, c 字符的字符串
 
-有两个字符在字符类中有特殊含义
+在字符类中虾米昂两种字符有个特殊含义
 
-#### 脱字符 (^)
+**脱字符`^`**
 
 * 表示除开方括号字符的任意字符都可以匹配，`[^abc]`表示匹配除开 a, b, c 之外的任意字符
 * [^] 表示匹配一切字符，范围比点字符 (.) 要大
 * 脱字符只有在字符类的第一位才有效，否则就是字面字符
 
-#### 连字符 (-)
+**连字符`-`**
 
 * `/[0-9]/`表示`[0123456789]`
 * `/[a-z]/`表示 26 个小写字母
 * `/[A-Z]/`表示 26 个大写字母
 
-### 预定义模式
+### 4.6 预定义模式
 
-> 常见匹配模式的简写
+常见匹配模式的简写
 
 * `\d`等同于`[0-9]`
 * `\D`等同于`[^0-9]`
@@ -129,58 +197,92 @@ String.prototype.split()  // 按照给定的正则表达式对字符串进行分
 * `\b`匹配词的边界
 * `\B`匹配非词边界，即在词的内部
 
-### 重复类
+### 4.7 重复类
 
-`a{n}`匹配 a 字符重复 n 次
+`/a{2,9}/`匹配 a 字符重复 2 次到 9 次
 
-### 量字符
+```javascript
+var reg = /^1\d{10}$/; // 匹配 1 开头的总共十一位的数字
+```
+
+### 4.8 量字符
 
 * `?`匹配 0 次或 1 次，等同于`{0, 1}`
 * `* `匹配 任意次，等同于`{0,}`
 * `+`匹配 1 次或多次，等同于`{1,}`
 
-### 贪婪模式
+### 4.9 贪婪模式
 
-* 量字符的原则是最大可能匹配，知道下一个字符不匹配为止，我们称这种匹配模式为贪婪模式
-* 如果想讲贪婪模式改为非贪婪模式，则在量字符后面加上`?`
+量字符的原则是最大可能匹配，知道下一个字符不匹配为止，我们称这种匹配模式为贪婪模式
+
+如果想讲贪婪模式改为非贪婪模式，则在量字符后面加上`?`
+
 * `*?`表示某个模式出现 0 次或多次，采用非贪婪模式
 * `+?`表示某个模式出现 1 次或者多次匹配，采用非贪婪模式
 
-### 修饰符
+```javascript
+/\d+/.exec('453'); // ["453", index: 0, input: "453", groups: undefined]
+/\d+?/.exec('453'); // ["4", index: 0, input: "453", groups: undefined]
+```
 
-* `g`修饰符，全局匹配，主要用于搜索和替换
-* `i`修饰符，忽略大小写进行匹配
-* `m`修饰符，多行匹配模式
+### 4.10 修饰符
 
-### 组匹配
+* `g`：全局匹配，主要用于搜索和替换
+* `i`：忽略大小写进行匹配
+* `m`：多行匹配模式
 
-* 正则表达式的括号表示分组匹配，括号中的模式可以用来匹配分组的内容
-* 使用组匹配的时候，不宜使用`g`修饰符，否则`match()`方法不回获取分组的内容，可以使用循环配合`RegExp.prototype.exec()`获取每一轮的组捕获
-* 正则表达式内部可以使用`\1`,`、2`，来获取括号匹配的内容，`\1`表示获取第一个括号匹配的内容
+### 4.11 分组匹配
 
-#### 非组捕获
+正则表达式的括号表示分组匹配
 
-`(?:x)`称为非组捕获，表示不返回该组捕获的内容
+```javascript
+var reg = /(\d)a(\D)/;
+var str = '4ab6a4';
+var result = str.match(reg);
+result;
+// ["4ab", "4", "b", index: 0, input: "4ab6a4", groups: undefined]
+```
+
+正则表达式内部可以使用`\1`,`\2`，来表示括号匹配的内容，`\1`表示获取第一个括号匹配的内容
+
+```javascript
+/(.)a(\d)\1\2/.test('ba4b4'); // true
+```
+
+实例：html 标签闭合匹配
+
+```javascript
+var tagReg = /<([^>]+)>[^>]*<\/\1>/;
+var str = '<span>abc</span>';
+tagReg.exec(str)
+// (2) ["<span>abc</span>", "span", index: 0, input: "<span>abc</span>", groups: undefined]
+```
+
+#### 4.11.1 非组捕获
+
+`(?:x)`称为非组捕获，表示不返回匹配`x`的内容
 
 ```javascript
 var m = 'abc'.match(/(?:.)b(.)/);
 m // ["abc", "c"];
 ```
 
-#### 先行断言
+#### 4.11.2 先行断言
 
 `x(?=y)`称为先行断言，`x`只有在`y`前面才匹配，`y`不计入匹配结果
 
 ```javascript
-var m = 'xy'.match(/x(?:y)/);
-m // ['x']
+var m = 'xaxy'.match(/x(?=y)/);
+m;
+// ["x", index: 2, input: "xaxy", groups: undefined]
 ```
 
-#### 先行否定断言
+#### 4.11.3 先行否定断言
 
-`x(?!y)`称为先行否定断言，只有不再`y`前面的`x`才匹配，`y`不计入匹配结果
+`x(?!y)`称为先行否定断言，只有不在`y`前面的`x`才匹配，`y`不计入匹配结果
 
 ```javascript
-var m = 'abcdca'.match(/c(?!a)/);
-m // ['c']
+var m = 'abcacb'.match(/c(?!a)/);
+m;
+// ["c", index: 4, input: "abcacb", groups: undefined]
 ```

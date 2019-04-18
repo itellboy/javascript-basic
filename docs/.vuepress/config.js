@@ -80,6 +80,7 @@ module.exports = {
           '/es6/generator-async',
           '/es6/async',
           '/es6/module',
+          '/es6/other-latest.md',
         ]
       }, {
         title: 'CSS',

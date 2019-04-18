@@ -21,3 +21,7 @@
 * [Generator 函数的异步应用](/es6/generator-async.html)
 * [async 函数](/es6/async.html)
 * [Module 的语法](/es6/module.html)
+* [ES2016](/es6/other-latest.html#_1-ES2015(ES7))
+* [ES2017](/es6/other-latest.html_2-ES2016(ES8))
+* [ES2018](/es6/other-latest-latestule.html_3-ES2017(ES9))
+* [ES2019](/es6/other-latest.html_4-ES2018(ES10))
