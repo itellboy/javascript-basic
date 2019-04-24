@@ -37,8 +37,8 @@ Math.pow(a, b)
 ## 2. ES2017(ES8)
 
 * async/await
-* `Object.values`
-* `Object.entries`
+* `Object.values()`
+* `Object.entries()`
 * `String.prototype.padStart()`、`String.prototype.padEnd()`
 * 函数参数允许逗号结尾
 * `Object.getOwnPropertyDescriptors()`
@@ -138,6 +138,22 @@ console.log(Object.getOwnPropertyDescriptors(obj))
 * `for...of`支持 async/await
 * `Promise.finally()`
 * Rest/Spread 语法支持
+* 正则表达式命名捕获组
+* 正则表达式反向断言
+* 正则表达式 dotAll 模式
+* 正则表达式 unicode 转义
+* 非转义序列的模版字符串
 
 
 ## 4. ES2019(ES10)
+
+* 行分隔符（）和段分隔符（）允许出现在字符串中
+* JSON.stringify()
+* `Array.prototype.flat()`、`Array.prototype.flatMap()`
+* `String.prototype.trimStart()`、`Array.prototype.trimEnd()`
+* `Object.fromEntries()`
+* `Symbol.prototype.description`
+* `String.prototype.matchAll()`
+* `Function.prototype.toString()`
+* 省略`catch`变量
+* 新的基本数据类型`BigInt`

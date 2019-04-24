@@ -1,60 +1,133 @@
-# 正则的扩展（1）
+# 正则的扩展
 
-## RegExp 构造函数
+## 1. 新增实例方法
 
-RegExp 对象构造函数有两种方式
+* `Regexp.prototype[Symbol.match]()`：`String.prototype.match()`调用
+* `Regexp.prototype[Symbol.search]()`：`String.prototype.search()`调用
+* `Regexp.prototype[Symbol.split]()`：`String.prototype.split()`调用
+* `Regexp.ptototype[Symbol.replace]`：`String.prototype.replace`调用
+* `Regexp.prototype[Symbol.matchAll]()`：`String.prototype.matchAll `调用
 
-* 第一个参数为字符串，第二个参数为修饰符
-* 第一个参数为正则表达式，第二个参数为修饰符，这种情况下，正则表达式后面的修饰符失效，并且这种方式在 ES5 下会报错
+### 1.1 String.prototype.matchAll
 
-## 将字符串的正则方法全部定义在 RegExp 对象上面
+一般我们使用`g`或者`y`修饰符对字符串进行全局匹配的时候，需要循环判断，逐一取出结果
 
-* `String.prototype.match`调用`Regexp.prototype[Symbol.match]`
-* `String.prototype.search`调用`Regexp.prototype[Symbol.search]`
-* `String.prototype.split`调用`Regexp.prototype[Symbol.split]`
-* `String.prototype.replace`调用`Regexp.ptototype[Symbol.replace]`
+```javascript
+var str = "_aaa_aa_a_";
+var reg = /a+/g;
+
+var match;
+while(match = reg.exec(str)){
+  console.log(match);
+}
+
+// ["aaa", index: 1, input: "_aaa_aa_a_", groups: undefined]
+// ["aa", index: 5, input: "_aaa_aa_a_", groups: undefined]
+// ["a", index: 8, input: "_aaa_aa_a_", groups: undefined]
+```
+
+`String.prototype.matchAll()`方法可以一次性取出所有匹配，返回一个迭代器，可以减少判断
 
 
-## u 修饰符
+```javascript
+for(let match of str.matchAll(reg)){
+  console.log(match)
+}
 
-可以正确处理 4 个字节的 UTF-16 字符，主要修改了以下正则表达式的行为
+// ["aaa", index: 1, input: "_aaa_aa_a_", groups: undefined]
+// ["aa", index: 5, input: "_aaa_aa_a_", groups: undefined]
+// ["a", index: 8, input: "_aaa_aa_a_", groups: undefined]
+```
 
-* 点字符，加上`u`修饰符，可以正确匹配码点大于`0xFFFF`的字符
-* unicode 字符表示法，ES6 新增了大括号表示 unicode 字符，如果采用这种表达式构建的正则，必须加上`u`修饰符，否则不能正确识别，会当作量字符解释
-* 量词，加上`u`修饰符，所有的量词可以识别码点大于`0xFFFF`的字符
-* 预定义模式，`/\S/` 可以正确识别码点大于`0xFFFF`的非空字符
-* `i`修饰符，有些相同的字符可以对应不同的 unicode 码，加上`u`修饰符，则可以正确匹配非规范的字符
+## 2. 新增修饰符
 
-## y 修饰符（用法待补充）
+### 2.1 u 修饰符
 
-> 粘连 (sticky) 修饰符
+增加`u`修饰符的正则表达式可以正确处理 4 个字节的 UTF-16 编码的字符
 
-* 和`g`修饰符类似，全局匹配。后一次匹配从前一次匹配成功的地方开始。不同的是，`y`修饰符匹配必须从剩余的第一个位置开始匹配，这也就是`粘连`的含义
+**用大括号包括码点形式表示的字符串必须加上`u`修饰符才能正确识别**
 
-## sticky 属性
+```javascript
+/\u{62}/.test('b'); // false
+/\u{62}/u.test('b'); // true
+```
 
-正则是否设置了`y`修饰符
-## flags 属性
+### 3.2 y 修饰符
 
-返回正则表达式的修饰符
+全局匹配，`y`修饰符和`g`修饰符的不同在于，`y`修饰符的匹配成功的位置是正则表达式的`lastIndex`属性的位置，否则匹配不成功，返回`null`
 
-## s 修饰符： dotAll 模式
+```javascript
+var str = '_aaa_aa_aa_';
+var reg = /a+/g;
+var reg2 = /a+/y;
+var reg3 = /_a+/y;
 
-* 点字符`.`不能正确匹配行终止符，包括回车、换行、制表符、垂直制表符，可以使用`[^]`作为替代方案
-* ES2018 引入`s`修饰符，使得`.`可以匹配任意字符，这被称为`dotAll`模式，即点 (dot) 代表一切
-* 与此同时引入了一个`dotAll`属性，返回一个布尔值，表示该模式是否处于`dotAll`模式
+reg.exec(str);
+// ["aaa", index: 1, input: "_aaa_aa_aa_", groups: undefined]
+reg2.exec(str);
+// null
+reg3.exec(str);
+// ["_aaa", index: 0, input: "_aaa_aa_aa_", groups: undefined]
+```
 
-## 后行断言
+### 3.3 s 修饰符（dotAll 模式）
 
-* 在 ES5 中，JavaScript 只支持先行断言 (`/x(?=y)/`) ，和先行否定断言 (`/x(?!y)/`) ，不支持后行断言和后行否定断言
-* ES2018 引入后行断言 （`/(?<=y)x/`）和后行否定断言 (`/(?<!y)x/`)
+在之前的 JavaScript 版本，`.`字符并不能匹配所有字符，包括回车、换行、制表符、垂直制表符，我们使用`[^]`作为替代方案
 
-## unicode 属性类
+ES2018 加入了`s`修饰符，加上了`s`修饰符的正则的`.`字符可以匹配任意字符
 
-* ES2018 引入了一种新的类的写法，`\p{...}` 和`\P{...}`，允许正则表达式匹配 unicode 某种属性的所有字？
-* unicode 属性类要指定属性名和属性值， `/\p{UnicodePropertyName=UnicodePropertyValue}/`，对于部分属性，可以只写属性名或者属性值
-* `\P{...}`是`\p{...}`的反向匹配，即不满足条件的所有字符
+```javascript
+var str = 'abc\ndef';
+var reg = /abc.def/;
+var reg2 = /abc.def/s;
 
-## 具名组匹配
+reg.test(str);
+// false
+reg2.test(str);
+// true
+```
 
-* ES2018 引入了具名组匹配，允许为每一个组匹配指定一个名字，便于代码的阅读，格式为 `?<name>`
+## 4. 新增实例属性
+
+* `RegExp.prototype.sticky`：返回一个布尔值，表示正则是否设置可`y`修饰符
+* `RegExp.prototype.flags`：返回一个字符串，表示正则设置的所有修饰符，按照字母顺序排列
+* `RegExp.prototype.dotAll`：返回一个布尔值，表示正则是否设置了`s`修饰符
+
+## 5. 支持后行断言
+
+之前版本的 JavaScript 只支持先行断言 (`/x(?=y)/`) ，和先行否定断言 (`/x(?!y)/`) ，不支持后行断言和后行否定断言
+
+ES2018 引入后行断言 （`/(?<=y)x/`）和后行否定断言 (`/(?<!y)x/`)
+
+```javascript
+var str = 'a4c5';
+var reg = /(?<=c)\d/;
+var reg2 = /(?<!c)\d/;
+
+reg.exec(str);
+// ["5", index: 3, input: "a4c5", groups: undefined]
+reg2.exec(str);
+// ["4", index: 1, input: "a4c5", groups: undefined]
+```
+
+## 6.具名组匹配
+
+ES2018 引入了具名组匹配，允许为每一个组匹配指定一个名字，便于代码的阅读，格式为 `?<name>`
+
+```javascript
+var str = '2018-12-12';
+var reg = /(\d{4})-(\d{2})-(\d{2})/;
+var res = reg.exec(str)
+console.log(res[1]); // 2018
+console.log(res[2]); // 12
+console.log(res[3]); // 12
+
+var reg2 = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+var res = reg2.exec(str)
+console.log(res.groups.year); // 2018
+console.log(res.groups.month); // 12
+console.log(res.groups.day); // 12
+
+// 使用解构赋值
+let { groups: { year, month, day } } = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/.exec(str)
+```
