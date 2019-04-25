@@ -147,13 +147,57 @@ console.log(Object.getOwnPropertyDescriptors(obj))
 
 ## 4. ES2019(ES10)
 
-* 行分隔符（）和段分隔符（）允许出现在字符串中
-* JSON.stringify()
 * `Array.prototype.flat()`、`Array.prototype.flatMap()`
 * `String.prototype.trimStart()`、`Array.prototype.trimEnd()`
+* `String.prototype.matchAll()`
 * `Object.fromEntries()`
 * `Symbol.prototype.description`
-* `String.prototype.matchAll()`
 * `Function.prototype.toString()`
 * 省略`catch`变量
 * 新的基本数据类型`BigInt`
+
+### 4.1 Array 原型新增方法
+
+#### 4.1.1 Array.prototype.flat()
+
+接受一个整数作为参数，表示递归深度，默认为 1，将所有元素与遍历到的子数组的元素合并成一个新数组返回，实现数组降维，并且可以去除数组的空项
+
+```javascript
+var arr1 = [1, 2, [3, 4]];
+arr1.flat();
+// [1, 2, 3, 4]
+
+var arr2 = [1, 2, [3, [4, 5]]];
+arr2.flat(2);
+//[1, 2, 3, 4, 5]
+
+var arr3 = [1, 2, [3, [4, [5, [6, 7]]]]];
+arr3.flat(Infinity);
+// [1, 2, 3, 4, 5, 6, 7]
+
+var arr4 = [1, 2, , 4, 5];
+arr4.flat();
+// [1, 2, 4, 5]
+```
+
+#### 4.1.2 Array.prototype.flatMap()
+
+可以看作是`Array.prototype.map()`和`Array.prototype.flat()`的结合，返回每个元素的映射组成的数组，如果映射是一个数组，则提取出来作为返回数组的成员
+
+```javascript
+var arr = [1, 2];
+arr.map(item => [item * 2]);
+// [[2], [4]]
+arr.flatMap(item => [item * 2]);
+// [2, 4]
+```
+
+### 4.2 String 原型新增方法
+
+#### 4.2.1 String.prototype.trimStart()、String.prototype.trimEnd()
+
+去除字符串的头部空格，和尾部空格
+
+#### 4.2.2 String.prototype.matchAll()
+
+返回所有匹配结果，可以使用`for...of`遍历结果
