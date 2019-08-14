@@ -1,7 +1,9 @@
 ---
 home: true
-heroImage: /avatar.jpeg
-actionText: Get Start →
+heroImage: /images/logo.png
+heroText: Docs
+tagline: Do what you love, love what you do
+actionText: Get Started →
 actionLink: /welcome
 features:
 - title: Jeff Atwood
@@ -10,7 +12,7 @@ features:
   details: I would trade all of my technology for an afternoon with Socrates.
 - title: Murphy's Law
   details: Anything that can go wrong will go wrong.
-footer: Copyright © 2019-present Itellboy - 湘 ICP 备 18020225 号
+footer: MIT Licensed | Copyright © 2018-present Itellboy - 湘 ICP 备 18020225 号
 ---
 
 ### Just do it
@@ -19,9 +21,9 @@ footer: Copyright © 2019-present Itellboy - 湘 ICP 备 18020225 号
 # clone repo
 git clone https://github.com/itellboy/docs.git && cd docs
 # install dependences
-npm install
+yarn
 # run dev
-npm run docs:dev
+yarn start
 # run build
-npm run docs:build
+yarn build
 ```

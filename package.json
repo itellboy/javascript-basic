@@ -2,12 +2,10 @@
   "name": "docs",
   "version": "1.0.0",
   "description": "",
-  "directories": {
-    "doc": "docs"
-  },
+  "main": "index.js",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "start": "vuepress dev docs",
+    "build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -19,11 +17,7 @@
     "url": "https://github.com/itellboy/docs/issues"
   },
   "homepage": "https://github.com/itellboy/docs#readme",
-  "dependencies": {
-    "koa": "^2.5.2",
-    "vuepress": "^0.14.1"
-  },
   "devDependencies": {
-    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0"
+    "vuepress": "^1.0.3"
   }
 }

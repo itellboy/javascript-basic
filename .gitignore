@@ -3,7 +3,5 @@ node_modules
 *.log
 .temp
 vuepress
-TODOs.md
 
 dist
-package-lock.json
