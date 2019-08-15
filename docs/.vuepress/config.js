@@ -15,4 +15,29 @@ module.exports = {
   },
   configureWebpack: (config, isServer) => { },
   evergreen: true,
+  themeConfig: {
+    sidebar: [
+      ['/welcome', 'welcome'],
+      {
+        title: '标准内建对象',
+        children: [
+          '/core/array',
+          '/core/boolean',
+          '/core/date',
+          '/core/error',
+          '/core/function',
+          '/core/json',
+          '/core/math',
+          '/core/number',
+          '/core/object',
+          '/core/regexp',
+          '/core/string',
+          '/core/map',
+          '/core/set',
+          '/core/weak-map',
+          '/core/weak-set',
+        ],
+      }
+    ],
+  },
 }
