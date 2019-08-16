@@ -4,7 +4,7 @@
 
 * ❌：从语言标准中移除的 API
 * ⚠️：已经废弃的 API，但还是可用的
-* 🌡️：实验中中的 API
+* 🌡️：实验中的 API
 
 ## 1. 值属性（Value properties）
 
@@ -78,8 +78,8 @@ JavaScript 中最基本的对象，可以给其他对象使用，基本对象可
 * [Uint32Array](/core/uint-32-array)
 * [Float32Array](/core/float-32-array)
 * [Float64Array](/core/float-64-array)
-* [BigInt64Array](/core/bit-int-64-array)
-* [BigUint64Array](/core/bit-uint-64-array)
+* [BigInt64Array](/core/big-int-64-array)
+* [BigUint64Array](/core/big-uint-64-array)
 
 ## 7. 使用键的集合（Key collections）
 
