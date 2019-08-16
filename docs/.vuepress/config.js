@@ -1,9 +1,9 @@
 module.exports = {
   base: '/',
-  title: 'Docs',
+  title: 'JavaScript',
   description: 'Love what you do, do what you love. :)',
   head: [
-    ['link', { ref: 'icon', href: '/images/logo.png' }],
+    ['link', { ref: 'icon', href: '/svg/js-cube.svg' }],
   ],
   host: '0.0.0.0',
   port: '8080',
