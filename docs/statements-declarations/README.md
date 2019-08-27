@@ -14,14 +14,14 @@
 ## 2. 声明
 
 * [var](/statements-declarations/var)：声明一个变量，并且可以将其初始化为一个值
-* [let](/statements-declarations/left)：声明一个块级变量，并且可以将其初始化为一个值
+* [let](/statements-declarations/let)：声明一个块级变量，并且可以将其初始化为一个值
 * [const](/statements-declarations/const)：声明一个块级只读变量
 
 ## 3. 函数和类
 
 * [function](/statements-declarations/function)：声明一个带有参数的方法
 * [function*](/statements-declarations/functon*)：声明一个 generator 方法
-* [async function](/statements-declarations/function)：声明一个异步方法
+* [async function](/statements-declarations/async-function)：声明一个异步方法
 * [return](/statements-declarations/return)：方法返回值
 * [class](/statements-declarations/class)：声明一个类
 
@@ -41,3 +41,4 @@
 * [import](/statements-declarations/import)：引入模块
 * [import.meta](/statements-declarations/import-meta)
 * [label](/statements-declarations/label)
+* [with](/statements-declarations/with)

@@ -6,8 +6,8 @@
 
 * [this](/expressions-operators/this)：是指向当前执行环境上下文的关键字
 * [function](/expressions-operators/function)：声明一个方法
-* [class](/expressions-operators/class)：声明一个 class
 * [function*](/expressions-operators/function*)：声明一个 generator 方法
+* [class](/expressions-operators/class)：声明一个 class
 * [yield](/expressions-operators/yield)：暂停或者恢复一个 generator 方法
 * [yield*](/expressions-operators/yield*)：委派给另外一个generator函数或可迭代的对象
 * [async function](/expressions-operators/async-function)：定义一个异步函数表达式
