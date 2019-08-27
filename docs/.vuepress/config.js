@@ -1,6 +1,6 @@
 module.exports = {
   base: '/',
-  title: 'JavaScript',
+  title: 'JavaScript Basic',
   description: 'Love what you do, do what you love. :)',
   head: [
     ['link', { ref: 'icon', href: '/svg/js-cube.svg' }],

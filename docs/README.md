@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /svg/js-cube.svg
-heroText: JavaScript
+heroText: JavaScript Basic
 tagline: Do what you love, love what you do
 actionText: Get Started →
 actionLink: /welcome
