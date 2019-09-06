@@ -19,7 +19,7 @@ footer: MIT Licensed | Copyright © 2018-present Itellboy - 湘 ICP 备 18020225
 
 ```bash
 # clone repo
-git clone https://github.com/itellboy/docs.git && cd docs
+git clone https://github.com/itellboy/javascript-basic.git && cd javsscript-basic
 # install dependences
 yarn
 # run dev

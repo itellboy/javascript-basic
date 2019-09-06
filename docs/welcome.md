@@ -10,3 +10,4 @@ My name is **Guojun Wang（王国军）**, you can call me guojun. I was born in
 * [表达式和操作符](/expressions-operators/)
 * [语句和声明](/statements-declarations)
 * [函数](/functions)
+* [TypeScript](/typescript)

@@ -171,6 +171,11 @@ module.exports = {
           '/functions/getter',
           '/functions/setter',
         ],
+      }, {
+        title: 'TypeScript',
+        children: [
+          '/typescript/basic-types'
+        ],
       }
     ],
   },
