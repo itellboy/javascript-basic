@@ -174,7 +174,8 @@ module.exports = {
       }, {
         title: 'TypeScript',
         children: [
-          '/typescript/basic-types'
+          '/typescript/basic-types',
+          '/typescript/interfaces',
         ],
       }
     ],

@@ -11,6 +11,7 @@ TypeScript 支持 JavaScript 的数据单元，并且增加了一些方便实用
 * Null
 * Undefined
 * Never
+* Object（对象）
 
 ```typescript
 let flag: boolean = false;
@@ -24,8 +25,9 @@ function func(): void {
 let u: undefined = undefined;
 let n: null = null;
 function func(): never {
-  throw new Error('error')
+  throw new Error('error');
 }
+declare function create(obj: object | null): void;
 ```
 
 * Tuple（元组）
@@ -44,3 +46,14 @@ arr = ['abc', 1]; // Ok
 enum Animal {Cat, Dog, Fox};
 let animal: Animal = Animal.Cat;
 ```
+
+## 类型断言（Type Assetions）
+
+显示指定变量的类型，有`<>`和`as`两种写法，目前在`.tsx`文件中只支持`as`写法的类型断言
+
+```typescript
+let str: any = 'hello world';
+let len1: number = (<string>str).length;
+let len2: number = (str as number).length;
+```
+
