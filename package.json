@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/itellboy/docs#readme",
   "devDependencies": {
-    "vuepress": "^1.0.3"
+    "vuepress": "^1.1.0"
   }
 }

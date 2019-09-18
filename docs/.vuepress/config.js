@@ -16,6 +16,7 @@ module.exports = {
   configureWebpack: (config, isServer) => { },
   evergreen: true,
   themeConfig: {
+    sidebarDepth: 1,
     sidebar: [
       ['/welcome', 'welcome'],
       {
@@ -176,6 +177,8 @@ module.exports = {
         children: [
           '/typescript/basic-types',
           '/typescript/interfaces',
+          '/typescript/functions',
+          '/typescript/generics',
         ],
       }
     ],

@@ -12,7 +12,7 @@ features:
   details: I would trade all of my technology for an afternoon with Socrates.
 - title: Murphy's Law
   details: Anything that can go wrong will go wrong.
-footer: MIT Licensed | Copyright © 2018-present Itellboy - 湘 ICP 备 18020225 号
+footer: MIT Licensed | Copyright © 2018-present Reed Wang - 湘 ICP 备 18020225 号
 ---
 
 ### Just do it

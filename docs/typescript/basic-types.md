@@ -1,4 +1,4 @@
-# 基础类型
+# 基础类型（Basic Types）
 
 TypeScript 支持 JavaScript 的数据单元，并且增加了一些方便实用的其他数据单元，比如枚举
 

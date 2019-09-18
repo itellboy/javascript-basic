@@ -2,13 +2,13 @@
 
 感谢您来到我的站点，我希望它能对您有所帮助。
 
-我叫王国军，95后，一名前端工程师，目前在杭州工作。
+我叫王国军，你也可以叫我 Reed，95年出生，一名前端工程师，目前在杭州工作。
 
 Hello, guys! Welcome~
 
 Thanks for you visiting my site, I hope it benifit you.
 
-My name is **Guojun Wang（王国军）**, you can call me guojun. I was born in 1995. I am a software developer focus on **Front End Development**, based HangZhou in China.
+My name is **Guojun Wang（王国军）**, you can call me Reed. I was born in 1995. I am a software developer focus on **Front End Development**, based HangZhou in China.
 
 **HERE IS CATALOG**
 

@@ -1,4 +1,4 @@
-# 接口
+# 接口（Interface）
 
 ## 1. 描述对象的属性类型
 
@@ -66,10 +66,82 @@ interface AniInterface {
 
 ## 4. 类类型
 
+TypeScript 能使用一个接口来强制类满足某种条件
+
 ```typescript
 interface ClockInterface {
-  currentTime: Date,
+    currentTime: Date;
+    setTime(d: Date);
 }
 
-class Clock implements ClockInterface 
+class Clock implements ClockInterface {
+    currentTime: Date;
+    setTime(d: Date) {
+        this.currentTime = d;
+    }
+    constructor(h: number, m: number) { }
+}
+```
+
+不能直接在类实现的接口中定义构造器的类型，可以使用下面方法来定义构造器参数类型
+
+```typescript
+interface AnimalConstructor {
+  new(name: string, age: number);
+}
+
+interface AnimalInterface {
+  name: string;
+  age: number;
+  getInfo();
+}
+
+function createAnimal(Animal: AnimalConstructor, name: string, age: number) {
+  return new Animal(name, age);
+}
+
+class Cat implements AnimalInterface {
+  name: string
+  age: number
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+  getInfo() {
+    return `cat: ${this.name}, ${this.age}`
+  }
+}
+
+class Dog implements AnimalInterface {
+  name: string
+  age: number
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+  getInfo() {
+    return `dog: ${this.name}, ${this.age}`
+  }
+}
+
+createAnimal(Cat, 'kitty', 4);
+createAnimal(Dog, 'poppy', 6);
+```
+
+## 5. 接口继承
+
+接口可以形成继承关系
+
+```typescript
+interface Animal {
+  name: string;
+}
+
+interface Cat extends Animal {
+  age: number;
+}
+
+const cat = {} as Cat;
+cat.name = 'kitty';
+cat.age = 4;
 ```
