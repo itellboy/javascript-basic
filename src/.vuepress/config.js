@@ -3,7 +3,7 @@ module.exports = {
   title: 'JavaScript Basic',
   description: 'Love what you do, do what you love. :)',
   head: [
-    ['link', { ref: 'icon', href: '/svg/js-cube.svg' }],
+    ['link', { ref: 'icon', href: '/image/js-cube.png' }],
   ],
   host: '0.0.0.0',
   port: '8080',

@@ -9,7 +9,7 @@ features:
 - title: Jeff Atwood
   details: Any application that can be written in JavaScript, will eventually be written in JavaScript.
 - title: Steve Jobs
-  details: I would trade all of my technology for an afternoon with Socrates.
+  details: Stay Hungry. Stay foolish.
 - title: Murphy's Law
   details: Anything that can go wrong will go wrong.
 footer: MIT Licensed | Copyright © 2018-present Reed Wang - 湘 ICP 备 18020225 号
