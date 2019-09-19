@@ -14,6 +14,6 @@ My name is **Guojun Wang（王国军）**, you can call me Reed. I was born in 1
 
 * [标准内建对象](/built-in-objects/)
 * [表达式和操作符](/expressions-operators/)
-* [语句和声明](/statements-declarations)
-* [函数](/functions)
-* [TypeScript](/typescript)
+* [语句和声明](/statements-declarations/)
+* [函数](/functions/)
+* [TypeScript](/typescript/)

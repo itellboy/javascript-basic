@@ -14,10 +14,10 @@ JavaScript 中的每个函数都是一个`Function`对象。一个函数一定�
 
 ## 2.内容
 
-* [箭头函数](/functions/arrow-functions)
-* [默认参数值](/functions/default-parameters)
-* [方法的定义](/functions/method-definitions)
-* [Rest 参数](/functions/rest-parameters)
-* [Arguments 对象](/functions/arguments)
-* [getter](/functions/getter)
-* [setter](/functions/setter)
+* [箭头函数](/functions/arrow-functions/)
+* [默认参数值](/functions/default-parameters/)
+* [方法的定义](/functions/method-definitions/)
+* [Rest 参数](/functions/rest-parameters/)
+* [Arguments 对象](/functions/arguments/)
+* [getter](/functions/getter/)
+* [setter](/functions/setter/)
