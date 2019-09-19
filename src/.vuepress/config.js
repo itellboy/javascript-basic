@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/',
+  base: '/javascript-basic/',
   title: 'JavaScript Basic',
   description: 'Love what you do, do what you love. :)',
   head: [
