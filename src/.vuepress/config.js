@@ -16,6 +16,8 @@ module.exports = {
   configureWebpack: (config, isServer) => { },
   evergreen: true,
   themeConfig: {
+    repo: 'itellboy/javascript-basic',
+    lastUpdated: '最后更新',
     sidebarDepth: 1,
     sidebar: [
       ['/welcome', 'welcome'],
@@ -179,6 +181,12 @@ module.exports = {
           '/typescript/interfaces',
           '/typescript/functions',
           '/typescript/generics',
+        ],
+      }, {
+        title: '其他',
+        children: [
+          '/other/style',
+          '/other/interview',
         ],
       }
     ],
