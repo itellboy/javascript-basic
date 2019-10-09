@@ -25,7 +25,7 @@ let a = 1, b = 2;
 
 ### 1.4 根据需要声明变量类型
 
-在声明语句的上方添加 JavaScript 文档注释或者使用行内注释都是可行的，但是两者不能同时使用。
+在声明语句的上方添加  JSDoc 注释或者使用行内注释都是可行的，但是两者不能同时使用。
 
 ```javascript
 const /** number **/ data = 1;
@@ -367,4 +367,126 @@ exports = {processString};
 
 箭头函数为嵌套函数提供了一个简洁的语法声明和容易理解的`this`作用域。尽可能使用箭头函数而不是`funciton`关键字，特别是在嵌套函数里面。
 
-使用箭头函数避免操作其他作用域
+使用箭头函数，避免`f.bind(this)`、`const self = this`这种写法来修改`this`的指向。箭头函数作为回调函数的时候非常有用，因为它可以显示的指定需要传递的参数，而绑定的回调函数直接传递所有的参数。
+
+箭头函数的左侧可以包含零个或者多个参数。如果只有一个不可分解的参数，则包裹参数的括号则是可省略的。使用括号时，可以指定内联参数类型。
+
+> 尽管只有一个参数也保持使用括号，这样可以避免出现增加参数但忘记增加括号的情况，在这种情况下，可能会出现一些预期之外的结果。
+
+箭头函数的右边是函数体。默认情况下，函数体是一个块语句（用花括号扩起来的零个或者多个语句）。如果程序在逻辑上需要返回一个值，或者在函数和方法调用之前使用`void`（使用`void`确保返回一个`undefined`，防止值泄漏，并传达意图）函数体也可以隐式的返回一个单行语句。返回一个单行语句可以提高程序的可读性。
+
+例子：
+
+```javascript
+/**
+ * Arrow functions can be documented just like normal functions.
+ * 箭头函数的文档格式和普通函数的文档是一样的。
+ * @param {number} numParam A number to add.
+ * @param {string} strParam Another number to add that happens to be a string.
+ * @return {number} The sum of the two parameters.
+ */
+const moduleLocalFunc = (numParam, strParam) => numParam + Number(strParam);
+
+// Uses the single expression syntax with `void` because the program logic does
+// not require returning a value.
+// 使用带`void`的单行语句写法，因为程序逻辑上不要求返回一个值
+getValue((result) => void alert(`Got ${result}`));
+
+class CallbackExample {
+  constructor() {
+    /** @private {number} */
+    this.cachedValue_ = 0;
+
+    // For inline callbacks, you can use inline typing for parameters.
+    // Uses a block statement because the value of the single expression should
+    // not be returned and the expression is not a single function call.
+    // 对于内联回调的参数可以使用内联类型
+    getNullableValue((/** ?number */ result) => {
+      this.cachedValue_ = result == null ? 0 : result;
+    });
+  }
+}
+```
+
+### 5.4 Generators
+
+Generator 可以支持很多有用的抽象，可以根据需要使用。
+
+在`function`关键字后面附加一个`*`，并且与函数名之间用一个空格隔开，来定一个 Generator 函数。当使用委托 yield 时，在`yield`关键字前面附加一个`*`
+
+```javascript
+/** @return {!Iterator<number>} */
+function* gen1() {
+  yield 42;
+}
+
+/** @return {!Iterator<number>} */
+const gen2 = function*() {
+  yield* gen1();
+}
+
+class SomeClass {
+  /** @return {!Iterator<number>} */
+  * gen() {
+    yield 42;
+  }
+}
+```
+
+### 5.5 参数及返回值类型
+
+函数的参数及返回值类型通常应该使用  JSDoc 注释记录。
+
+#### 5.5.1 默认参数
+
+在参数列表中，使用等于操作符的可选参数是被允许的。可选参数的等于号的两边都必须有空格，并且命名和必填参数一样（即不要使用`opt_`的前缀）。可选参数的  JSDoc 跟在必选参数后面，并且在类型标注上面使用`=`后缀。可选参数不要使用产生可见副作用的初始值。具象函数的所有可选参数必须要有默认值，尽管这个值是`undefined`。与之相反的是，抽象或者接口方法必须省略默认的参数值。
+
+```javascript
+/**
+ * @param {string} required This parameter is always needed.
+ * @param {string=} optional This parameter can be omitted.
+ * @param {!Node=} node Another optional parameter.
+ */
+function maybeDoSomething(required, optional = '', node = undefined) {}
+
+/** @interface */
+class MyInterface {
+  /**
+   * Interface and abstract methods must omit default parameter values.
+   * 接口和抽象方法必须省略默认值
+   * @param {string=} optional
+   */
+  someMethod(optional) {}
+}
+```
+
+尽可能少的使用默认参数。当有需要一些没有自然顺序的可选参数的时候，可以使用函数参数解构取代。
+
+> 与 python 默认参数不同，JavaScript 的默认参数允许使用一个新的可变对象作为初始值（比如`{}`或者`[]`）。因为初始值只有在使用默认值的时候才会被计算。
+
+> 提示：虽然可以使用任意包括函数表达式作为函数参数的默认值，但是这些初始值应该尽可能保持简单。避免暴露共享可变状态的初始化器，因为它们很容易在函数调用之间引入意外的耦合。
+
+#### 5.5.2 Rest 参数
+
+使用 Rest 参数避免访问`arguments`，在 JSDoc 中，Rest 参数使用一个`...`前缀来标注类型。Rest 参数必须在参数列表的最后面。在`...`和参数名之间没有空格。不要使用`var_args`命名 Rest 参数。不要使用局部变量或者`arguments`参数命名参数，这些命名会混淆内建名称。
+
+```javascript
+/**
+ * @param {!Array<string>} array This is an ordinary parameter.
+ * @param {...number} numbers The remainder of arguments are all numbers.
+ */
+function variadic(array, ...numbers) {}
+```
+
+### 5.6 泛型
+
+必要时，在函数或者方法定义之上的 JSDoc 中使用`@template TYPE`声明泛型函数和方法。
+
+### 5.7 延展操作符
+
+函数可以使用延展操作符（`...`）调用。当一个数组或迭代被拆分成一个可变参数函数的多个参数时，使用延展操作符代替`Function.prototype.apply`。在`...`后面没有空格。
+
+```javascript
+function myFunction(...elements) {}
+myFunction(...array, ...iterable, ...generator());
+```
