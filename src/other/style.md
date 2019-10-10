@@ -6,7 +6,7 @@
 
 ### 1.1 使用`const`和`let`
 
-所有的局部变量使用`const`或者`let`声明，默认使用`const`，当明确该变量在以后会被重新赋值的时候使用`let`，不再使用`var`。
+使用`const`或者`let`声明局部变量，默认使用`const`声明。当明确该变量在以后会被重新赋值的时候使用`let`，不再使用`var`声明变量。
 
 ### 1.2 一次只声明一个变量
 
@@ -21,11 +21,13 @@ let a = 1, b = 2;
 
 ### 1.3 需要的时候再声明，并尽可能初始化该变量
 
-局部变量通常不会在其包含的块或类似块的构造的开始处声明，为了缩小变量的作用域，应当在该变量第一次使用的时候再声明。
+局部变量通常不要在其包含的块或类似块的结构的开始处声明。
+
+为了缩小变量的作用域，应当在该变量初次使用的时候再声明。
 
 ### 1.4 根据需要声明变量类型
 
-在声明语句的上方添加  JSDoc 注释或者使用行内注释都是可行的，但是两者不能同时使用。
+在声明语句的上方添加 JSDoc 注释或者使用行内注释都是可行的，但是两者不能同时使用。
 
 ```javascript
 const /** number **/ data = 1;
@@ -435,11 +437,11 @@ class SomeClass {
 
 ### 5.5 参数及返回值类型
 
-函数的参数及返回值类型通常应该使用  JSDoc 注释记录。
+函数的参数及返回值类型通常应该使用 JSDoc 注释记录。
 
 #### 5.5.1 默认参数
 
-在参数列表中，使用等于操作符的可选参数是被允许的。可选参数的等于号的两边都必须有空格，并且命名和必填参数一样（即不要使用`opt_`的前缀）。可选参数的  JSDoc 跟在必选参数后面，并且在类型标注上面使用`=`后缀。可选参数不要使用产生可见副作用的初始值。具象函数的所有可选参数必须要有默认值，尽管这个值是`undefined`。与之相反的是，抽象或者接口方法必须省略默认的参数值。
+在参数列表中，使用等于操作符的可选参数是被允许的。可选参数的等于号的两边都必须有空格，并且命名和必填参数一样（即不要使用`opt_`的前缀）。可选参数的 JSDoc 跟在必选参数后面，并且在类型标注上面使用`=`后缀。可选参数不要使用产生可见副作用的初始值。具象函数的所有可选参数必须要有默认值，尽管这个值是`undefined`。与之相反的是，抽象或者接口方法必须省略默认的参数值。
 
 ```javascript
 /**
@@ -540,3 +542,151 @@ const longString = 'This is a very long string that far exceeds the 80 ' +
 ## 7. 数值字面量
 
 在 JavaScript 中，数值可以使用十进制、十六进制、八进制或者二进制表示。使用带小写字母的`0x`、`0o`、`0b`前缀分别表示十六进制，八进制和二进制。数值不要使用前置 0，除非后面跟了`x`、`o`、`b`这三个字母。
+
+## 8. 控制结构 
+
+### 8.1 循环
+
+随着 ES6 的到来，JavaScript 现在三种不同的`for`循环的方式。这三种方式都可以被使用，但建议尽可能的使用`for...of`。
+
+`for...in`循环只能用于字典类型的对象`例如：{'bar': 'foo'}`，并且不能使用`for...of`去迭代一个数组。
+
+在`for...in`循环里面使用`Object.prototype.hasOwnProperty()`可以排除原型对象上面的属性。尽可能的使用`Object.keys()`和`for...of`来代替`for...in`循环。
+
+### 8.2 异常
+
+异常是一门编程语言很重要的一部分。异常在任何异常情况发生的时候应该被使用。保持抛出一个`Error`或者`Error`的子类：不要抛出一个字符串或者一个对象字面量。使用`new`来构造一个`Error`。
+
+这种处理可以使用`Promise`的 rejection 值类扩展。在异步函数中，`Promise.reject(obj)`和`throw obj`是相等的。
+
+在一个函数里面，自定义异常是一种非常好的输出错误信息的方式。自定义异常应该被定义在原生`Error`类型不适用的场景下。
+
+选择抛出异常，而不是特定的的错误处理方法（比如传递一个包含引用类型的 error 或者是一个带有 error 属性的对象）。
+
+#### 8.2.1 空 catch 块
+
+对捕获的异常不做任何响应是非常不正确的。如果在 catch 块中确定不需要任何操作，也需要在 catch 块中加一段注释表示为什么这么做是对的。
+
+```javascript
+try {
+  return handleNumericResponse(response);
+} catch (ok) {
+  // it's not numeric; that's fine, just continue
+}
+return handleTextResponse(response);
+```
+
+### 8.3 switch 语句
+
+术语说明：在 switch 块的花括号里面是一个或者多个语句组。每个语句组由一个或多个 swtich 标签（`case FOO:`或者`default:`）组成，后面跟着一个或者多个语句。
+
+#### 8.3.1 Fall-through: 注释
+
+在一个 swtich 块里面，每个语句组需要被中断（使用`break`、`return`或者`throw`一个异常），或者使用注释进行标记标明程序基础会执行到下一个语句。任何能够表示 fall through 意思的注释都可以。这个特殊的注释不要求在 swtich 块语句组的最后面。
+
+```javascript
+switch (input) {
+  case 1:
+  case 2:
+    prepareOneOrTwo();
+  // fall through
+  case 3:
+    handleOneTwoOrThree();
+    break;
+  default:
+    handleLargeNumber(input);
+}
+```
+
+#### 8.3.2 `default` case 是要存在的
+
+每个 swtich 语句都包含一个`default`语句组，尽管它没有任何代码。`default`语句必须在最后面。
+
+## 9. this
+
+使用`this`的几种场景：类的构造器和方法里面，在类构造器和方法里面定义的箭头函数里面，或者在 JSDoc 中使用`@this`标注了的立即执行函数中。
+
+不能使用`this`的几种场景：引用全局对象，调用`eval`的上下文，调用事件的目标，或者是不必要的`call()`或者`apply()`函数。
+
+## 10. 相等检查
+
+除下述情况外使用严格相等运算符（`===`、`!===`）。
+
+### 10.1 根据需求检查
+
+需要同时捕获`null`和`undefined`。
+
+```javascript
+if (someObjectOrPrimitive == null) {
+  // Checking for null catches both null and undefined for objects and
+  // primitives, but does not catch other falsy values like 0 or the empty
+  // string.
+}
+```
+
+## 11. 不允许使用
+
+### 11.1 with
+
+不能使用`with`关键字。它会使代码变得难以理解，并且在严格模式下的 ES5 也已经被禁止使用。
+
+### 11.2 动态代码求值
+
+不要使用`eval`和`Function(...string)`构造器（出了代码加载器）。这个特性存在潜在的危险，并且在 CSP 环境不会有用。
+
+### 11.3 自动分号
+
+总是使用分号结束语句（除了上面提到的类和函数声明之外）。
+
+### 11.4 非标准特性
+
+不要使用非标准特性。这个包括一些就特性（比如`WeakMap.clear`），没有写入标准的新特性（比如处于 TC39草案阶段和征求意见阶段的建议，或者是已经采取的意见但是没有实现的 web 标准），或者使一些只在部分浏览器实现了一些特性。只能使用 ECMS-262 或者 WHATWG 中定义的特性。非标准的语言扩展（比如一些由外部转置器提供的）被禁止使用。
+
+> 提示：针对特定 APIS 编写的项目，比如 Chrome 的插件或者 Node，是可以使用这些 api 的。
+
+### 11.5 原始类型的包装对象
+
+不要在原始包装对象（比如`Boolean`、`Number`、`String`、`Symbol`）前面使用`new`，也不要在类型标注里面使用。
+
+不允许的：
+
+```javascript
+const /** Boolean */ x = new Boolean(false);
+if (x) alert(typeof x);  // alerts 'object' - WAT?
+```
+
+包装对象可以作为函数调用（比使用`+`或者拼接空字符串更好），或者创建一个 Symbol。
+
+```javascript
+const /** boolean */ x = Boolean(0);
+if (!x) alert(typeof x);  // alerts 'boolean', as expected
+```
+
+### 11.6 修改内建对象
+
+不要修改内建类型，无论是向它们的构造方法添加方法，还是向它们的原型添加方法。避免依赖修改内建对象的库。请注意，JSCompiler 的运行时库将在可能的地方提供符合标准的填充；其他任何东西都不能修改内建对象。
+
+非必要情况下（比如第三方 API 要求）不要在全局对象上面添加 Symbol。
+
+### 11.7 调用构造器的时候省略`()`
+
+`new`语句调用构造器的时候不要省略小括号`()`。
+
+不允许的：
+
+```javascript
+new Foo;
+```
+
+替代：
+
+```javascript
+new Foo();
+```
+
+省略括号可能导致一些细微的错误。下面两个语句是不相等的。
+
+```javascript
+new Foo().Bar();
+new Foo.Bar();
+```
