@@ -490,3 +490,53 @@ function variadic(array, ...numbers) {}
 function myFunction(...elements) {}
 myFunction(...array, ...iterable, ...generator());
 ```
+
+## 6. 字符串字面量
+
+### 6.1 使用单引号
+
+普通字符串使用单引号`'`分割，不要使用双引号`""`
+
+> 提示：如果字符串包含单引号字符，考虑使用摸板字符串避免必须使用双引号。
+
+普通字符串字面量不能跨越多行。
+
+### 6.2 模版字符串
+
+对于复杂的字符串拼接，使用模版字面量（使用 ` 分割），特别是牵涉到多个字符串的时候。模版字符串可以跨越多行。
+
+如果模版字符串跨越多行，空格和换行都是可以被正确解释。
+
+```javascript
+function arithmetic(a, b) {
+  return `Here is a table of arithmetic operations:
+${a} + ${b} = ${a + b}
+${a} - ${b} = ${a - b}
+${a} * ${b} = ${a * b}
+${a} / ${b} = ${a / b}`;
+}
+```
+
+### 6.3 不要使用行延展
+
+不要在普通字符串或者模版字符串里面使用行延展（在一个字符串内部一行的末尾加上反斜杠`\`）。虽然 ES5 允许这个语法，但是当在反斜杠后面加上一个空格的时候，可能导致一些难以解决的问题。并且被加上的这些空格对于阅读代码的人来说不容易被发现。
+
+不允许：
+
+```javascript
+const longString = 'This is a very long string that far exceeds the 80 \
+    column limit. It unfortunately contains long stretches of spaces due \
+    to how the continued lines are indented.';
+```
+
+替代：
+
+```javascript
+const longString = 'This is a very long string that far exceeds the 80 ' +
+    'column limit. It does not contain long stretches of spaces since ' +
+    'the concatenated strings are cleaner.';
+```
+
+## 7. 数值字面量
+
+在 JavaScript 中，数值可以使用十进制、十六进制、八进制或者二进制表示。使用带小写字母的`0x`、`0o`、`0b`前缀分别表示十六进制，八进制和二进制。数值不要使用前置 0，除非后面跟了`x`、`o`、`b`这三个字母。
