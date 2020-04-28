@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "push": "git add . && git commit -m 'docs: edit' && git push"
   },
   "repository": {
     "type": "git",

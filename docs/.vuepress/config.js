@@ -3,7 +3,7 @@ module.exports = {
   title: 'JavaScript Basic',
   description: 'Love what you do, do what you love. :)',
   head: [
-    ['link', { ref: 'icon', href: '/image/js-cube.png' }],
+    ['link', { rel: 'icon', href: '/svg/js-cube.svg', }],
   ],
   host: '0.0.0.0',
   port: '8080',
@@ -18,6 +18,7 @@ module.exports = {
     repo: 'itellboy/javascript-basic',
     lastUpdated: '最后更新',
     sidebarDepth: 1,
+    logo: '/svg/js-cube.svg',
     sidebar: [
       ['/welcome', 'welcome'],
       {
