@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /svg/js-cube.svg
+heroImage: https://ghchart.rshah.org/itellboy
 heroText: JavaScript Basic
 tagline: Do what you love, love what you do
 actionText: Get Started →

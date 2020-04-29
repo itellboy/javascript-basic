@@ -327,18 +327,18 @@ module.exports = {
           {
             title: '位移运算符',
             children: [
-              ['/expressions-operators/bitwist-operators', '<<'],
-              ['/expressions-operators/bitwist-operators', '>>'],
-              ['/expressions-operators/bitwist-operators', '>>>'],
+              ['/expressions-operators/bitwise-operators', '<<'],
+              ['/expressions-operators/bitwise-operators', '>>'],
+              ['/expressions-operators/bitwise-operators', '>>>'],
 
             ],
           },
           {
             title: '二进制位运算符',
             children: [
-              ['/expressions-operators/bitwist-operators', '&'],
-              ['/expressions-operators/bitwist-operators', '|'],
-              ['/expressions-operators/bitwist-operators', '^'],
+              ['/expressions-operators/bitwise-operators', '&'],
+              ['/expressions-operators/bitwise-operators', '|'],
+              ['/expressions-operators/bitwise-operators', '^'],
 
             ],
           },
