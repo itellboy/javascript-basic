@@ -1,12 +1,26 @@
 # Object
 
-`Object()`可以创建一个对象，同`new Object()`。
+Object 是 JavaScript 的一种基本数据类型。
+
+## 构造函数
+
+### Object([value])
+
+**示例**
+
+```javascript
+let o = new Object();
+o.foo = 42;
+
+console.log(o);
+// Object { foo: 42 }
+```
 
 ::: tip 提示
 建议直接使用字面量形式创建对象，即`const obj = { }`。
 :::
 
-## 构造函数属性
+## 属性
 
 ### Object.length
 
@@ -16,7 +30,7 @@
 
 所有 Object 类型对象继承的对象
 
-## 静态方法
+## 方法
 
 ### Object.assign(target, ...sources)
 
@@ -121,6 +135,24 @@ for (let [key, value] of Object.entries(object1)) {
 
 冻结一个对象，冻结后的对象不能再被修改。
 
+### Object.fromEntries(interable)
+
+将一组键值对的集合解析成对象，与`Object.entries()`相反。
+
+**示例**
+
+```javascript
+const entries = new Map([
+  ["foo", "bar"],
+  ["baz", 42],
+]);
+
+const obj = Object.fromEntries(entries);
+
+console.log(obj);
+// expected output: Object { foo: "bar", baz: 42 }
+```
+
 ### Object.getOwnPropertyDescriptor(obj, propName)
 
 获取对象上指定属性的属性描述符，属性不存在则返回`undefined`。
@@ -189,7 +221,7 @@ Object.is(0, -0); // false
 
 返回一个包含所有给定对象自身可枚举属性值的数组。
 
-## Object 原型对象（Object.prototype）
+## Object 实例与 Object 原型对象
 
 JavaScript 所有对象都来自 Object，它们都会继承`Object.prototype`对象上的属性和方法。
 
