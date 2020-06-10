@@ -1,4 +1,4 @@
-/# 标准内建对象（Standard Built-in Objects）
+# 标准内建对象（Standard Built-in Objects）
 
 标准内建对象是 JavaScript 语言的核心，是由 JavaScript 标准实现的一些全局的属性、方法和对象，在所有宿主环境可使用，宿主环境的 API 在标准内建对象基础之上进行开发
 
@@ -137,7 +137,3 @@ JavaScript 中最基本的对象，可以给其他对象使用，基本对象可
 * [WebAssembly.CompileError](/built-in-objects/web-assembly-compile-error/)
 * [WebAssembly.LinkError](/built-in-objects/web-assembly-link-error/)
 * [WebAssembly.RuntimeError](/built-in-objects/web-assembly-runtime-error/)
-
-## 13. 其他（other）
-
-* [arguments](/functions/arguments/)
