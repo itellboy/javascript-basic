@@ -37,7 +37,7 @@ Function 没有自己属性和方法。
 
 ### Function.prototype.apply(thisArg[, argsArray])
 
-指定`this`上下文调用函数。
+在确定 this 值和若干调用参数的情况下调用函数。
 
 **示例**
 
@@ -57,7 +57,7 @@ getName.apply(dog); // dog
 
 ### Function.prototype.call(thisArg[, arg1][, arg2])
 
-方法功能和`Function.prototype.apply()`一样， 只是参数不同
+方法功能和`Function.prototype.apply()`一样， 只是参数不同。
 
 ### Function.prototype.bind(thisArg)
 
