@@ -4,9 +4,7 @@ Object 是 JavaScript 的一种基本数据类型。
 
 ## 构造函数
 
-### Object([value])
-
-**示例**
+### `Object([value])`
 
 ```javascript
 let o = new Object();
@@ -20,19 +18,19 @@ console.log(o);
 建议直接使用字面量形式创建对象，即`const obj = { }`。
 :::
 
-## 属性
+## 静态属性
 
-### Object.length
+### `Object.length`
 
 值为`1`
 
-### Object.prototype
+### `Object.prototype`
 
-所有 Object 类型对象继承的对象
+所有 Object 类型对象的原型对象
 
-## 方法
+## 静态方法
 
-### Object.assign(target, ...sources)
+### `Object.assign(target, ...sources)`
 
 将源对象可枚举的属性复制到目标对象，返回修改后的目标对象。
 
@@ -62,7 +60,7 @@ console.log(obj); // { "0": "a", "1": "b", "2": "c" }
 只有字符串的包装对象才可能有自身可枚举属性。
 :::
 
-### Object.create(proto[, ...propertiesObject])
+### `Object.create(proto[, ...propertiesObject])`
 
 使用指定对象作为原型创建新对象。
 
@@ -83,7 +81,7 @@ me.printIntroduction();
 // expected output: "My name is Matthew. Am I human? true"
 ```
 
-### Object.defineProperty(obj, propName, descriptor)
+### `Object.defineProperty(obj, propName, descriptor)`
 
 在一个对象上面定义新属性，并返回修改后的对象。
 
@@ -131,11 +129,11 @@ for (let [key, value] of Object.entries(object1)) {
 // order is not guaranteed
 ```
 
-### Object.freeze(obj)
+### `Object.freeze(obj)`
 
 冻结一个对象，冻结后的对象不能再被修改。
 
-### Object.fromEntries(interable)
+### `Object.fromEntries(interable)`
 
 将一组键值对的集合解析成对象，与`Object.entries()`相反。
 
@@ -153,23 +151,23 @@ console.log(obj);
 // expected output: Object { foo: "bar", baz: 42 }
 ```
 
-### Object.getOwnPropertyDescriptor(obj, propName)
+### `Object.getOwnPropertyDescriptor(obj, propName)`
 
 获取对象上指定属性的属性描述符，属性不存在则返回`undefined`。
 
-### Object.getOwnPropertyNames(obj)
+### `Object.getOwnPropertyNames(obj)`
 
 返回一个由对象自身所有属性属性名组成的数组（包括不可枚举属性，但不包括 Symbol 作为属性名的属性）。
 
-### Object.getOwnPropertySymbols(obj)
+### `Object.getOwnPropertySymbols(obj)`
 
 回一个给定对象自身的所有 Symbol 属性的数组。
 
-### Object.getPropertyOf(obj)
+### `Object.getPropertyOf(obj)`
 
 返回指定对象的原型对象。
 
-### Object.is(value1, value2)
+### `Object.is(value1, value2)`
 
 比较两个值是否相等。与`==`和`===`有一些区别。
 
@@ -183,33 +181,33 @@ Object.is(NaN, NaN); // true
 Object.is(0, -0); // false
 ```
 
-### Object.isExtensible(obj)
+### `Object.isExtensible(obj)`
 
 判断对象是否可扩展（是否可以添加新属性），返回布尔值。
 
-### Object.isFrozen(obj)
+### `Object.isFrozen(obj)`
 
 判断对象是否被冻结（不可扩展，所有属性不可配置，数据不可修改）。
 
-### Object.isSealed(obj)
+### `Object.isSealed(obj)`
 
 判断对象是否密封。
 
 密封对象是指那些不可扩展的，且所有自身属性都不可配置且因此不可删除（但不一定是不可写）的对象。
 
-### Object.keys(obj)
+### `Object.keys(obj)`
 
 返回一个包含所有给定对象自身可枚举属性名称的数组。
 
-### Object.perventExtensions(obj)
+### `Object.perventExtensions(obj)`
 
 防止对象的任何扩展。
 
-### Object.seal(obj)
+### `Object.seal(obj)`
 
 防止其他代码删除对象的属性。
 
-### Object.setPropertyOf(obj, prototypeObject)
+### `Object.setPropertyOf(obj, prototypeObject)`
 
 设置对象的原型对象。
 
@@ -217,31 +215,19 @@ Object.is(0, -0); // false
 尽量避免直接改变对象的原型对象，而是通过`Object.create()`去创建一个新对象。
 :::
 
-### Object.values()
+### `Object.values()`
 
 返回一个包含所有给定对象自身可枚举属性值的数组。
 
-## Object 实例与 Object 原型对象
+## 实例方法
 
-JavaScript 所有对象都来自 Object，它们都会继承`Object.prototype`对象上的属性和方法。
-
-### Object.prototype.constructor
-
-构造函数，指向`Object`自身。
-
-```javascript
-Object.prototype.constructor === Object; // true
-```
-
-### Object.prototype.hasOwnProperty(propName)
+### `hasOwnProperty(propName)`
 
 返回一个布尔值，表示对象自身是否含有该属性。
 
-### Object.prototype.isPropertyOf(obj)
+### `isPropertyOf(obj)`
 
 返回一个布尔值，表示参数对象是否在实例对象的原型链上面。
-
-**示例**
 
 ```javascript
 function Foo() {}
@@ -259,11 +245,9 @@ console.log(Foo.prototype.isPrototypeOf(baz)); // true
 console.log(Object.prototype.isPrototypeOf(baz)); // true
 ```
 
-### Object.prototype.propertyIsEnumerable(props)
+### `propertyIsEnumerable(props)`
 
 返回一个布尔值，表是指定的属性在实例对象上面是否可以枚举。
-
-**示例**
 
 ```javascript
 const object1 = {};
@@ -281,15 +265,13 @@ console.log(array1.propertyIsEnumerable("length"));
 // expected output: false
 ```
 
-### Object.prototype.toLocalString(obj)
+### `toLocalString(obj)`
 
 调用`Object.prototype.toString()`。
 
-### Object.prototype.toString(obj)
+### `toString(obj)`
 
 返回对象的字符串表示。
-
-**示例**
 
 ```javascript
 function Dog(name) {
@@ -306,11 +288,11 @@ console.log(dog1.toString());
 // expected output: "Gabby"
 ```
 
-### Object.prototype.valueOf()
+### `valueOf()`
 
 返回对象的原始值。一般情况下 JavaScript 会自动调用它。
 
-**不同类型对象调用`valueOf()`的返回值**
+不同类型对象调用`valueOf()`的返回值
 
 | 对象    | 返回值                            |
 | ------- | --------------------------------- |
