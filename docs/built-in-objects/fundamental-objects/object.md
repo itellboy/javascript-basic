@@ -137,8 +137,6 @@ for (let [key, value] of Object.entries(object1)) {
 
 将一组键值对的集合解析成对象，与`Object.entries()`相反。
 
-**示例**
-
 ```javascript
 const entries = new Map([
   ["foo", "bar"],
