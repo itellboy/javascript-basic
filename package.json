@@ -18,10 +18,10 @@
     "url": "https://github.com/itellboy/javascript-basic/issues"
   },
   "homepage": "https://github.com/itellboy/javascript-basic#readme",
-  "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.5.4",
-    "@vuepress/plugin-google-analytics": "^1.5.4",
-    "vuepress": "^1.5.4"
-  },
-  "dependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "@vuepress/plugin-back-to-top": "^1.6.0",
+    "@vuepress/plugin-google-analytics": "^1.6.0",
+    "vuepress": "^1.6.0"
+  }
 }
